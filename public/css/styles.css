@@ -1,3 +1,10 @@
+/* Custom */
+
+.header {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	margin-bottom: 30px;
+}
+
 
 html{ font-size: 100%; overflow-x: hidden; width: 100%; margin: 0px;  padding: 0px; touch-action: manipulation; }
 
@@ -271,7 +278,7 @@ header .main-menu li.drop-down a.mouseover + ul.drop-down-menu{ display: block;
 .abs-tbr{ position: absolute; top: 0; bottom: 0; right: 0; z-index: 1; }
 .abs-tblr{ position: absolute; top: 0; bottom: 0; left: 0; right: 0; z-index: 1; }
 
-.z--1{ z-index: -1; }
+.z--1{ z-index: -1; }	
 
 
 /* ALIGNMENT */
