@@ -18,7 +18,6 @@ var controllers = require(__dirname + "/apps/controllers");
 app.use(controllers);
 
 var port = config.get("server.port");
-
 app.listen(process.env.PORT || port, function(){
     console.log("Server is running on port: ", port);
 });
