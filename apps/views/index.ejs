@@ -16,16 +16,15 @@
 
 	<link href="fonts/ionicons.css" rel="stylesheet">
 
-
 	<link href="css/styles.css" rel="stylesheet">
 
-
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+		integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 
 <body>
-
 	<header>
-		<div class="bg-191">
+		<div class="bg-191" style="padding: 10px 0 10px 0">
 			<div class="container">
 				<div class="oflow-hidden color-ash font-9 text-sm-center ptb-sm-5">
 					<ul class="float-left float-sm-none list-a-plr-10 list-a-plr-sm-5 list-a-ptb-15 list-a-ptb-sm-10">
@@ -39,7 +38,15 @@
 						</li>
 					</ul>
 					<ul class="float-right float-sm-none list-a-plr-10 list-a-plr-sm-5 list-a-ptb-15 list-a-ptb-sm-5">
-						<li><a class="pl-0 pl-sm-10" href="https://www.facebook.com/thanhtinhpas1"><i
+						<li id="search-form">
+							<div class="d-flex justify-content-center h-100">
+								<div class="searchbar">
+									<input class="search_input" type="text" name="" placeholder="Search...">
+									<a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+								</div>
+							</div>
+						</li>
+						<li><a class="pl-0 pl-sm-10" target="_blank" href="https://www.facebook.com/thanhtinhpas1"><i
 									class="ion-social-facebook"></i></a></li>
 						<li><a href="#"><i class="ion-social-twitter"></i></a></li>
 						<li><a href="#"><i class="ion-social-google"></i></a></li>
@@ -52,49 +59,91 @@
 		<div class="header">
 			<div class="container">
 				<a class="logo" href="index.html"><img src="imgs/logo-black.png" alt="Logo"></a>
-				<a class="right-area src-btn" href="#">
-					<i class="active src-icn ion-search"></i>
-					<i class="close-icn ion-close"></i>
-				</a>
-				<div class="src-form">
-					<form>
-						<input type="text" placeholder="Search here">
-						<button type="submit"><i class="ion-search"></i></a></button>
-					</form>
-				</div><!-- src-form -->
-
 				<a class="menu-nav-icon" data-menu="#main-menu" href="#"><i class="ion-navicon"></i></a>
 
-				<ul class="main-menu" id="main-menu">
+				<ul class="main-menu menu" id="main-menu">
+					<li id="menu_world" class="drop-down"><a href="/single-post">Tất cả<i
+								class="ion-arrow-down-b"></i></a>
+						<ul class="drop-down-menu drop-down-inner">
+							<li><a href="#">Điểm nóng</a></li>
+							<li><a href="#">Quân sự</a></li>
+							<li><a href="#">Vũ khí hạt nhân</a></li>
+							<li><a href="#">Khoa học vũ trụ</a></li>
+							<li><a href="#">Tin trong ngày</a></li>
+					</li>
 					<li id="menu_world" class="drop-down"><a href="/single-post">Thế giới<i
 								class="ion-arrow-down-b"></i></a>
 						<ul class="drop-down-menu drop-down-inner">
+							<li><a href="#">Điểm nóng</a></li>
+							<li><a href="#">Quân sự</a></li>
+							<li><a href="#">Vũ khí hạt nhân</a></li>
+							<li><a href="#">Khoa học vũ trụ</a></li>
+							<li><a href="#">Tin trong ngày</a></li>
+						</ul>
+					</li>
+					<li id="menu_economic" class="drop-down"><a href="/single-post">Kinh tế vĩ mô<i
+								class="ion-arrow-down-b"></i></a>
+						<ul class="drop-down-menu drop-down-inner">
+							<li><a href="#">Tài chính</a></li>
+							<li><a href="#">Chính sách</a></li>
+							<li><a href="#">Hợp tác</a></li>
+							<li><a href="#">Dự án</a></li>
+							<li><a href="#"></a></li>
 						</ul>
 					</li>
 					<li id="menu_football" class="drop-down">
 						<a href="/single-post">Bóng đá<i class="ion-arrow-down-b"></i></a>
 						<ul class="drop-down-menu drop-down-inner">
+							<li><a href="#">Lịch thi đấu</a></li>
+							<li><a href="#">Sự kiện - Bình luận</a></li>
+							<li><a href="#">Video</a></li>
+							<li><a href="#">Livescore</a></li>
+							<li><a href="#">Lịch thi đấu hôm nay</a></li>
+							<li><a href="#">Kết quả bóng đá</a></li>
+							<li><a href="#">Top ghi bàn</a></li>
+							<li><a href="#">Bảng xếp hạng</a></li>
+							<li><a href="#">Bóng đá trong nước</a></li>
 						</ul>
 					</li>
-					<li id="menu_business">
+					<li id="menu_business" class="drop-down">
 						<a href="02_archive-page.html">Kinh doanh<i class="ion-arrow-down-b"></i></a>
-						<ul class="drop-down-menu drop-down-inner"></ul>
+						<ul class="drop-down-menu drop-down-inner">
+							<li><a href="#">Doanh nhận</a></li>
+							<li><a href="#">Tài chính</a></li>
+							<li><a href="#">Bất động sản</a></li>
+							<li><a href="#">Khởi nghiệp</a></li>
+							<li><a href="#">Doanh nghiệp</a></li>
+							<li><a href="#">Ngân hàng</a></li>
+							<li><a href="#">Bitcoin</a></li>
+							<li><a href="#">Tỷ giá</a></li>
+							<li><a href="#">Chứng khoán</a></li>
+						</ul>
 					</li>
-					<li id="menu_market">
+					<li id="menu_market" class="drop-down">
 						<a href="02_archive-page.html">Thị trường<i class="ion-arrow-down-b"></i></a>
-						<ul class="drop-down-menu drop-down-inner"></ul>
+						<ul class="drop-down-menu drop-down-inner">
+							<li><a href="#">Sản xuất - tiêu dùng</a></li>
+							<li><a href="#">Thị trường hôm nay</a></li>
+							<li><a href="#">Xu hướng tiêu dùng</a></li>
+							<li><a href="#">Xuất nhập khẩu</a></li>
+						</ul>
 					</li>
-					<li id="menu_health">
-						<a href="02_archive-page.html">Sức khỏe<i class="ion-arrow-down-b"></i></a>
-						<ul class="drop-down-menu drop-down-inner"></ul>
-					</li>
-					<li id="menu_showbiz">
-						<a href="02_archive-page.html">Showbiz<i class="ion-arrow-down-b"></i></a>
-						<ul class="drop-down-menu drop-down-inner"></ul>
+					<li id="menu_health" class="drop-down">
+						<a href="02_archive-page.html">Công nghệ<i class="ion-arrow-down-b"></i></a>
+						<ul class="drop-down-menu drop-down-inner">
+							<li><a href="#">Sắp xuất hiện</a></li>
+							<li><a href="#">Tin tức công nghệ</a></li>
+							<li><a href="#">Laptop mới</a></li>
+							<li><a href="#">Điện thoại</a></li>
+							<li><a href="#">Máy ảnh và camera số</a></li>
+							<li><a href="#">Thế giới công nghệ</a></li>
+							<li><a href="#">Đánh giá sản phẩm</a></li>
+							<li><a href="#">Điện tử gia dụng</a></li>
+						</ul>
 					</li>
 					<!-- menu more -->
-					<li><a><i class=""></i></a></li>
 				</ul>
+
 				<div class="clearfix"></div>
 			</div><!-- container -->
 		</div>

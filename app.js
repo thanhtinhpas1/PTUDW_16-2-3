@@ -17,9 +17,8 @@ app.set("view engine", "ejs");
 var controllers = require(__dirname + "/apps/controllers");
 app.use(controllers);
 
-var host = config.get("server.host");
 var port = config.get("server.port");
 
-app.listen(port, host, function(){
+app.listen(port, function(){
     console.log("Server is running on port: ", port);
 });
