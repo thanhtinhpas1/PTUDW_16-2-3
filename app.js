@@ -19,6 +19,6 @@ app.use(controllers);
 
 var port = config.get("server.port");
 
-app.listen(port || 3000, function(){
+app.listen(process.env.PORT || port, function(){
     console.log("Server is running on port: ", port);
 });
