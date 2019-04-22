@@ -1,5 +1,14 @@
 /* Custom */
 
+#page-url {
+	color: #F9B500;
+	font-weight: bold;
+}
+
+.vertical-host-news {
+	margin-bottom: 40px;
+}
+
 .top-social-info a {
     color: white;
 }
@@ -807,7 +816,6 @@ input:focus {
 
 .header {
 	box-shadow: 5px 5px 10px grey;
-	margin-bottom: 40px;
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
