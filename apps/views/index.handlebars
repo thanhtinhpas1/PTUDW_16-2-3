@@ -18,47 +18,77 @@
 
 	<link href="css/styles.css" rel="stylesheet">
 
-	<link href="css/all.css" rel="stylesheet">
+	<link rel="icon" href="imgs/favicon.ico">
+
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+
 	<!--load all styles -->
 
 	<!-- awesome fonts -->
-	<script defer src="/js/all.js"></script>
+	<script defer src="js/all.js"></script>
 </head>
 
 <body>
+	<!-- Preloader -->
+	<div class="preloader d-flex align-items-center justify-content-center">
+		<div class="lds-ellipsis">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
 	<header>
-		<div class="bg-191" style="padding: 10px 0 10px 0">
-			<div class="container">
-				<div class="oflow-hidden color-ash font-9 text-sm-center ptb-sm-5">
-					<ul class="float-left float-sm-none list-a-plr-10 list-a-plr-sm-5 list-a-ptb-15 list-a-ptb-sm-10">
-						<li class="site">
-							<a class="web" title="Trang chủ CafeF" target="_blank" href="http://cafef.vn">CafeF</a>
-							<a class="web" title="Trang chủ Soha" target="_blank" href="http://soha.vn/">Soha</a>
-							<a class="web" title="Trang chủ Afamily" target="_blank"
-								href="http://afamily.vn/">Afamily</a>
-							<a class="web" title="Trang chủ Kenh14" target="_blank" href="http://kenh14.vn/">Kenh14</a>
-							<a class="web " title="Trang chủ Genk" target="_blank" href="http://genk.vn/">Genk</a>
-						</li>
-					</ul>
-					<ul class="float-right float-sm-none list-a-plr-10 list-a-plr-sm-5 list-a-ptb-15 list-a-ptb-sm-5">
-						<li id="search-form">
-							<div class="d-flex justify-content-center h-100">
-								<div class="searchbar">
-									<input class="search_input" type="text" name="" placeholder="Search...">
-									<a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+
+		<!-- ##### Header Area Start ##### -->
+		<header class="header-area">
+			<!-- Top Header Area -->
+			<div class="top-header-area">
+				<div class="container">
+					<div class="row align-items-center">
+						<div class="col-12 col-md-6">
+							<!-- Breaking News Widget -->
+							<div class="breaking-news-area d-flex align-items-center">
+								<div class="news-title">
+									<p>Breaking News:</p>
+								</div>
+								<div id="breakingNewsTicker" class="ticker">
+									<ul>
+										<li><a href="single-post.html">10:20PM - 10 Things Amazon Echo Can Do</a></li>
+										<li><a href="single-post.html">14:00PM - Welcome to Colorlib Family.</a></li>
+										<li><a href="single-post.html">7:00AM - Boys 'doing well' after Thai</a></li>
+									</ul>
 								</div>
 							</div>
-						</li>
-						<li><a class="pl-0 pl-sm-10" target="_blank" href="https://www.facebook.com/thanhtinhpas1"><i
-									class="ion-social-facebook"></i></a></li>
-						<li><a href="#"><i class="ion-social-twitter"></i></a></li>
-						<li><a href="#"><i class="ion-social-google"></i></a></li>
-						<li><a href="#"><i class="ion-social-instagram"></i></a></li>
-						<li><a href="#"><i class="ion-social-bitcoin"></i></a></li>
-					</ul>
-				</div><!-- top-menu -->
-			</div><!-- container -->
-		</div><!-- bg-191 -->
+						</div>
+						<div class="col-12 col-md-6">
+							<div class="top-meta-data d-flex align-items-center justify-content-end">
+								<!-- Top Social Info -->
+								<div class="top-social-info">
+									<a href="#"><i class="ion ion-social-facebook"></i></a>
+									<a href="#"><i class="ion ion-social-instagram"></i></a>
+									<a href="#"><i class="ion ion-social-twitter"></i></a>
+									<a href="#"><i class="ion ion-social-google"></i></a>
+									<a href="#"><i class="ion ion-social-bitcoin"></i></a>
+								</div>
+								<!-- Top Search Area -->
+								<div class="top-search-area">
+									<form action="index.html" method="post">
+										<input type="search" name="top-search" id="topSearch" placeholder="Search...">
+										<button type="submit" class="btn"><i class="fas fa-search"></i></button>
+									</form>
+								</div>
+								<!-- Login -->
+								<a href="login.html" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+
 		<div class="header">
 			<div class="container">
 				<a class="logo" href="index.html"><img src="imgs/logo-black.png" alt="Logo"></a>
@@ -151,6 +181,10 @@
 		</div>
 
 	</header>
+
+
+
+	<!-- body content -->
 	<div class="container">
 		<div class="h-600x h-sm-auto">
 			<div class="h-2-3 h-sm-auto oflow-hidden">
@@ -275,201 +309,373 @@
 	<section>
 		<div class="container">
 			<div class="row">
-
-				<div class="col-md-12">
-					<div class="section-title">
-						<h4 class="p-title"><b>Tin nổi bật</b></h4>
-					</div>
-				</div>
-
-
-				<!-- post -->
-				<div class="col-md-3">
-					<div class="post">
-						<a class="post-img" href="blog-post.html"><img src="imgs/post-3.jpg" alt=""></a>
-						<div class="post-body">
-							<div class="post-meta">
-								<a class="post-category cat-1" href="category.html">Web Design</a>
-								<span class="post-date">March 27, 2018</span>
+				<div class="row col-12">
+					<div class="hot-news col-12 col-md-7 col-lg-8">
+						<div class="section-title">
+							<h4 class="p-title"><b>Tin nổi bật</b></h4>
+						</div>
+						<!-- post -->
+						<div class="col-sm-4">
+							<div class="post">
+								<a class="post-img" href="blog-post.html"><img src="imgs/post-3.jpg" alt=""></a>
+								<div class="post-body">
+									<div class="post-meta">
+										<a class="post-category cat-1" href="category.html">Web Design</a>
+										<span class="post-date">March 27, 2018</span>
+									</div>
+									<h3 class="post-title"><a href="blog-post.html">Pagedraw UI Builder Turns Your
+											Website
+											Design Mockup Into Code Automatically</a></h3>
+								</div>
 							</div>
-							<h3 class="post-title"><a href="blog-post.html">Pagedraw UI Builder Turns Your Website
-									Design Mockup Into Code Automatically</a></h3>
+						</div>
+
+						<!-- post -->
+						<div class="col-sm-4">
+							<div class="post">
+								<a class="post-img" href="blog-post.html"><img src="imgs/post-4.jpg" alt=""></a>
+								<div class="post-body">
+									<div class="post-meta">
+										<a class="post-category cat-2" href="category.html">JavaScript</a>
+										<span class="post-date">March 27, 2018</span>
+									</div>
+									<h3 class="post-title"><a href="blog-post.html">Chrome Extension Protects Against
+											JavaScript-Based CPU Side-Channel Attacks</a></h3>
+								</div>
+							</div>
+						</div>
+
+						<!-- post -->
+						<div class="col-sm-4">
+							<div class="post">
+								<a class="post-img" href="blog-post.html"><img src="imgs/post-5.jpg" alt=""></a>
+								<div class="post-body">
+									<div class="post-meta">
+										<a class="post-category cat-3" href="category.html">Jquery</a>
+										<span class="post-date">March 27, 2018</span>
+									</div>
+									<h3 class="post-title"><a href="blog-post.html">Ask HN: Does Anybody Still Use
+											JQuery?</a>
+									</h3>
+								</div>
+							</div>
+						</div>
+
+						<!-- post -->
+						<div class="col-sm-4">
+							<div class="post">
+								<a class="post-img" href="blog-post.html"><img src="imgs/post-5.jpg" alt=""></a>
+								<div class="post-body">
+									<div class="post-meta">
+										<a class="post-category cat-3" href="category.html">Jquery</a>
+										<span class="post-date">March 27, 2018</span>
+									</div>
+									<h3 class="post-title"><a href="blog-post.html">Ask HN: Does Anybody Still Use
+											JQuery?</a>
+									</h3>
+								</div>
+							</div>
+						</div>
+
+						<!-- post -->
+						<div class="col-sm-4">
+							<div class="post">
+								<a class="post-img" href="blog-post.html"><img src="imgs/post-6.jpg" alt=""></a>
+								<div class="post-body">
+									<div class="post-meta">
+										<a class="post-category cat-2" href="category.html">JavaScript</a>
+										<span class="post-date">March 27, 2018</span>
+									</div>
+									<h3 class="post-title"><a href="blog-post.html">Why Node.js Is The Coolest Kid On
+											The
+											Backend Development Block!</a></h3>
+								</div>
+							</div>
+						</div>
+
+						<!-- post -->
+						<div class="col-sm-4">
+							<div class="post">
+								<a class="post-img" href="blog-post.html"><img src="imgs/post-6.jpg" alt=""></a>
+								<div class="post-body">
+									<div class="post-meta">
+										<a class="post-category cat-2" href="category.html">JavaScript</a>
+										<span class="post-date">March 27, 2018</span>
+									</div>
+									<h3 class="post-title"><a href="blog-post.html">Why Node.js Is The Coolest Kid On
+											The
+											Backend Development Block!</a></h3>
+								</div>
+							</div>
+						</div>
+
+						<!-- post -->
+						<div class="col-sm-4">
+							<div class="post">
+								<a class="post-img" href="blog-post.html"><img src="imgs/post-1.jpg" alt=""></a>
+								<div class="post-body">
+									<div class="post-meta">
+										<a class="post-category cat-4" href="category.html">Css</a>
+										<span class="post-date">March 27, 2018</span>
+									</div>
+									<h3 class="post-title"><a href="blog-post.html">CSS Float: A Tutorial</a></h3>
+								</div>
+							</div>
+						</div>
+						<!-- /post -->
+
+						<!-- post -->
+						<div class="col-sm-4">
+							<div class="post">
+								<a class="post-img" href="blog-post.html"><img src="imgs/post-2.jpg" alt=""></a>
+								<div class="post-body">
+									<div class="post-meta">
+										<a class="post-category cat-1" href="category.html">Web Design</a>
+										<span class="post-date">March 27, 2018</span>
+									</div>
+									<h3 class="post-title"><a href="blog-post.html">Tell-A-Tool: Guide To Web Design And
+											Development Tools</a></h3>
+								</div>
+							</div>
+						</div>
+
+						<!-- post -->
+						<div class="col-sm-4">
+							<div class="post">
+								<a class="post-img" href="blog-post.html"><img src="imgs/post-6.jpg" alt=""></a>
+								<div class="post-body">
+									<div class="post-meta">
+										<a class="post-category cat-2" href="category.html">JavaScript</a>
+										<span class="post-date">March 27, 2018</span>
+									</div>
+									<h3 class="post-title"><a href="blog-post.html">Why Node.js Is The Coolest Kid On
+											The
+											Backend Development Block!</a></h3>
+								</div>
+							</div>
+						</div>
+
+						<!-- post -->
+						<div class="col-sm-4">
+							<div class="post">
+								<a class="post-img" href="blog-post.html"><img src="imgs/post-6.jpg" alt=""></a>
+								<div class="post-body">
+									<div class="post-meta">
+										<a class="post-category cat-2" href="category.html">JavaScript</a>
+										<span class="post-date">March 27, 2018</span>
+									</div>
+									<h3 class="post-title"><a href="blog-post.html">Why Node.js Is The Coolest Kid On
+											The
+											Backend Development Block!</a></h3>
+								</div>
+							</div>
+						</div>
+
+						<!-- post -->
+						<div class="col-sm-4">
+							<div class="post">
+								<a class="post-img" href="blog-post.html"><img src="imgs/post-1.jpg" alt=""></a>
+								<div class="post-body">
+									<div class="post-meta">
+										<a class="post-category cat-4" href="category.html">Css</a>
+										<span class="post-date">March 27, 2018</span>
+									</div>
+									<h3 class="post-title"><a href="blog-post.html">CSS Float: A Tutorial</a></h3>
+								</div>
+							</div>
+						</div>
+						<!-- /post -->
+
+						<!-- post -->
+						<div class="col-sm-4">
+							<div class="post">
+								<a class="post-img" href="blog-post.html"><img src="imgs/post-2.jpg" alt=""></a>
+								<div class="post-body">
+									<div class="post-meta">
+										<a class="post-category cat-1" href="category.html">Web Design</a>
+										<span class="post-date">March 27, 2018</span>
+									</div>
+									<h3 class="post-title"><a href="blog-post.html">Tell-A-Tool: Guide To Web Design And
+											Development Tools</a></h3>
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
+					<div class="vertical-host-news col-12 col-md-5 col-lg-4">
+						<h4 class="p-title"><b>Tin trong ngày</b></h4>
+						<div class="all-news-content">
+							<a class="oflow-hidden pos-relative mb-20 dplay-block" href="#">
+								<div class="wh-100x abs-tlr"><img src="imgs/polular-1-100x100.jpg" alt=""></div>
+								<div class="ml-120 min-h-100x">
+									<h5><b>Bitcoin Billionares Hidding in Plain Sight</b></h5>
+									<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
+												Palmer,</b></span> Jan 25, 2018</h6>
+								</div>
+							</a><!-- oflow-hidden -->
 
-				<!-- post -->
-				<div class="col-md-3">
-					<div class="post">
-						<a class="post-img" href="blog-post.html"><img src="imgs/post-4.jpg" alt=""></a>
-						<div class="post-body">
-							<div class="post-meta">
-								<a class="post-category cat-2" href="category.html">JavaScript</a>
-								<span class="post-date">March 27, 2018</span>
-							</div>
-							<h3 class="post-title"><a href="blog-post.html">Chrome Extension Protects Against
-									JavaScript-Based CPU Side-Channel Attacks</a></h3>
+							<a class="oflow-hidden pos-relative mb-20 dplay-block" href="#">
+								<div class="wh-100x abs-tlr"><img src="imgs/polular-2-100x100.jpg" alt=""></div>
+								<div class="ml-120 min-h-100x">
+									<h5><b>Bitcoin Billionares Hidding in Plain Sight</b></h5>
+									<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
+												Palmer,</b></span> Jan 25, 2018</h6>
+								</div>
+							</a><!-- oflow-hidden -->
+
+							<a class="oflow-hidden pos-relative mb-20 dplay-block" href="#">
+								<div class="wh-100x abs-tlr"><img src="imgs/polular-3-100x100.jpg" alt=""></div>
+								<div class="ml-120 min-h-100x">
+									<h5><b>Bitcoin Billionares Hidding in Plain Sight</b></h5>
+									<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
+												Palmer,</b></span> Jan 25, 2018</h6>
+								</div>
+							</a><!-- oflow-hidden -->
+
+							<a class="oflow-hidden pos-relative mb-20 dplay-block" href="#">
+								<div class="wh-100x abs-tlr"><img src="imgs/polular-4-100x100.jpg" alt=""></div>
+								<div class="ml-120 min-h-100x">
+									<h5><b>Bitcoin Billionares Hidding in Plain Sight</b></h5>
+									<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
+												Palmer,</b></span> Jan 25, 2018</h6>
+								</div>
+							</a><!-- oflow-hidden -->
+							<a class="oflow-hidden pos-relative mb-20 dplay-block" href="#">
+								<div class="wh-100x abs-tlr"><img src="imgs/polular-2-100x100.jpg" alt=""></div>
+								<div class="ml-120 min-h-100x">
+									<h5><b>Bitcoin Billionares Hidding in Plain Sight</b></h5>
+									<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
+												Palmer,</b></span> Jan 25, 2018</h6>
+								</div>
+							</a><!-- oflow-hidden -->
+
+							<a class="oflow-hidden pos-relative mb-20 dplay-block" href="#">
+								<div class="wh-100x abs-tlr"><img src="imgs/polular-3-100x100.jpg" alt=""></div>
+								<div class="ml-120 min-h-100x">
+									<h5><b>Bitcoin Billionares Hidding in Plain Sight</b></h5>
+									<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
+												Palmer,</b></span> Jan 25, 2018</h6>
+								</div>
+							</a><!-- oflow-hidden -->
+
+							<a class="oflow-hidden pos-relative mb-20 dplay-block" href="#">
+								<div class="wh-100x abs-tlr"><img src="imgs/polular-4-100x100.jpg" alt=""></div>
+								<div class="ml-120 min-h-100x">
+									<h5><b>Bitcoin Billionares Hidding in Plain Sight</b></h5>
+									<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
+												Palmer,</b></span> Jan 25, 2018</h6>
+								</div>
+							</a><!-- oflow-hidden -->
+							<a class="oflow-hidden pos-relative mb-20 dplay-block" href="#">
+								<div class="wh-100x abs-tlr"><img src="imgs/polular-2-100x100.jpg" alt=""></div>
+								<div class="ml-120 min-h-100x">
+									<h5><b>Bitcoin Billionares Hidding in Plain Sight</b></h5>
+									<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
+												Palmer,</b></span> Jan 25, 2018</h6>
+								</div>
+							</a><!-- oflow-hidden -->
+
+							<a class="oflow-hidden pos-relative mb-20 dplay-block" href="#">
+								<div class="wh-100x abs-tlr"><img src="imgs/polular-3-100x100.jpg" alt=""></div>
+								<div class="ml-120 min-h-100x">
+									<h5><b>Bitcoin Billionares Hidding in Plain Sight</b></h5>
+									<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
+												Palmer,</b></span> Jan 25, 2018</h6>
+								</div>
+							</a><!-- oflow-hidden -->
+
+							<a class="oflow-hidden pos-relative mb-20 dplay-block" href="#">
+								<div class="wh-100x abs-tlr"><img src="imgs/polular-4-100x100.jpg" alt=""></div>
+								<div class="ml-120 min-h-100x">
+									<h5><b>Bitcoin Billionares Hidding in Plain Sight</b></h5>
+									<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
+												Palmer,</b></span> Jan 25, 2018</h6>
+								</div>
+							</a><!-- oflow-hidden -->
+							<a class="oflow-hidden pos-relative mb-20 dplay-block" href="#">
+								<div class="wh-100x abs-tlr"><img src="imgs/polular-2-100x100.jpg" alt=""></div>
+								<div class="ml-120 min-h-100x">
+									<h5><b>Bitcoin Billionares Hidding in Plain Sight</b></h5>
+									<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
+												Palmer,</b></span> Jan 25, 2018</h6>
+								</div>
+							</a><!-- oflow-hidden -->
+
+							<a class="oflow-hidden pos-relative mb-20 dplay-block" href="#">
+								<div class="wh-100x abs-tlr"><img src="imgs/polular-3-100x100.jpg" alt=""></div>
+								<div class="ml-120 min-h-100x">
+									<h5><b>Bitcoin Billionares Hidding in Plain Sight</b></h5>
+									<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
+												Palmer,</b></span> Jan 25, 2018</h6>
+								</div>
+							</a><!-- oflow-hidden -->
+
+							<a class="oflow-hidden pos-relative mb-20 dplay-block" href="#">
+								<div class="wh-100x abs-tlr"><img src="imgs/polular-4-100x100.jpg" alt=""></div>
+								<div class="ml-120 min-h-100x">
+									<h5><b>Bitcoin Billionares Hidding in Plain Sight</b></h5>
+									<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
+												Palmer,</b></span> Jan 25, 2018</h6>
+								</div>
+							</a><!-- oflow-hidden -->
+							<a class="oflow-hidden pos-relative mb-20 dplay-block" href="#">
+								<div class="wh-100x abs-tlr"><img src="imgs/polular-2-100x100.jpg" alt=""></div>
+								<div class="ml-120 min-h-100x">
+									<h5><b>Bitcoin Billionares Hidding in Plain Sight</b></h5>
+									<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
+												Palmer,</b></span> Jan 25, 2018</h6>
+								</div>
+							</a><!-- oflow-hidden -->
+
+							<a class="oflow-hidden pos-relative mb-20 dplay-block" href="#">
+								<div class="wh-100x abs-tlr"><img src="imgs/polular-3-100x100.jpg" alt=""></div>
+								<div class="ml-120 min-h-100x">
+									<h5><b>Bitcoin Billionares Hidding in Plain Sight</b></h5>
+									<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
+												Palmer,</b></span> Jan 25, 2018</h6>
+								</div>
+							</a><!-- oflow-hidden -->
+
+							<a class="oflow-hidden pos-relative mb-20 dplay-block" href="#">
+								<div class="wh-100x abs-tlr"><img src="imgs/polular-4-100x100.jpg" alt=""></div>
+								<div class="ml-120 min-h-100x">
+									<h5><b>Bitcoin Billionares Hidding in Plain Sight</b></h5>
+									<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
+												Palmer,</b></span> Jan 25, 2018</h6>
+								</div>
+							</a><!-- oflow-hidden -->
+							<a class="oflow-hidden pos-relative mb-20 dplay-block" href="#">
+								<div class="wh-100x abs-tlr"><img src="imgs/polular-2-100x100.jpg" alt=""></div>
+								<div class="ml-120 min-h-100x">
+									<h5><b>Bitcoin Billionares Hidding in Plain Sight</b></h5>
+									<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
+												Palmer,</b></span> Jan 25, 2018</h6>
+								</div>
+							</a><!-- oflow-hidden -->
+
+							<a class="oflow-hidden pos-relative mb-20 dplay-block" href="#">
+								<div class="wh-100x abs-tlr"><img src="imgs/polular-3-100x100.jpg" alt=""></div>
+								<div class="ml-120 min-h-100x">
+									<h5><b>Bitcoin Billionares Hidding in Plain Sight</b></h5>
+									<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
+												Palmer,</b></span> Jan 25, 2018</h6>
+								</div>
+							</a><!-- oflow-hidden -->
+
+							<a class="oflow-hidden pos-relative mb-20 dplay-block" href="#">
+								<div class="wh-100x abs-tlr"><img src="imgs/polular-4-100x100.jpg" alt=""></div>
+								<div class="ml-120 min-h-100x">
+									<h5><b>Bitcoin Billionares Hidding in Plain Sight</b></h5>
+									<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
+												Palmer,</b></span> Jan 25, 2018</h6>
+								</div>
+							</a><!-- oflow-hidden -->
 						</div>
-					</div>
-				</div>
 
-				<!-- post -->
-				<div class="col-md-3">
-					<div class="post">
-						<a class="post-img" href="blog-post.html"><img src="imgs/post-5.jpg" alt=""></a>
-						<div class="post-body">
-							<div class="post-meta">
-								<a class="post-category cat-3" href="category.html">Jquery</a>
-								<span class="post-date">March 27, 2018</span>
-							</div>
-							<h3 class="post-title"><a href="blog-post.html">Ask HN: Does Anybody Still Use JQuery?</a>
-							</h3>
-						</div>
-					</div>
-				</div>
-
-				<!-- post -->
-				<div class="col-md-3">
-					<div class="post">
-						<a class="post-img" href="blog-post.html"><img src="imgs/post-5.jpg" alt=""></a>
-						<div class="post-body">
-							<div class="post-meta">
-								<a class="post-category cat-3" href="category.html">Jquery</a>
-								<span class="post-date">March 27, 2018</span>
-							</div>
-							<h3 class="post-title"><a href="blog-post.html">Ask HN: Does Anybody Still Use JQuery?</a>
-							</h3>
-						</div>
-					</div>
-				</div>
-
-				<div class="clearfix visible-md visible-lg"></div>
-
-				<!-- post -->
-				<div class="col-md-3">
-					<div class="post">
-						<a class="post-img" href="blog-post.html"><img src="imgs/post-6.jpg" alt=""></a>
-						<div class="post-body">
-							<div class="post-meta">
-								<a class="post-category cat-2" href="category.html">JavaScript</a>
-								<span class="post-date">March 27, 2018</span>
-							</div>
-							<h3 class="post-title"><a href="blog-post.html">Why Node.js Is The Coolest Kid On The
-									Backend Development Block!</a></h3>
-						</div>
-					</div>
-				</div>
-
-				<!-- post -->
-				<div class="col-md-3">
-					<div class="post">
-						<a class="post-img" href="blog-post.html"><img src="imgs/post-6.jpg" alt=""></a>
-						<div class="post-body">
-							<div class="post-meta">
-								<a class="post-category cat-2" href="category.html">JavaScript</a>
-								<span class="post-date">March 27, 2018</span>
-							</div>
-							<h3 class="post-title"><a href="blog-post.html">Why Node.js Is The Coolest Kid On The
-									Backend Development Block!</a></h3>
-						</div>
-					</div>
-				</div>
-
-				<!-- post -->
-				<div class="col-md-3">
-					<div class="post">
-						<a class="post-img" href="blog-post.html"><img src="imgs/post-1.jpg" alt=""></a>
-						<div class="post-body">
-							<div class="post-meta">
-								<a class="post-category cat-4" href="category.html">Css</a>
-								<span class="post-date">March 27, 2018</span>
-							</div>
-							<h3 class="post-title"><a href="blog-post.html">CSS Float: A Tutorial</a></h3>
-						</div>
-					</div>
-				</div>
-				<!-- /post -->
-
-				<!-- post -->
-				<div class="col-md-3">
-					<div class="post">
-						<a class="post-img" href="blog-post.html"><img src="imgs/post-2.jpg" alt=""></a>
-						<div class="post-body">
-							<div class="post-meta">
-								<a class="post-category cat-1" href="category.html">Web Design</a>
-								<span class="post-date">March 27, 2018</span>
-							</div>
-							<h3 class="post-title"><a href="blog-post.html">Tell-A-Tool: Guide To Web Design And
-									Development Tools</a></h3>
-						</div>
-					</div>
-				</div>
-
-				<div class="clearfix visible-md visible-lg"></div>
-
-
-				<!-- post -->
-				<div class="col-md-3">
-					<div class="post">
-						<a class="post-img" href="blog-post.html"><img src="imgs/post-6.jpg" alt=""></a>
-						<div class="post-body">
-							<div class="post-meta">
-								<a class="post-category cat-2" href="category.html">JavaScript</a>
-								<span class="post-date">March 27, 2018</span>
-							</div>
-							<h3 class="post-title"><a href="blog-post.html">Why Node.js Is The Coolest Kid On The
-									Backend Development Block!</a></h3>
-						</div>
-					</div>
-				</div>
-
-				<!-- post -->
-				<div class="col-md-3">
-					<div class="post">
-						<a class="post-img" href="blog-post.html"><img src="imgs/post-6.jpg" alt=""></a>
-						<div class="post-body">
-							<div class="post-meta">
-								<a class="post-category cat-2" href="category.html">JavaScript</a>
-								<span class="post-date">March 27, 2018</span>
-							</div>
-							<h3 class="post-title"><a href="blog-post.html">Why Node.js Is The Coolest Kid On The
-									Backend Development Block!</a></h3>
-						</div>
-					</div>
-				</div>
-
-				<!-- post -->
-				<div class="col-md-3">
-					<div class="post">
-						<a class="post-img" href="blog-post.html"><img src="imgs/post-1.jpg" alt=""></a>
-						<div class="post-body">
-							<div class="post-meta">
-								<a class="post-category cat-4" href="category.html">Css</a>
-								<span class="post-date">March 27, 2018</span>
-							</div>
-							<h3 class="post-title"><a href="blog-post.html">CSS Float: A Tutorial</a></h3>
-						</div>
-					</div>
-				</div>
-				<!-- /post -->
-
-				<!-- post -->
-				<div class="col-md-3">
-					<div class="post">
-						<a class="post-img" href="blog-post.html"><img src="imgs/post-2.jpg" alt=""></a>
-						<div class="post-body">
-							<div class="post-meta">
-								<a class="post-category cat-1" href="category.html">Web Design</a>
-								<span class="post-date">March 27, 2018</span>
-							</div>
-							<h3 class="post-title"><a href="blog-post.html">Tell-A-Tool: Guide To Web Design And
-									Development Tools</a></h3>
-						</div>
-					</div>
+					</div><!-- mtb-50 -->
 				</div>
 
 				<div class="col-md-12 col-lg-8">
-					<h4 class="p-title"><b>RECENT NEWS</b></h4>
+					<h4 class="p-title"><b>Tin mới nhất</b></h4>
 					<div class="row">
 						<div class="col-sm-6">
 							<img src="imgs/recent-news-1-600x450.jpg" alt="">
@@ -525,7 +731,7 @@
 
 					</div><!-- row -->
 
-					<h4 class="p-title mt-30"><b>CRYPTO MINING NEWS</b></h4>
+					<h4 class="p-title mt-30"><b>Tất cả</b></h4>
 					<div class="row">
 
 						<div class="col-sm-6">
@@ -599,18 +805,16 @@
 								<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i>47</li>
 							</ul>
 						</div><!-- col-sm-6 -->
-
 					</div><!-- row -->
 
-					<a class="dplay-block btn-brdr-primary mt-20 mb-md-50" href="#"><b>VIEW MORE CRYPTO MINING
-							EVENTS</b></a>
+					<a class="dplay-block btn-brdr-primary mt-20 mb-md-50" href="#"><b>Xem thêm</b></a>
 				</div><!-- col-md-9 -->
 
 				<div class="d-none d-md-block d-lg-none col-md-3"></div>
 				<div class="col-md-6 col-lg-4">
 					<div class="pl-20 pl-md-0">
 						<div>
-							<h4 class="p-title"><b>MOST VIEWS POST</b></h4>
+							<h4 class="p-title"><b>Tin có nhiều lượt xem nhất</b></h4>
 							<a class="oflow-hidden pos-relative mb-20 dplay-block" href="#">
 								<div class="wh-100x abs-tlr"><img src="imgs/polular-1-100x100.jpg" alt=""></div>
 								<div class="ml-120 min-h-100x">
@@ -649,7 +853,7 @@
 
 						</div><!-- mtb-50 -->
 						<div class="mtb-50">
-							<h4 class="p-title"><b>POPULAR POSTS</b></h4>
+							<h4 class="p-title"><b>Tin hot nhất</b></h4>
 							<a class="oflow-hidden pos-relative mb-20 dplay-block" href="#">
 								<div class="wh-100x abs-tlr"><img src="imgs/polular-1-100x100.jpg" alt=""></div>
 								<div class="ml-120 min-h-100x">
@@ -690,14 +894,14 @@
 
 						<div class="aside-widget">
 							<div class="section-title">
-								<h2>Catagories</h2>
+								<h2>Chuyên mục</h2>
 							</div>
 							<div class="category-widget">
 								<ul>
-									<li><a href="#" class="cat-1">Web Design<span>340</span></a></li>
-									<li><a href="#" class="cat-2">JavaScript<span>74</span></a></li>
-									<li><a href="#" class="cat-4">JQuery<span>41</span></a></li>
-									<li><a href="#" class="cat-3">CSS<span>35</span></a></li>
+									<li><a href="#" class="cat-1">Thế giới<span>340</span></a></li>
+									<li><a href="#" class="cat-2">Kinh tế vĩ mô<span>74</span></a></li>
+									<li><a href="#" class="cat-4">Công nghệ<span>41</span></a></li>
+									<li><a href="#" class="cat-3">Sức khỏe<span>35</span></a></li>
 								</ul>
 							</div>
 						</div>
@@ -705,10 +909,10 @@
 						<div class="aside-widget">
 							<div class="tags-widget">
 								<ul>
-									<li><a href="#">Chrome</a></li>
-									<li><a href="#">CSS</a></li>
-									<li><a href="#">Tutorial</a></li>
-									<li><a href="#">Backend</a></li>
+									<li><a href="#">Hồ sơ</a></li>
+									<li><a href="#">Điểm nóng</a></li>
+									<li><a href="#">Đầu tư</a></li>
+									<li><a href="#">Chứng khoán</a></li>
 									<li><a href="#">JQuery</a></li>
 									<li><a href="#">Design</a></li>
 									<li><a href="#">Development</a></li>
@@ -719,7 +923,7 @@
 						</div>
 
 						<div class="mtb-50 mb-md-0">
-							<h4 class="p-title"><b>NEWSLETTER</b></h4>
+							<h4 class="p-title"><b>Đăng ký theo dõi</b></h4>
 							<p class="mb-20">Subscribe to our newsletter to get notification about new updates,
 								information, discount, etc..</p>
 							<form class="nwsltr-primary-1">
@@ -764,7 +968,7 @@
 
 					<div class="col-sm-4">
 						<div class="mb-30">
-							<h5 class="color-primary mb-20"><b>MOST POPULAR</b></h5>
+							<h5 class="color-primary mb-20"><b>Tin phổ biến</b></h5>
 							<div class="mb-20">
 								<a class="color-white" href="#"><b>Its Make or Break Time for Bitcoin</b></a>
 								<h6 class="mt-10">Jan 25, 2018</h6>
@@ -779,7 +983,7 @@
 
 					<div class="col-sm-4">
 						<div class="mb-30">
-							<h5 class="color-primary mb-20"><b>MOST POPULAR</b></h5>
+							<h5 class="color-primary mb-20"><b>Tin phổ biến</b></h5>
 							<div class="mb-20">
 								<a class="color-white" href="#"><b>Its Make or Break Time for Bitcoin</b></a>
 								<h6 class="mt-10">Jan 25, 2018</h6>
@@ -819,11 +1023,15 @@
 
 	<!-- SCIPTS -->
 
-	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/jquery-3.4.0.min.js"></script>
 
 	<script src="js/tether.min.js"></script>
 
 	<script src="js/bootstrap.js"></script>
+
+	<script src="js/jquery.sticky.js"></script>
+
+	<script src="js/plugins.js"></script>
 
 	<script src="js/scripts.js"></script>
 </body>

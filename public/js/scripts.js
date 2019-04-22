@@ -1,6 +1,33 @@
 
 (function ($) {
 
+	var browserWindow = $(window);
+
+    // :: 1.0 Preloader Active Code
+    browserWindow.on('load', function () {
+        $('.preloader').fadeOut('slow', function () {
+            $(this).remove();
+        });
+	});
+	
+	if ($.fn.simpleTicker) {
+		console.log("a");
+        $.simpleTicker($("#breakingNewsTicker"), {
+            speed: 1000,
+            delay: 3000,
+            easing: 'swing',
+            effectType: 'roll'
+        });
+    }
+
+    // :: 4.0 Sticky Active Code
+    if ($.fn.sticky) {
+		console.log("b");
+        $("#sticker").sticky({
+            topSpacing: 0
+        });
+    }
+
 	"use strict";
 	
 	// ACCORDIAN
