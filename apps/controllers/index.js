@@ -7,6 +7,10 @@ router.use("/faqs", require(__dirname + "/faqs"));
 router.use("/faq-single", require(__dirname + "/faq-single"));
 router.use("/contact", require(__dirname + "/contact"));
 
+// btv
+router.use("/login", require(__dirname + "/login"));
+router.use("/add-content", require(__dirname + "/add-content"));
+
 router.get("/", function(req, res) {
     // res.json({"message" : "This is home page"});
     res.render("index");
