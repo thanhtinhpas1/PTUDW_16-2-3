@@ -1298,12 +1298,12 @@ header .main-menu li.drop-down a.mouseover + ul.drop-down-menu{ display: block;
 
 .bg-map{ background: url(../imgs/map.png) no-repeat center; background-size: cover; }
 
-.bg-1{ background: url(../imgs/slider-1-1200x900.jpg) no-repeat center; background-size: cover; }
-.bg-2{ background: url(../imgs/slider-2-450x600.jpg) no-repeat center; background-size: cover; }
-.bg-3{ background: url(../imgs/slider-3-450x600.jpg) no-repeat center; background-size: cover; }
-.bg-4{ background: url(../imgs/slider-4-450x600.jpg) no-repeat center; background-size: cover; }
-.bg-5{ background: url(../imgs/slider-5-450x600.jpg) no-repeat center; background-size: cover; }
-.bg-6{ background: url(../imgs/slider-6-450x600.jpg) no-repeat center; background-size: cover; }
+.bg-1{ background: url(../imgs/a.jpg) no-repeat center; background-size: cover; }
+.bg-2{ background: url(../imgs/b.jpg) no-repeat center; background-size: cover; }
+.bg-3{ background: url(../imgs/c.JPG) no-repeat center; background-size: cover; }
+.bg-4{ background: url(../imgs/d.jpg) no-repeat center; background-size: cover; }
+.bg-5{ background: url(../imgs/e.jpg) no-repeat center; background-size: cover; }
+.bg-6{ background: url(../imgs/f.jpg) no-repeat center; background-size: cover; }
 
 
 .bg-grad-layer-6:after{ content:''; position: absolute; top: 0; bottom: 0; left: 0; right: 0; z-index: -1;
