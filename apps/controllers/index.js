@@ -11,6 +11,9 @@ router.use("/contact", require(__dirname + "/contact"));
 router.use("/login", require(__dirname + "/login"));
 router.use("/add-content", require(__dirname + "/add-content"));
 
+//include for admin
+router.use("/admin", require(__dirname + "/admin/index"));
+
 router.get("/", function(req, res) {
     // res.json({"message" : "This is home page"});
     res.render("index");
