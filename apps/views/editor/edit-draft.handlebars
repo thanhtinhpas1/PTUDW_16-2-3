@@ -17,8 +17,6 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="css/templatemo-style.css">
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <!--
 	Product Admin CSS Template
 	https://templatemo.com/tm-524-product-admin
@@ -26,7 +24,6 @@
   </head>
 
   <body>
-    <div id="dialogOverlay"></div>
     <nav class="navbar navbar-expand-xl">
       <div class="container h-100">
         <a class="navbar-brand" href="index.html">
@@ -113,32 +110,113 @@
       </div>
     </nav>
     <div class="container tm-mt-big tm-mb-big">
-        <div id="disagree-form">
-          <a class="btn btn-light close" onclick="closeDialog()">
-            <i class="fas fa-window-close"></i>
-          </a>
-          <h1>Disagree Form</h1>
-          <form action="" class="form-item">
-            <label for="reason">Reason</label>
-            <textarea name="reason" class="form-control" placeholder="Please input your reason here...."></textarea>
-            <br>
-            <button>SEND IT</button>
-          </form>
-        </div>
-        <div class="all-draft">
-            <div class="draft">
-                <img src="imgs/a2.jpg" alt="" height="220" width="300">
-                <div class="overlay">
-                    <h2>Đánh giá Galaxy Watch Active từ góc độ người chưa bao giờ dùng đồng hồ thông minh</h2>
-                    <h6>by Danile Palmer</h6>
-                    <h6>Jan 25, 2018</h6>
-                    <div class="button">
-                      <a class="agree" href="./edit-draft">Agree</a>
-                      <a class="disagree" onclick="Alert()" >Disagree</a>
-                    </div>
-                </div>
+      <div class="row">
+        <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
+          <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+            <div class="row">
+              <div class="col-12">
+                <h2 class="tm-block-title d-inline-block">Edit Product</h2>
+              </div>
             </div>
+            <div class="row tm-edit-product-row">
+              <div class="col-xl-6 col-lg-6 col-md-12">
+                <form action="" method="post" class="tm-edit-product-form">
+                  <div class="form-group mb-3">
+                    <label
+                      for="name"
+                      >Product Name
+                    </label>
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      value="Lorem Ipsum Product"
+                      class="form-control validate"
+                    />
+                  </div>
+                  <div class="form-group mb-3">
+                    <label
+                      for="description"
+                      >Description</label
+                    >
+                    <textarea                    
+                      class="form-control validate tm-small"
+                      rows="5"
+                      required
+                    >Lorem ipsum dolor amet gentrify glossier locavore messenger bag chillwave hashtag irony migas wolf kale chips small batch kogi direct trade shaman.</textarea>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label
+                      for="category"
+                      >Category</label
+                    >
+                    <select
+                      class="custom-select tm-select-accounts"
+                      id="category"
+                    >
+                      <option>Select category</option>
+                      <option value="1" selected>New Arrival</option>
+                      <option value="2">Most Popular</option>
+                      <option value="3">Trending</option>
+                    </select>
+                  </div>
+                  <div class="row">
+                      <div class="form-group mb-3 col-xs-12 col-sm-6">
+                          <label
+                            for="expire_date"
+                            >Expire Date
+                          </label>
+                          <input
+                            id="expire_date"
+                            name="expire_date"
+                            type="text"
+                            value="22 Oct, 2020"
+                            class="form-control validate"
+                            data-large-mode="true"
+                          />
+                        </div>
+                        <div class="form-group mb-3 col-xs-12 col-sm-6">
+                          <label
+                            for="stock"
+                            >Units In Stock
+                          </label>
+                          <input
+                            id="stock"
+                            name="stock"
+                            type="text"
+                            value="19,765"
+                            class="form-control validate"
+                          />
+                        </div>
+                  </div>
+                  
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
+                <div class="tm-product-img-edit mx-auto">
+                  <img src="img/product-image.jpg" alt="Product image" class="img-fluid d-block mx-auto">
+                  <i
+                    class="fas fa-cloud-upload-alt tm-upload-icon"
+                    onclick="document.getElementById('fileInput').click();"
+                  ></i>
+                </div>
+                <div class="custom-file mt-3 mb-3">
+                  <input id="fileInput" type="file" style="display:none;" />
+                  <input
+                    type="button"
+                    class="btn btn-primary btn-block mx-auto"
+                    value="CHANGE IMAGE NOW"
+                    onclick="document.getElementById('fileInput').click();"
+                  />
+                </div>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary btn-block text-uppercase">Update Now</button>
+              </div>
+            </form>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
     <footer class="tm-footer row tm-mt-small">
         <div class="col-12 font-weight-light">
@@ -162,28 +240,6 @@
           defaultDate: "10/22/2020"
         });
       });
-    </script>
-
-    <script>
-      function Alert(){
-        var winW = window.innerWidth;
-		  	var winH = window.innerHeight;
-		   	
-		    var dialogOverlay = document.getElementById("dialogOverlay");
-        dialogOverlay.style.height = winH + "px";
-		    dialogOverlay.style.display = "block";
-		    
-		    var announ = document.getElementById("disagree-form");
-		    announ.style.display = "block";
-      }
-
-      function closeDialog(){
-        var dialogOverlay = document.getElementById("dialogOverlay");
-		    dialogOverlay.style.display = "none";
-
-        var disagree = document.getElementById("disagree-form");
-        disagree.style.display = "none";
-      }
     </script>
   </body>
 </html>
