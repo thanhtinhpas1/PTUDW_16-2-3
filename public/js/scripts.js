@@ -1,6 +1,7 @@
 
 (function ($) {
 
+
 	var browserWindow = $(window);
 
     // :: 1.0 Preloader Active Code
@@ -43,6 +44,18 @@
 			return false;
 		});
 	}
+
+	$(function(){
+		var stickyHeaderTop = $('.header').offset().top;
+	
+		$(window).scroll(function(){
+				if( $(window).scrollTop() > stickyHeaderTop ) {
+						$('.header').css({position: 'fixed', top: '0px', padding: '0 0 0 0'});
+				} else {
+						$('.header').css({position: 'static', top: '0px'});
+				}
+		});
+	});
 	
 	// SEARCH AREA
 	if(isExists('.src-btn')){
