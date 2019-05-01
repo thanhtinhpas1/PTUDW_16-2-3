@@ -10,7 +10,8 @@ router.use("/contact", require(__dirname + "/contact"));
 // btv
 router.use("/login", require(__dirname + "/login"));
 router.use("/add-content", require(__dirname + "/add-content"));
-
+router.use("/manage-draft", require(__dirname + "/editor/manage-draft"));
+router.use("/edit-draft", require(__dirname + "/editor/edit-draft"));
 //include for admin
 router.use("/admin", require(__dirname + "/admin/index"));
 
