@@ -318,6 +318,7 @@
 						<div class="section-title">
 							<h4 class="p-title"><b>Tin nổi bật</b></h4>
 						</div>
+<<<<<<< HEAD
 						<!-- post -->
 						<div class="col-sm-4">
 							<div class="post">
@@ -447,11 +448,26 @@
 									<div class="post-meta">
 										<a class="post-category cat-4" href="/archieve-post">Khởi nghiệp</a>
 										<span class="post-date">March 27, 2018</span>
+=======
+
+						<!-- post -->
+						{{#each this.listNew}}
+							<div class="col-sm-4">
+								<div class="post">
+									<a class="post-img" href="blog-post.html"><img src="{{avatar}}" alt=""></a>
+									<div class="post-body">
+										<div class="post-meta">
+											<a class="post-category cat-1" href="/archieve-post">Thế giới</a>
+											<span class="post-date">{{post_day}}</span>
+										</div>
+										<h3 class="post-title"><a href="blog-post.html">{{title}}</a></h3>
+										{{!-- http://socialbarrel.com/7-common-myths-about-web-design/119763/ --}}
+>>>>>>> 8652591bf94e1ef3a685f8920d0e06c4da7c1116
 									</div>
-									<h3 class="post-title"><a href="blog-post.html">Cô bé 12 tuổi sắp mua xe sang BMW bằng tiền tự kiếm khiến nhiều người "choáng"</a></h3>
 								</div>
 							</div>
-						</div>
+						{{/each}}
+						
 
 					</div>
 					<div class="vertical-host-news col-12 col-md-5 col-lg-4">
