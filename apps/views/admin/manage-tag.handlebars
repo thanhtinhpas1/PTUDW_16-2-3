@@ -62,9 +62,8 @@
 
   <link href="/css/admin/style.css" rel="stylesheet">
 
-    <script type="text/javascript" src="/js/admin/vendor.js"></script>
-  <script type="text/javascript" src="/js/admin/bundle.js"></script>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <script type="text/javascript" src="/js/all.js" >
+
 </head>
 
 <body class="app">
@@ -290,185 +289,186 @@
       <main class="main-content bgc-grey-100">
         <div id="mainContent">
           <div class="container-fluid">
-            <h1 class="text-black-50 text-center">Manage Posts</h1>
-            <div class="row m-20">
-                <div class="col-12">
-                    <div class="portfolio-menu text-center">
-                        <button type="button" class="btn btn-outline-primary active" style="width: 100px" data-filter=".draft">Draft</button>
-                        <button type="button" class="btn btn btn-outline-success" style="width: 100px" data-filter=".publish">publish</button>
-                    </div>
-                </div>
-            </div>
+            <h1 class="text-black-50 text-center">Manage Tags</h1>
+
             <div class="card shadow mb-4">
-        
-                <div class="card-body">
-                
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                        <th>Post Name</th>
-                        <th width="40%">Writer</th>
-                        <th class="" width="20%">Edit</th>                   
-                        </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>
-                        <th>Post Name</th>
-                        <th width="40%">Writer</th>
-                        <th class="" width="20%">Edit</th>    
-                        </tr>
-                    </tfoot>
-                    <tbody>
-                        <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                            <td>
-                            <button type="button" class="btn btn-success">                          
-                            <i class="fas fa-check"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </td>
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+              <div class="navbar s-right align-items-end">
+                <a href="" class="m-5">
+                  <i class="fas fa-plus-circle"></i>
+                </a>
+                <span class="m-5 p-0 text-center text-black-50">Add Tag</span>
+              </div>
 
-                        </tr>
-                        <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>
-                            <button type="button" class="btn btn-success">                          
-                            <i class="fas fa-check"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </td>
-
-                        </tr>
-                        <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>
-                            <button type="button" class="btn btn-success">                          
-                            <i class="fas fa-check"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </td>
-
-                        </tr>
-                        <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
+            </div>
+            <div class="card-body">
+              
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Tag Name</th>
+                      <th width="40%">Creator</th>
+                      <th class="" width="20%">Edit</th>                   
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Tag Name</th>
+                      <th width="40%">Creator</th>
+                      <th class="" width="20%">Edit</th>    
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                    <tr>
+                      <td>Tiger Nixon</td>
+                      <td>System Architect</td>
                         <td>
                         <button type="button" class="btn btn-success">                          
-                            <i class="fas fa-check"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </td>
+                          <i class="fas fa-pen"></i>
+                        </button>
+                        <button type="button" class="btn btn-danger">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                      </td>
 
-                        </tr>
-                        <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>
-                            <button type="button" class="btn btn-success">                          
-                            <i class="fas fa-check"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </td>
+                    </tr>
+                     <tr>
+                      <td>Tiger Nixon</td>
+                      <td>System Architect</td>
+                      <td>
+                        <button type="button" class="btn btn-success">                          
+                          <i class="fas fa-pen"></i>
+                        </button>
+                        <button type="button" class="btn btn-danger">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                      </td>
 
-                        </tr>
-                        <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>
-                            <button type="button" class="btn btn-success">                          
-                            <i class="fas fa-check"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </td>
+                    </tr>
+                     <tr>
+                      <td>Tiger Nixon</td>
+                      <td>System Architect</td>
+                      <td>
+                        <button type="button" class="btn btn-success">                          
+                          <i class="fas fa-pen"></i>
+                        </button>
+                        <button type="button" class="btn btn-danger">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                      </td>
 
-                        </tr>
-                        <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>
-                            <button type="button" class="btn btn-success">                          
-                            <i class="fas fa-check"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </td>
+                    </tr>
+                     <tr>
+                      <td>Tiger Nixon</td>
+                      <td>System Architect</td>
+                      <td>
+                        <button type="button" class="btn btn-success">                          
+                          <i class="fas fa-pen"></i>
+                        </button>
+                        <button type="button" class="btn btn-danger">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                      </td>
 
-                        </tr>
-                        <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>
-                            <button type="button" class="btn btn-success">                          
-                            <i class="fas fa-check"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </td>
+                    </tr>
+                     <tr>
+                      <td>Tiger Nixon</td>
+                      <td>System Architect</td>
+                      <td>
+                        <button type="button" class="btn btn-success">                          
+                          <i class="fas fa-pen"></i>
+                        </button>
+                        <button type="button" class="btn btn-danger">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                      </td>
 
-                        </tr>
-                        <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>
-                            <button type="button" class="btn btn-success">                          
-                            <i class="fas fa-check"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </td>
+                    </tr>
+                     <tr>
+                      <td>Tiger Nixon</td>
+                      <td>System Architect</td>
+                      <td>
+                        <button type="button" class="btn btn-success">                          
+                          <i class="fas fa-pen"></i>
+                        </button>
+                        <button type="button" class="btn btn-danger">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                      </td>
 
-                        </tr>
-                        <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>
-                            <button type="button" class="btn btn-success">                          
-                            <i class="fas fa-check"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </td>
+                    </tr>
+                     <tr>
+                      <td>Tiger Nixon</td>
+                      <td>System Architect</td>
+                      <td>
+                        <button type="button" class="btn btn-success">                          
+                          <i class="fas fa-pen"></i>
+                        </button>
+                        <button type="button" class="btn btn-danger">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                      </td>
 
-                        </tr>
-                        <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>
-                            <button type="button" class="btn btn-success">                          
-                            <i class="fas fa-check"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </td>
+                    </tr>
+                     <tr>
+                      <td>Tiger Nixon</td>
+                      <td>System Architect</td>
+                      <td>
+                        <button type="button" class="btn btn-success">                          
+                          <i class="fas fa-pen"></i>
+                        </button>
+                        <button type="button" class="btn btn-danger">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                      </td>
 
-                        </tr>
-                    </tbody>
-                    </table>
-                </div>
-                </div>
+                    </tr>
+                     <tr>
+                      <td>Tiger Nixon</td>
+                      <td>System Architect</td>
+                      <td>
+                        <button type="button" class="btn btn-success">                          
+                          <i class="fas fa-pen"></i>
+                        </button>
+                        <button type="button" class="btn btn-danger">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                      </td>
+
+                    </tr>
+                     <tr>
+                      <td>Tiger Nixon</td>
+                      <td>System Architect</td>
+                      <td>
+                        <button type="button" class="btn btn-success">                          
+                          <i class="fas fa-pen"></i>
+                        </button>
+                        <button type="button" class="btn btn-danger">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                      </td>
+
+                    </tr>
+                     <tr>
+                      <td>Tiger Nixon</td>
+                      <td>System Architect</td>
+                      <td>
+                        <button type="button" class="btn btn-success">                          
+                          <i class="fas fa-pen"></i>
+                        </button>
+                        <button type="button" class="btn btn-danger">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                      </td>
+
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-          
+          </div>
           </div>
         </div>
       </main>
@@ -477,7 +477,8 @@
       </footer>
     </div>
   </div>
-
+  <script type="text/javascript" src="/js/admin/vendor.js"></script>
+  <script type="text/javascript" src="/js/admin/bundle.js"></script>
 </body>
 
 </html> 
