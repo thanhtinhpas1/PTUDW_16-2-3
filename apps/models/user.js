@@ -17,7 +17,6 @@ function addUser(user) {
                 console.log(result);
             }
         });
-        
         return defer.promise;
     }
     return false;
