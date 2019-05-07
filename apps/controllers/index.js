@@ -1,5 +1,5 @@
 var express = require('express');
-var newdb = require("../models/news");
+
 var router = express.Router();
 router.use("/single-post", require(__dirname + "/single-post"));
 router.use("/archieve-post", require(__dirname + "/archieve-post"));
@@ -20,17 +20,7 @@ router.use("/edit-profile", require(__dirname + "/edit-profile"));
 
 router.get("/", function(req, res) {
     // res.json({"message" : "This is home page"});
-    var newDatabase = newdb.loadNews();
-    newDatabase.then(rows => {
-        
-        var list = rows;
-        console.log(list);
-        res.render("index", {
-            listNew : rows
-        });
-    }).catch(err => {
-        console.log(err);
-    })
+    res.render("index");
 });
 
 module.exports = router;
