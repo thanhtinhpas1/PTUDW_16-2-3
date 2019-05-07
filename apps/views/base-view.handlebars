@@ -11,7 +11,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded:400,600,700" rel="stylesheet">
 
 	<!-- Stylesheets -->
-		<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/bootstrap.css" rel="stylesheet">
 
 	<link href="fonts/ionicons.css" rel="stylesheet">
 
@@ -186,15 +186,18 @@
 					<div class="vertical-host-news col-12 col-md-5 col-lg-4">
 						<h4 class="p-title"><b>Tin trong ngày</b></h4>
 						<div class="all-news-content">
-							<a class="oflow-hidden pos-relative dplay-block" href="/single-post">
-								<div class="wh-100x abs-tlr"><img src="https://firebasestorage.googleapis.com/v0/b/flashfood-ce894.appspot.com/o/news%2Fa1.jpg?alt=media&token=cec35f14-1d08-4023-acf2-449007cae0fb" alt=""></div>
-								<div class="ml-120 min-h-100x">
-									<h5><b>Gợi ý lắp smarthome giá tầm 10 triệu ở Việt Nam</b></h5>
-									<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
-												Palmer,</b></span> Jan 25, 2018</h6>
-									{{!-- https://news.zing.vn/goi-y-lap-smarthome-gia-tam-10-trieu-o-viet-nam-post937347.html --}}
-								</div>
-							</a><!-- oflow-hidden -->
+							{{#each this.listNew}}
+								<a class="oflow-hidden pos-relative dplay-block" href="/single-post">
+									<div class="wh-100x abs-tlr"><img src="{{avatar}}" alt=""></div>
+									<div class="ml-120 min-h-100x">
+										<h5><b>{{title}}</b></h5>
+										<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
+													Palmer,</b></span> {{post_day}}</h6>
+										{{!-- https://news.zing.vn/goi-y-lap-smarthome-gia-tam-10-trieu-o-viet-nam-post937347.html --}}
+									</div>
+								</a><!-- oflow-hidden -->
+							{{/each}}
+							
 
 							<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post">
 								<div class="wh-100x abs-tlr"><img src="https://firebasestorage.googleapis.com/v0/b/flashfood-ce894.appspot.com/o/news%2Fa6.jpg?alt=media&token=c26a5c0f-50a8-45e4-a144-4a57d074e0af" alt=""></div>
@@ -377,15 +380,18 @@
 						<div class="mt-40">
 							<div>
 								<h4 class="p-title"><b>Tin có nhiều lượt xem nhất</b></h4>
-								<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post">
-									<div class="wh-100x abs-tlr"><img src="https://firebasestorage.googleapis.com/v0/b/flashfood-ce894.appspot.com/o/news%2Fb15.jpg?alt=media&token=21fcd815-0c12-488c-ba7b-580f0b205110" alt=""></div>
-									<div class="ml-120 min-h-100x">
-										<h5><b>Sri Lanka nói đánh bom là trả thù cho vụ xả súng New Zealand</b></h5>
-										{{!-- https://news.zing.vn/sri-lanka-noi-danh-bom-la-tra-thu-cho-vu-xa-sung-new-zealand-post938940.html --}}
-										<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
-													Palmer,</b></span> Jan 25, 2018</h6>
-									</div>
-								</a><!-- oflow-hidden -->
+								{{#each this.listNew}} 
+									<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post">
+										<div class="wh-100x abs-tlr"><img src="{{avatar}}" alt=""></div>
+										<div class="ml-120 min-h-100x">
+											<h5><b>{{title}}</b></h5>
+											{{!-- https://news.zing.vn/sri-lanka-noi-danh-bom-la-tra-thu-cho-vu-xa-sung-new-zealand-post938940.html --}}
+											<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
+														Palmer,</b></span> {{post_day}}</h6>
+										</div>
+									</a><!-- oflow-hidden -->
+								{{/each}}
+								
 
 								<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post">
 									<div class="wh-100x abs-tlr"><img src="https://firebasestorage.googleapis.com/v0/b/flashfood-ce894.appspot.com/o/news%2Fb15.jpg?alt=media&token=21fcd815-0c12-488c-ba7b-580f0b205110" alt=""></div>
@@ -423,16 +429,20 @@
 						</div>
 						<div class="mtb-50">
 							<h4 class="p-title"><b>Tin hot nhất</b></h4>
-							<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post">
-								<div class="wh-100x abs-tlr"><img src="https://firebasestorage.googleapis.com/v0/b/flashfood-ce894.appspot.com/o/news%2Fb15.jpg?alt=media&token=21fcd815-0c12-488c-ba7b-580f0b205110" alt=""></div>
+
+							{{#each this.listNew}}
+								<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post">
+								<div class="wh-100x abs-tlr"><img src="{{avatar}}" alt=""></div>
 								<div class="ml-120 min-h-100x">
-									<h5><b>Nữ diễn viên bị liệt nửa người kể sinh 7 tháng mới được gặp con 2 lần</b>
+									<h5><b>{{title}}</b>
 									</h5>
 									{{!-- https://news.zing.vn/nu-dien-vien-bi-liet-nua-nguoi-ke-sinh-7-thang-moi-duoc-gap-con-2-lan-post938868.html --}}
 									<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
-												Palmer,</b></span> Jan 25, 2018</h6>
+												Palmer,</b></span> {{post_day}}</h6>
 								</div>
-							</a><!-- oflow-hidden -->
+								</a><!-- oflow-hidden -->
+							{{/each}}
+						
 
 							<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post">
 								<div class="wh-100x abs-tlr"><img src="https://firebasestorage.googleapis.com/v0/b/flashfood-ce894.appspot.com/o/news%2Fb16.jpg?alt=media&token=83fb7f24-5ddc-46f1-911c-834c6f97564d" alt=""></div>
@@ -545,15 +555,20 @@
 					<div class="col-sm-4">
 						<div class="mb-30">
 							<h5 class="color-primary mb-20"><b>Tin phổ biến</b></h5>
-							<div class="mb-20">
-								<a class="color-white" href="/single-post"><b>Từ vụ Qualcomm, Apple lộ rõ sự thủ đoạn và yếu đuối</b></a>
+							{{#each this.listNew}}
+								<div class="mb-20">
+								<a class="color-white" href="/single-post"><b>{{title}}</b></a>
 								<h6 class="mt-10">Jan 25, 2018</h6>
-							</div>
+								</div>
+							{{/each}}
+						
+
 							<div class="brdr-ash-1 opacty-2 mr-30"></div>
 							<div class="mt-20">
 								<a class="color-white" href="/single-post"><b>Tổng hợp các vụ mua bán ma túy lớn trong năm 2019</b></a>
 								<h6 class="mt-10">Jan 25, 2018</h6>
 							</div>
+
 						</div><!-- mb-30 -->
 					</div><!-- col-md-4 -->
 
