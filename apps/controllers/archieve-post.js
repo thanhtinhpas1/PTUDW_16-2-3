@@ -4,16 +4,22 @@ var newdb = require("../models/news");
 
 
 router.get("/", function(req, res) {
-    var newDatabase = newdb.loadNews();
-    newDatabase.then(rows => {
+    var hotNewDB = newdb.displayHotNews();
+    var topViewDB = newdb.displayTopView();
+
+    hotNewDB.then(a => {
+        console.log(a);
         
-        var list = rows;
-        console.log(list);
-        res.render("02_archive-page", {
-            title:"archieve-post",
-            layout: "base-view",
-            listNew: rows
-        });
+        topViewDB.then(b => {
+            res.render("02_archive-page", {
+                title:"archieve-post",
+                layout: "base-view",
+                topView: b,
+                hotNew: a
+            });
+        }).catch(err => {
+            console.log(err);
+        })
     }).catch(err => {
         console.log(err);
     })

@@ -21,14 +21,19 @@ router.use("/login", require(__dirname + "/login"));
 router.use("/edit-profile", require(__dirname + "/edit-profile"));
 
 router.get("/", function(req, res) {
-    var newDatabase = newdb.loadNews();
-    newDatabase.then(rows => {
-        
-        var list = rows;
-        console.log(list);
-        res.render("index", {
-            listNew : rows
-        });
+
+    var hotNewDB = newdb.displayHotNews();
+    var topViewDB = newdb.displayTopView();
+
+    hotNewDB.then(a => {
+        topViewDB.then(b => {
+            res.render("index", {
+                hotNew: a,
+                topView: b
+            })
+        }).catch(err => {
+            console.log(err);
+        })
     }).catch(err => {
         console.log(err);
     })
