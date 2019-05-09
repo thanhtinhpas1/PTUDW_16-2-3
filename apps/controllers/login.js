@@ -40,8 +40,26 @@ router.get("/", function (req, res) {
 router.post('/',
     passport.authenticate('local', { failureRedirect: '/login' }),
     function (req, res) {
-        console.log('success');
-        res.redirect('../');
+        if (req.user) {
+            switch(req.user.role_id) {
+                case 1:
+                    res.redirect('../');
+                break;
+                case 3:
+                    res.redirect('../writer/manage-draft');
+                break;
+                case 4:
+                    res.redirect('../editor/manage-content');
+                break;
+                case 4:
+                    res.redirect('../admin');
+                break;
+                default:
+                res.redirect('../');
+                break;''
+            }
+        }
+        else res.redirect('../');
     });
 
 module.exports = router;

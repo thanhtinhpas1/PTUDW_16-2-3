@@ -10,7 +10,7 @@ router.use("/manage-account", require( __dirname + "/manage-account" ))
 
 router.get("/", function(req, res) {
     // res.json({"message" : "This is home page"});
-    res.render("", {title: "super-admin", layout: __dirname + "/../../views/admin/index"});
+    res.render("admin/index", {title: "home-admin", layout: "admin/baseview"});
 });
 
 module.exports = router;
