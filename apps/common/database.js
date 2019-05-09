@@ -89,6 +89,35 @@ module.exports = {
             });
         });
     },
-
+    //Display top 10 hot news
+    displayTopHotNew: (tableName) => {
+        return new Promise((resolve,reject) => {
+            var sql = `SELECT * from ${tableName} ORDER BY post_date DESC LIMIT 10 `;
+            var conn = createConnection();
+            conn.connect();
+            conn.query(sql,(err,value) => {
+                if(err){
+                    reject(err);
+                }
+                else {
+                    resolve(value);
+                }
+                conn.end();
+            })
+        })
+    },
+    //Display top 10 news that get lots of views
+    displayTopViewer: (tableName) => {
+        return new Promise((resolve,reject) => {
+            var sql = `SELECT * from ${tableName} ORDER BY views DESC LIMIT 10 `;
+            var conn = createConnection();
+            conn.connect();
+            conn.query(sql,(err,value) => {
+                if(err) reject(err);
+                else resolve(value);
+                conn.end();
+            })
+        })
+    },
     getConnection: getConnection
 }
