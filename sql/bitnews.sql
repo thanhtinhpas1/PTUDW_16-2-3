@@ -14,7 +14,7 @@
  Date: 10/05/2019 00:04:03
 */
 
-SET NAMES utf8mb4;
+SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
@@ -109,7 +109,7 @@ CREATE TABLE `manage_categories`  (
 DROP TABLE IF EXISTS `post_tageds`;
 CREATE TABLE `post_tageds`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `tag_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `tag_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `tag_id` int(11) NOT NULL,
   `post_id` bigint(11) NOT NULL,
   `created_date` datetime(0) NOT NULL ON UPDATE CURRENT_TIMESTAMP(0),
@@ -119,7 +119,7 @@ CREATE TABLE `post_tageds`  (
   INDEX `post_id`(`post_id`) USING BTREE,
   CONSTRAINT `post_tageds_ibfk_1` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `post_tageds_ibfk_2` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for posts
