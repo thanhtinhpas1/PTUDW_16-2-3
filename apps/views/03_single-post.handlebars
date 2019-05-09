@@ -3,7 +3,7 @@
 		<a class="mt-30" href="index.html"><i class="mr-5 ion-ios-home"></i>Home<i
 				class="mlr-10 ion-chevron-right"></i></a>
 		<a class="color-ash mt-10" id="page-url" href="#">Bài viết</a>
-		<a class="premium-tag ml-2" href="#">Premium</a>
+		<a class="premium-tag ml-2" href="#" id="premium">Premium</a>
 	</div><!-- container -->
 	<div class="mb-30 brdr-ash-1 opacty-5"></div>
 </section>
@@ -13,16 +13,16 @@
 	<a class="post-category cat-1" href="/archieve-post">Kinh tế vĩ mô</a>
 </div>
 
-<h3 class="mt-30"><b>“Tắc” cổng thanh toán liên ngân hàng, hàng nghìn giao dịch treo</b></h3>
+<h3 class="mt-30"><b>{{post.title}}</b></h3>
 <ul class="list-li-mr-20 mtb-15">
-	<li>by <a href="#"><b>Olivia Capzallo </b></a> Jan 25, 2018</li>
-	<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i>30,190</li>
+	<li>by <a href="#"><b>Olivia Capzallo </b></a>{{post.post_date}}</li>
+	<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i>{{post.views}}</li>
 	<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i>30</li>
 </ul>
 
-<b>Sáng 22.4, hệ thống thanh toán điện tử liên ngân hàng (CITAD) của Ngân hàng Nhà nước (NHNN) bị nghẽn. Hàng nghìn lệnh giao dịch chuyển tiền đều bị “kẹt” chưa biết bao giờ mới được giải quyết..</b style="">
+<b>{{post.summary_content}}</b style="">
 
-<p class="mtb-15">Đến kì trả lương cho cán bộ công nhân viên, sáng 22.4, chị M (Cầu Giấy- Hà Nội) bức xúc cho biết: “Từ sáng sớm, kế toán công ty đã thực hiện lệnh chuyển tiền từ VietinBank sang Vietcombank để trả lương cho nhân viên. Tuy nhiên tới giờ này, phía ngân hàng Vietcombank vẫn chưa nhận được tiền”.</p>
+<p class="mtb-15">{{post.content}}</p>
 
 <p class="mtb-15">Trao đổi với đại diện VietinBank, chị M nhận được giải thích như sau: “Thời điểm 8h25 sáng 22.4, khoản tiền đã được hạch toán. Đến thời điểm 8h32, VietinBank phê duyệt thành công khoản tiền. Tuy nhiên, do phía NHNN gặp sự cố nên đến 8h38 mới mở cửa hệ thống dẫn đến điện đi/đến muộn hơn bình thường. Khoảng 9h25, phía NHNN mới có điện thanh toán qua cổng CITAT”.</p>
 
