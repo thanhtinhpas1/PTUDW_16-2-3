@@ -3,19 +3,31 @@
 		<a class="mt-30" href="index.html"><i class="mr-5 ion-ios-home"></i>Home<i
 				class="mlr-10 ion-chevron-right"></i></a>
 		<a class="color-ash mt-10" id="page-url" href="#">Bài viết</a>
+
+		<script>
+			function setPremium(){
+				var premium = document.getElementById("premium");
+				if({{post.premium_status}} == 0) 
+				{
+					premium.style.display = "none";
+				}
+			}
+			window.onload = setPremium;
+		</script>
+
 		<a class="premium-tag ml-2" href="#" id="premium">Premium</a>
 	</div><!-- container -->
 	<div class="mb-30 brdr-ash-1 opacty-5"></div>
 </section>
-<img src="imgs/single-post1.jpg" alt="">
+<img src="{{avatar}}" alt="">
 
 <div class="post-meta mt-10">
-	<a class="post-category cat-1" href="/archieve-post">Kinh tế vĩ mô</a>
+	<a class="post-category cat-1" href="/archieve-post">{{cate.name}}</a>
 </div>
 
 <h3 class="mt-30"><b>{{post.title}}</b></h3>
 <ul class="list-li-mr-20 mtb-15">
-	<li>by <a href="#"><b>Olivia Capzallo </b></a>{{post.post_date}}</li>
+	<li>by <a href="#"><b>{{user.pseudonym}} &nbsp;</b></a>{{date}}</li>
 	<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i>{{post.views}}</li>
 	<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i>30</li>
 </ul>
@@ -24,37 +36,19 @@
 
 <p class="mtb-15">{{post.content}}</p>
 
-<p class="mtb-15">Trao đổi với đại diện VietinBank, chị M nhận được giải thích như sau: “Thời điểm 8h25 sáng 22.4, khoản tiền đã được hạch toán. Đến thời điểm 8h32, VietinBank phê duyệt thành công khoản tiền. Tuy nhiên, do phía NHNN gặp sự cố nên đến 8h38 mới mở cửa hệ thống dẫn đến điện đi/đến muộn hơn bình thường. Khoảng 9h25, phía NHNN mới có điện thanh toán qua cổng CITAT”.</p>
-
-<p class="mtb-15">YĐại diện VietinBank cho biết có tới 4/5 cổng thanh toán đang có hiện tượng ngừng truyền điện đi, riêng 1 cổng vẫn chưa có điện đến kể từ đầu ngày.</p>
-
-<p class="mtb-15">"Do ngày đầu tuần có rất nhiều điện phát sinh trong ngày nghỉ nên hiện tại trên hệ thống còn khoảng 5.000 điện chưa được truyền đi", đại diện ngân hàng này cho biết.
-
-Tiếp tục liên lạc với đại diện Vietcombank để tìm hiểu sự việc, câu trả lời mà chị M nhận được là do “Lỗi từ Cổng thanh toán liên ngân hàng của NHNN nên khoản tiền chưa về được Vietcombank”. Đại diện ngân hàng này cho biết có 6 cổng thanh toán liên ngân hàng thì hiện đang bị lỗi 4 cổng. Chính vì vậy tiền vẫn chưa được chuyển sang hệ thống. Tình trạng này không biết đến bao giờ mới có thể được khắc phục.</p>
-
-<p class="mtb-15">Hệ thống thanh toán điện tử liên ngân hàng được coi là hệ thống thanh toán xương sống của quốc gia. Trong bối cảnh Chính phủ đẩy mạnh thanh toán không dùng tiền mặt thì việc đảm bảo các giao dịch điện tử thông suốt có phần trách nhiệm của NHNN.</p>
-
-<p class="mtb-15">Tuy nhiên, theo phản ánh của một số ngân hàng, trong ngày 16.4.2019, hệ thống CITAD đã có hiện tượng bị lỗi nên không ít giao dịch chuyển tiền bị trục trặc, các ngân hàng buộc phải xin lỗi khách hàng.</p>
-
 <div class="quote-primary mtb-20">
-	<h5>"Bộ trưởng Nguyễn Mạnh Hùng: Mobile Money sẽ giải quyết bài toán thanh toán không tiền mặt đến 100% người dân nhưng lại thách thức ngân hàng
-"</h5>
-	<h5 class="mt-15"><b>Thanh Tịnh</b></h5>
+	<img src="{{post.thumb_img}}" alt="">
 </div><!-- quote-primary -->
 
-<h4><b>Chia sẻ và minh bạch thông tin trong toàn chính phủ, các nhà đầu tư công và nước ngoài là điều quan trọng</b></h4>
-
-<p class="mtb-15">IMF sẽ giúp Việt Nam thúc đẩy việc cải tiến trong mua sắm công; cải thiện hệ thống kê khai thu nhập và tài sản cho cán bộ nhà nước; và chuẩn bị cho đánh giá ngang hàng về triển khai AML / CFT. Đội ngũ IMF vẫn đang tham gia vào một chương trình phát triển năng lực rộng khắp với Việt Nam, bao gồm các vấn đề tài chính, tiền tệ, tài chính, pháp lý và thống kê, và sẵn sàng hỗ trợ các cơ quan chức năng Việt Nam khi cần thiết.</p>
-
-<p class="mtb-15">Sự xuất hiện của thị trường trái phiếu doanh nghiệp và các thị trường vốn khác ở Việt Nam là điều đáng hoan nghênh. Thị trường vốn sẽ giúp giảm chi phí vốn tại Việt Nam và đẩy nhanh việc chuyển sang ngân hàng bán lẻ. Ngân hàng Nhà nước dự định sẽ dần dần chuyển từ phân bổ tín dụng hành chính sang phương tiện dựa trên thị trường và các ngân hàng sẽ áp dụng tiêu chuẩn vốn Basel II vào tháng 1/2020. </p>
 
 <div class="float-left-right text-center mt-40 mt-sm-20">
 
 	<ul
 		class="mb-30 list-li-mt-10 list-li-mr-5 list-a-plr-15 list-a-ptb-7 list-a-bg-grey list-a-br-2 list-a-hvr-primary ">
-		<li><a href="#">BẤT ĐỘNG SẢN</a></li>
-		<li><a href="#">DOANH NGHIỆP</a></li>
-		<li class="mr-0"><a href="#">CHỨNG KHOÁN</a></li>
+		{{#each this.tag}}
+			<li><a href="#">{{tag_name}}</a></li>
+		{{/each}}
+		
 	</ul>
 	<ul class="mb-30 list-a-bg-grey list-a-hw-radial-35 list-a-hvr-primary list-li-ml-5">
 		<li class="mr-10 ml-0">Chia sẻ</li>
@@ -70,7 +64,6 @@ Tiếp tục liên lạc với đại diện Vietcombank để tìm hiểu sự 
 
 <h4 class="p-title mt-50"><b>Có thể bạn sẽ thích</b></h4>
 <div class="row">
-
 	<div class="col-sm-6">
 		<img src="https://firebasestorage.googleapis.com/v0/b/flashfood-ce894.appspot.com/o/news%2Fcrypto-news-4-600x450.jpg?alt=media&token=5b152fc5-1b42-4447-8159-fcab755161ae" alt="">
 		<h4 class="pt-20"><a href="#"><b>2017 Market Performance: <br />Crypto vs.Stock</b></a></h4>
@@ -151,3 +144,4 @@ Tiếp tục liên lạc với đại diện Vietcombank để tìm hiểu sự 
 	<textarea class="ptb-10" placeholder="Bình luận của bạn"></textarea>
 	<button class="btn-fill-primary plr-30" rows="4" cols="50" type="submit"><b>BÌNH LUẬN</b></button>
 </form>
+

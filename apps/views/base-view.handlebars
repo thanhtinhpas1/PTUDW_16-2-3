@@ -187,7 +187,7 @@
 						<h4 class="p-title"><b>Tin trong ngày</b></h4>
 						<div class="all-news-content">
 							{{#each this.hotNew}}
-								<a class="oflow-hidden pos-relative dplay-block" href="/single-post">
+								<a class="oflow-hidden pos-relative dplay-block" href="/single-post/{{id}}">
 									<div class="wh-100x abs-tlr"><img src="{{avatar}}" alt=""></div>
 									<div class="ml-120 min-h-100x">
 										<h5><b>{{title}}</b></h5>
@@ -203,7 +203,7 @@
 							<div>
 								<h4 class="p-title"><b>Tin có nhiều lượt xem nhất</b></h4>
 								{{#each this.topView}} 
-									<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post">
+									<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post/{{id}}">
 										<div class="wh-100x abs-tlr"><img src="{{avatar}}" alt=""></div>
 										<div class="ml-120 min-h-100x">
 											<h5><b>{{title}}</b></h5>
@@ -220,7 +220,7 @@
 							<h4 class="p-title"><b>Tin hot nhất</b></h4>
 
 							{{#each this.hotNew}}
-								<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post">
+								<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post/{{id}}">
 								<div class="wh-100x abs-tlr"><img src="{{avatar}}" alt=""></div>
 								<div class="ml-120 min-h-100x">
 									<h5><b>{{title}}</b>
@@ -313,7 +313,7 @@
 							<h5 class="color-primary mb-20"><b>Tin phổ biến</b></h5>
 							{{#each this.topView}}
 								<div class="mb-20">
-								<a class="color-white" href="/single-post"><b>{{title}}</b></a>
+								<a class="color-white" href="/single-post/{{id}}"><b>{{title}}</b></a>
 								<h6 class="mt-10">Jan 25, 2018</h6>
 								</div>
 							{{/each}}
