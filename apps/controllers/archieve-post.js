@@ -1,15 +1,13 @@
 var express = require('express');
 var router = express.Router();
-var newdb = require("../models/news");
+var postdb = require("../models/posts");
 
 
 router.get("/", function(req, res) {
-    var hotNewDB = newdb.displayHotNews();
-    var topViewDB = newdb.displayTopView();
+    var hotNewDB = postdb.displayHotNews();
+    var topViewDB = postdb.displayTopView();
 
     hotNewDB.then(a => {
-        console.log(a);
-        
         topViewDB.then(b => {
             res.render("02_archive-page", {
                 title:"archieve-post",

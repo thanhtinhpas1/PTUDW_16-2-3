@@ -1,5 +1,5 @@
 var express = require('express');
-var newdb = require("../models/news");
+var postdb = require("../models/posts");
 
 
 var router = express.Router();
@@ -21,15 +21,30 @@ router.use("/login", require(__dirname + "/login"));
 router.use("/edit-profile", require(__dirname + "/edit-profile"));
 
 router.get("/", function(req, res) {
+    
+    var page = parseInt(req.query.page) || 1;
+    var perPage = 6;
+    var begin = (page - 1)* perPage;
+    console.log(begin);
+    var end = page*perPage;
+    console.log(end);
+  
+    var hotNewDB = postdb.displayHotNews();
+    var topViewDB = postdb.displayTopView();
+    var allPost = postdb.findLimit(begin,end);
 
-    var hotNewDB = newdb.displayHotNews();
-    var topViewDB = newdb.displayTopView();
-
-    hotNewDB.then(a => {
-        topViewDB.then(b => {
-            res.render("index", {
-                hotNew: a,
-                topView: b
+    hotNewDB.then(lstHot => {
+        topViewDB.then(lstTop => {
+            allPost.then(lstPost => {
+                
+                res.render("index", {
+                    hotNew: lstHot,
+                    topView: lstTop,
+                    post: lstPost,
+                    page: page
+                })
+            }).catch(err => {
+                console.log(err);
             })
         }).catch(err => {
             console.log(err);
