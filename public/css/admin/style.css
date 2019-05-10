@@ -1,7 +1,20 @@
 
 /* CUSTOM */
+.btn-cat-control:hover {
+	background-color: #fdf59a !important;
+}
 
+#btnCatEdit {
+	color: #3e3939;
+    border: solid 1px;
+    background-color: #ffffff;
+}
 
+#btnCatRemove {
+	color: #f50f0f;
+    background-color: #ffffff;
+    border: solid 1px;
+}
 
 /* CARD */
 .card {

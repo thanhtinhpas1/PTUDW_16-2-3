@@ -58,10 +58,14 @@
             }
         }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
     <link rel="stylesheet" href="../css/admin/themify-icons.css">
 
     <link href="../css/admin/style.css" rel="stylesheet">
-</head>
+
+    {{!-- font awesome --}}
+<script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
 
 <body class="app">
     <div id="loader">
@@ -96,7 +100,7 @@
                     </div>
                 </div>
                 <ul class="sidebar-menu scrollable pos-r">
-                    <li class="nav-item mT-30 active"><a class="sidebar-link" href="index.html"><span
+                    <li class="nav-item mT-30 active"><a class="sidebar-link" href="/admin"><span
                                 class="icon-holder"><i class="c-blue-500 ti-home"></i> </span><span
                                 class="title">Dashboard</span></a></li>
                     <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span
@@ -107,6 +111,7 @@
                             <li><a class="sidebar-link" href="/admin/manage-category">Quản lý chuyên mục</a></li>
                             <li><a class="sidebar-link" href="/admin/manage-tag">Quản lý nhãn tag</a></li>
                             <li><a class="sidebar-link" href="/admin/manage-post">Quản lý bài viết</a></li>
+                            <li><a class="sidebar-link" href="/admin/manage-post">Quản lý danh sách người dùng</a></li>
                         </ul>
                     </li>
                     <li class="nav-item"><a class="sidebar-link" href="email.html"><span class="icon-holder"><i
@@ -306,7 +311,7 @@
                                 <li><a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"><i
                                             class="ti-settings mR-10"></i>
                                         <span>Setting</span></a></li>
-                                <li><a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"><i
+                                <li><a href="/admin/edit-profile" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"><i
                                             class="ti-user mR-10"></i>
                                         <span>Profile</span></a></li>
                                 <li><a href="email.html" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"><i
@@ -329,6 +334,7 @@
             </footer>
         </div>
     </div>
+
     <script type="text/javascript" src="../js/admin/vendor.js"></script>
     <script type="text/javascript" src="../js/admin/bundle.js"></script>
 </body>
