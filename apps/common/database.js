@@ -65,6 +65,46 @@ module.exports = {
             });
         });
     },
+    findLimit: (tableName,begin,end) => {
+        return new Promise((resolve, reject) => {
+            var sql = `SELECT * from ${tableName} LIMIT ${end} OFFSET ${begin}`;
+            var conn = createConnection();
+            conn.connect();
+            conn.query(sql, (err, value) => {
+                if (err ) reject(err);
+                else resolve(value);
+                conn.end();
+            });
+        })
+    },
+    findByPostId: (tableName, id) => {
+        return new Promise((resolve, reject) => {
+            var sql = `SELECT * from ${tableName} WHERE post_id = ? `;
+            var conn = createConnection();
+            conn.connect();
+            conn.query(sql, id, (err, value) => {
+                if (err) reject(err);
+                else {
+                    resolve(value[0]);
+                }
+                conn.end();
+            });
+        });
+    },
+    findByCateId: (tableName, id) => {
+        return new Promise((resolve, reject) => {
+            var sql = `SELECT * from ${tableName} WHERE category_id = ? `;
+            var conn = createConnection();
+            conn.connect();
+            conn.query(sql, id, (err, value) => {
+                if (err) reject(err);
+                else {
+                    resolve(value[0]);
+                }
+                conn.end();
+            });
+        });
+    },
     findOne: (tableName, field, username) => {
         return new Promise((resolve, reject) => {
             var sql = `SELECT * from ${tableName} WHERE ${field} = ?`;
