@@ -6,10 +6,15 @@ function getAllCategory() {
 }
 
 function deleteCatById(id){
-    return db.deleteById(id);
+    return db.deleteById("categories", id);
+}
+
+function addNewCategory(entity) {
+    return db.add("categories", entity);
 }
 
 module.exports = {
     getAllCategory: getAllCategory,
-    deleteCatById: deleteCatById
+    deleteCatById: deleteCatById, 
+    addNewCategory: addNewCategory
 }

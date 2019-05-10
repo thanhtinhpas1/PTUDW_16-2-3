@@ -4,7 +4,6 @@ var bodyParser = require("body-parser");
 var session = require('express-session');
 var passport = require('passport');
 var morgan = require('morgan');
-
 var app = express();
 
 app.use(morgan('dev'));
@@ -29,6 +28,11 @@ var handlebars = require("express-handlebars").create({
     layoutsDir: __dirname + "/apps/views"
 });
 app.engine('handlebars', handlebars.engine);
+
+//set moment helper for handlebars
+var Handlebars = require("handlebars");
+var MomentHandler = require("handlebars.moment");
+MomentHandler.registerHelpers(Handlebars);
 
 var controllers = require(__dirname + "/apps/controllers");
 app.use(controllers);

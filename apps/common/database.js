@@ -1,5 +1,6 @@
 var config = require('config');
 var mysql = require('mysql');
+var utils = require('../helpers/helper')
 
 function createConnection() {
     return mysql.createConnection({
@@ -85,6 +86,8 @@ module.exports = {
             var sql = `insert into ${tableName} set ?`;
             var conn = createConnection();
             conn.connect();
+            entity["created_at"] = utils.GetTimeNow();
+            entity["updated_at"] = utils.GetTimeNow();
             conn.query(sql, entity, (error, value) => {
                 if (error) reject(error);
                 else {
