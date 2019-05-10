@@ -685,7 +685,7 @@ input:focus {
 
 .all-news-content {
 	overflow-y: scroll;
-	height: 1000px;
+	height: 500px;
 }
 
  /* categories */
