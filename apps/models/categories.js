@@ -13,8 +13,13 @@ function addNewCategory(entity) {
     return db.add("categories", entity);
 }
 
+function findCategoryById(id){
+    return db.findById("categories",id);
+}
+
 module.exports = {
     getAllCategory: getAllCategory,
     deleteCatById: deleteCatById, 
-    addNewCategory: addNewCategory
+    addNewCategory: addNewCategory,
+    findCategorybyId: findCategoryById
 }
