@@ -5,7 +5,6 @@ var db =  require('../../models/categories');
 router.get("/", function(req, res) {
     var categories = db.getAllCategory();
     categories.then(rows => {
-        var list = rows;
         res.render("admin/manage-category", {title: "manage-category", layout:"admin/baseview",  categories : rows});
     }).catch(err => {
         console.log(err);

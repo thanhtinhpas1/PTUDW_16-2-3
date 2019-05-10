@@ -1,35 +1,29 @@
 <main class="main-content bgc-grey-100">
   <div id="mainContent">
     <div class="container-fluid">
-      <h1 class="text-black-50 text-center">Manage Category</h1>
-
+      <h1 class="text-black-50 text-center">Manage Tags</h1>
       <div class="card shadow mb-4">
         <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">Catgory table</h6>
+          <h6 class="m-0 font-weight-bold text-primary">Tag table</h6>
           <button type="button" class="btn btn-success ml-2" data-toggle="modal" data-target="#exampleModal"
-            data-whatever="@mdo"><i class="fas fa-plus-circle mr-1" style="color:#ffffff;"></i>Add category</button>
+            data-whatever="@mdo"><i class="fas fa-plus-circle mr-1" style="color:#ffffff;"></i>Add Tag</button>
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">New category</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">New tag</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
                 <div class="modal-body">
-                  <form action="/admin/manage-category/add" method="POST">
+                  <form action="/admin/manage-tag/add" method="POST">
                     <label for="recipient-name" class="col-form-label">Name</label>
                     <input type="text" name="name" class="form-control" id="recipient-name" required>
-                    <label for="message-text" class="col-form-label">Type</label>
-                    <select name="type" id="message-text" class="form-control mb-4" required>
-                      <option selected value="2">Child category</option>
-                      <option value="1">Parent category</option>
-                    </select>
                     <div class="modal-footer mt-2">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="submit" class="btn btn-success">Create category</button>
+                      <button type="submit" class="btn btn-success">Create tag</button>
                     </div>
                   </form>
                 </div>
@@ -59,7 +53,7 @@
                 </tr>
               </tfoot>
               <tbody>
-                {{#each categories}}
+                {{#each tags}}
                 <tr>
                   <td>{{id}}</td>
                   <td>{{name}}</td>
@@ -87,10 +81,9 @@
 <script type="text/javascript">
   function functionConfirm(id) {
     if (confirm("Are you sure delete?")) {
-      window.location.replace("/admin/manage-category/delete?id=" + id);
+      window.location.replace("/admin/manage-tag/delete?id=" + id);
       return true;
     }
-
     return false;
   }
 </script>
