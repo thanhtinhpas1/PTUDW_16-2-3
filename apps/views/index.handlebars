@@ -67,12 +67,10 @@
 								</div>
 								<div id="breakingNewsTicker" class="ticker">
 									<ul>
-										<li><a href="/single-post">Từ vụ Qualcomm, Apple lộ rõ sự thủ đoạn và yếu
-												đuối</a></li>
-										<li><a href="/single-post">Hành trình tái định nghĩa TV của 'gã khổng lồ' Hàn
-												Quốc</a></li>
-										<li><a href="/single-post">Ông Đoàn Ngọc Hải bị chống đối khi bắt chó thả rông ở
-												Sài Gòn</a></li>
+										{{#each this.hotNew}}
+											<li><a href="/single-post/{{id}}">{{title}}</a></li>
+										{{/each}}
+										
 									</ul>
 								</div>
 							</div>
@@ -119,7 +117,8 @@
 							<li><a href="#">Khoa học vũ trụ</a></li>
 							<li><a href="#">Tin trong ngày</a></li>
 					</li> -->
-					<li id="menu_world" class="drop-down"><a href="/archieve-post">Thế giới<i
+					{{#each this.lstCatParent}}
+						<li id="menu_world" class="drop-down"><a href="/archieve-post">{{name}}<i
 								class="ion-arrow-down-b"></i></a>
 						<ul class="drop-down-menu drop-down-inner">
 							<li><a href="/archieve-post">Điểm nóng</a></li>
@@ -128,67 +127,9 @@
 							<li><a href="/archieve-post">Khoa học vũ trụ</a></li>
 							<li><a href="/archieve-post">Tin trong ngày</a></li>
 						</ul>
-					</li>
-					<li id="menu_economic" class="drop-down"><a href="/archieve-post">Kinh tế vĩ mô<i
-								class="ion-arrow-down-b"></i></a>
-						<ul class="drop-down-menu drop-down-inner">
-							<li><a href="/archieve-post">Tài chính</a></li>
-							<li><a href="/archieve-post">Chính sách</a></li>
-							<li><a href="/archieve-post">Hợp tác</a></li>
-							<li><a href="/archieve-post">Dự án</a></li>
-						</ul>
-					</li>
-					<li id="menu_football" class="drop-down">
-						<a href="/archieve-post">Bóng đá<i class="ion-arrow-down-b"></i></a>
-						<ul class="drop-down-menu drop-down-inner">
-							<li><a href="/archieve-post">Lịch thi đấu</a></li>
-							<li><a href="/archieve-post">Sự kiện - Bình luận</a></li>
-							<li><a href="/archieve-post">Video</a></li>
-							<li><a href="/archieve-post">Livescore</a></li>
-							<li><a href="/archieve-post">Lịch thi đấu hôm nay</a></li>
-							<li><a href="/archieve-post">Kết quả bóng đá</a></li>
-							<li><a href="/archieve-post">Top ghi bàn</a></li>
-							<li><a href="/archieve-post">Bảng xếp hạng</a></li>
-							<li><a href="/archieve-post">Bóng đá trong nước</a></li>
-						</ul>
-					</li>
-					<li id="menu_business" class="drop-down">
-						<a href="archieve-post">Kinh doanh<i class="ion-arrow-down-b"></i></a>
-						<ul class="drop-down-menu drop-down-inner">
-							<li><a href="/archieve-post">Doanh nhân</a></li>
-							<li><a href="/archieve-post">Tài chính</a></li>
-							<li><a href="/archieve-post">Bất động sản</a></li>
-							<li><a href="/archieve-post">Khởi nghiệp</a></li>
-							<li><a href="/archieve-post">Doanh nghiệp</a></li>
-							<li><a href="/archieve-post">Ngân hàng</a></li>
-							<li><a href="/archieve-post">Bitcoin</a></li>
-							<li><a href="/archieve-post">Tỷ giá</a></li>
-							<li><a href="/archieve-post">Chứng khoán</a></li>
-						</ul>
-					</li>
-					<li id="menu_market" class="drop-down">
-						<a href="archieve-post">Thị trường<i class="ion-arrow-down-b"></i></a>
-						<ul class="drop-down-menu drop-down-inner">
-							<li><a href="/archieve-post">Sản xuất - tiêu dùng</a></li>
-							<li><a href="/archieve-post">Thị trường hôm nay</a></li>
-							<li><a href="/archieve-post">Xu hướng tiêu dùng</a></li>
-							<li><a href="/archieve-post">Xuất nhập khẩu</a></li>
-						</ul>
-					</li>
-					<li id="menu_health" class="drop-down">
-						<a href="archieve-post">Công nghệ<i class="ion-arrow-down-b"></i></a>
-						<ul class="drop-down-menu drop-down-inner">
-							<li><a href="/archieve-post">Sắp xuất hiện</a></li>
-							<li><a href="/archieve-post">Tin tức công nghệ</a></li>
-							<li><a href="/archieve-post">Laptop mới</a></li>
-							<li><a href="/archieve-post">Điện thoại</a></li>
-							<li><a href="/archieve-post">Máy ảnh và camera số</a></li>
-							<li><a href="/archieve-post">Thế giới công nghệ</a></li>
-							<li><a href="/archieve-post">Đánh giá sản phẩm</a></li>
-							<li><a href="/archieve-post">Điện tử gia dụng</a></li>
-						</ul>
-					</li>
-					<!-- menu more -->
+						</li>
+					{{/each}}
+					
 				</ul>
 
 				<div class="clearfix"></div>
@@ -339,21 +280,23 @@
 							<h4 class="p-title"><b>Tin nổi bật</b></h4>
 						</div>
 						<!-- post -->
-						{{#each this.hotNew}}
-						<div class="col-sm-4">
-							<div class="post">
-								<a class="post-img" href="/single-post/{{id}}"><img src="{{avatar}}" alt=""></a>
-								<div class="post-body">
-									<div class="post-meta">
-										<a class="post-category cat-1" href="/archieve-post">Thế giới</a>
-										<span class="post-date">{{post_date}}</span>
+						<div class="all-news-content">
+							{{#each this.hotNew}}
+							<div class="col-sm-4">
+								<div class="post">
+									<a class="post-img" href="/single-post/{{id}}"><img src="{{avatar}}" style="height: 110px" alt=""></a>
+									<div class="post-body">
+										<div class="post-meta">
+											<a class="post-category cat-1" href="/archieve-post/{{catID}}">{{catName}}</a>
+											<span class="post-date">{{moment post_date format="YYYY/MM/DD h:mm:s"}}</span>
+										</div>
+										<h3 class="post-title"><a href="/single-post/{{id}}">{{title}}</a></h3>
 									</div>
-									<h3 class="post-title"><a href="blog-post.html">{{title}}</a></h3>
-									{{!-- http://socialbarrel.com/7-common-myths-about-web-design/119763/ --}}
 								</div>
 							</div>
+							{{/each}}
 						</div>
-						{{/each}}
+						
 					</div>
 			
 				<div class="vertical-host-news col-12 col-md-5 col-lg-4">
@@ -361,14 +304,17 @@
 					<div class="all-news-content">
 						{{#each this.hotNew}}
 						<a class="oflow-hidden pos-relative dplay-block" href="/single-post/{{id}}">
-						<div class="wh-100x abs-tlr"><img
-								src="{{avatar}}"
-								alt=""></div>
+					
+						<div class="wh-100x abs-tlr">
+							<img
+								src="{{avatar}}" style="height: 75px"
+								alt="">
+							
+						</div>
+				
 						<div class="ml-120 min-h-100x">
-							<h5><b>{{title}}</b></h5>
-							<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
-										Palmer,</b></span> Jan 25, 2018</h6>
-							{{!-- https://news.zing.vn/goi-y-lap-smarthome-gia-tam-10-trieu-o-viet-nam-post937347.html --}}
+							<h5><b>{{title}}&nbsp;</b></h5>
+							<h6 class="color-lite-black pt-10">by <span class="color-black"><b>{{userName}}</b></span> {{moment post_date format="YYYY/MM/DD h:mm:s"}} &nbsp; <b>{{catName}}</b></h6>
 						</div>
 						</a><!-- oflow-hidden -->
 						{{/each}}
@@ -382,73 +328,37 @@
 				<h4 class="p-title"><b>Tin mới nhất</b></h4>
 				<div class="row">
 					<div class="col-sm-6">
-						<img src="https://firebasestorage.googleapis.com/v0/b/flashfood-ce894.appspot.com/o/news%2Fb1.jpg?alt=media&token=4aec670b-4b87-4092-9563-a329026a5f6c"
+						<img src="{{hottest.thumb_img}}"
 							alt="">
-						{{!-- https://news.zing.vn/bi-thu-hoa-binh-chanh-long-xau-ho-ve-vu-gian-lan-diem-thi-post938864.html --}}
-						<h4 class="pt-20"><a href="/single-post"><b>Bí thư Hòa Bình 'chạnh lòng, xấu hổ' về vụ gian lận
-									điểm thi</b></a></h4>
+						<h4 class="pt-20"><a href="/single-post/{{hottest.id}}"><b>{{hottest.title}}</b></a></h4>
+						<div class="post-meta">
+							<a class="post-category cat-1" href="/archieve-post/{{hottest.catID}}">{{hottest.catName}}</a>
+						</div>
 						<ul class="list-li-mr-20 pt-10 pb-20">
-							<li class="color-lite-black">by <a href="/single-post" class="color-black"><b>Olivia
-										Capzallo,</b></a>
-								Jan 25, 2018</li>
-							<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i><b>30,190</b></li>
-							<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i><b>47</b></li>
+							<li class="color-lite-black">by <a href="/single-post/{{hottest.id}}" class="color-black"><b> &nbsp;{{hottest.userName}} &nbsp;</b></a>
+								{{moment hottest.post_date format="YYYY/MM/DD h:mm:s" }}</li>
+							<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i><b>{{hottest.views}}</b></li>
+							<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i><b>25</b></li>
 						</ul>
-						<p>"Cán bộ làm sai thì 'con dại cái mang', mình chạnh lòng và
-							cũng thấy xấu hổ vì có trách nhiệm của mình trong đó",
-							Bí thư Hòa Bình Bùi Văn Tỉnh chia sẻ.</p>
+						<p>{{hottest.summary_content}}</p>
 					</div><!-- col-sm-6 -->
 
-					<div class="col-sm-6">
-						<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post">
+					<div class="all-news-content col-sm-6">
+						{{#each this.lstHottest}}
+							<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post/{{id}}">
+							
 							<div class="wh-100x abs-tlr"><img
-									src="https://firebasestorage.googleapis.com/v0/b/flashfood-ce894.appspot.com/o/news%2Fb1.jpg?alt=media&token=4aec670b-4b87-4092-9563-a329026a5f6c"
-									alt=""></div>
-							{{!-- https://news.zing.vn/metro-sai-gon-dung-thi-cong-hon-2-tuan-vi-xay-khach-san-gay-sut-lun-post938612.html --}}
-							<div class="ml-120 min-h-100x">
-								<h5><b>Metro Sài Gòn dừng thi công hơn 2 tuần vì xây khách sạn gây sụt lún</b></h5>
-								<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
-											Palmer,</b></span> Jan 25, 2018</h6>
+									src="{{thumb_img}}"
+									alt="">
 							</div>
-						</a><!-- oflow-hidden -->
-
-						<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post">
-							<div class="wh-100x abs-tlr"><img
-									src="https://firebasestorage.googleapis.com/v0/b/flashfood-ce894.appspot.com/o/news%2Fb1.jpg?alt=media&token=4aec670b-4b87-4092-9563-a329026a5f6c"
-									alt=""></div>
-							{{!-- https://news.zing.vn/tai-xe-xe-dien-o-duong-lang-thua-nhan-uong-ruou-bia-dap-nham-chan-ga-post938933.html --}}
+							
 							<div class="ml-120 min-h-100x">
-								<h5><b>Tài xế xe điên ở đường Láng thừa nhận uống rượu bia, đạp nhầm chân ga</b></h5>
-								<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
-											Palmer,</b></span> Jan 25, 2018</h6>
+								<h5><b>{{title}}</b></h5>
+								<h6 class="color-lite-black pt-10">by <span class="color-black"><b>&nbsp;{{userName}}&nbsp;</b></span>{{moment post_date format="YYYY/MM/DD h:mm:s"}}&nbsp; <b>{{catName}}</b></h6>
 							</div>
-						</a><!-- oflow-hidden -->
-
-						<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post">
-							<div class="wh-100x abs-tlr"><img
-									src="https://firebasestorage.googleapis.com/v0/b/flashfood-ce894.appspot.com/o/news%2Fb1.jpg?alt=media&token=4aec670b-4b87-4092-9563-a329026a5f6c"
-									alt=""></div>
-							{{!-- https://news.zing.vn/ong-doan-ngoc-hai-bi-chong-doi-khi-bat-cho-tha-rong-o-sai-gon-post938870.html --}}
-							<div class="ml-120 min-h-100x">
-								<h5><b>Ông Đoàn Ngọc Hải bị chống đối khi bắt chó thả rông ở Sài Gòn</b></h5>
-								<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
-											Palmer,</b></span> Jan 25, 2018</h6>
-							</div>
-						</a><!-- oflow-hidden -->
-
-						<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post">
-							<div class="wh-100x abs-tlr"><img
-									src="https://firebasestorage.googleapis.com/v0/b/flashfood-ce894.appspot.com/o/news%2Fb1.jpg?alt=media&token=4aec670b-4b87-4092-9563-a329026a5f6c"
-									alt=""></div>
-							{{!-- https://news.zing.vn/con-trai-nu-lao-cong-bi-xe-hyundai-tong-chet-em-dau-don-va-so-hai-post938892.html --}}
-							<div class="ml-120 min-h-100x">
-								<h5><b>Con trai nữ lao công bị xe Hyundai tông chết: 'Em đau đớn và sợ hãi'</b></h5>
-								<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
-											Palmer,</b></span> Jan 25, 2018</h6>
-							</div>
-						</a><!-- oflow-hidden -->
-					</div><!-- col-sm-6 -->
-
+							</a><!-- oflow-hidden -->
+						{{/each}}
+					</div>
 				</div><!-- row -->
 
 				<h4 class="p-title mt-30"><b>Tất cả</b></h4>
@@ -457,11 +367,12 @@
 						<div class="col-sm-6">
 						<img src="{{thumb_img}}" alt="" style="height: 200px;">
 						<h4 class="pt-20"><a href="/single-post/{{id}}"><b>{{title}}</b></a></h4>
-					
+						<div class="post-meta">
+							<a class="post-category cat-1" href="/archieve-post/{{catID}}">{{catName}}</a>
+						</div>
 						<ul class="list-li-mr-20 pt-10 mb-30">
-							<li class="color-lite-black">by <a href="/single-post/{{id}}" class="color-black"><b>Olivia
-										Capzallo,</b></a>
-								{{post_date}}</li>
+							<li class="color-lite-black">by <a href="/single-post/{{id}}" class="color-black"><b>&nbsp;{{userName}} &nbsp;</b></a>
+								{{moment post_date format="YYYY/MM/DD h:mm:s"}}</li>
 							<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i>{{views}}</li>
 							<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i>47</li>
 						</ul>
@@ -485,9 +396,7 @@
 									alt=""></div>
 							<div class="ml-120 min-h-100x">
 								<h5><b>{{title}}</b></h5>
-								{{!-- https://news.zing.vn/sri-lanka-noi-danh-bom-la-tra-thu-cho-vu-xa-sung-new-zealand-post938940.html --}}
-								<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
-											Palmer,</b></span>{{post_date}}</h6>
+								<h6 class="color-lite-black pt-10">by <span class="color-black"><b>{{userName}}  &nbsp;</b></span>{{moment post_date format="YYYY/MM/DD h:mm:s"}} &nbsp; <b>{{catName}}</b></h6>
 							</div>
 							</a><!-- oflow-hidden -->
 						{{/each}}
@@ -496,18 +405,20 @@
 					</div><!-- mtb-50 -->
 					<div class="mtb-50">
 						<h4 class="p-title"><b>Tin hot nhất</b></h4>
-						{{#each this.hotNew}}
+						<div class="all-news-content">
+								{{#each this.hotNew}}
 							<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post/{{id}}">
 							<div class="wh-100x abs-tlr"><img
 									src="{{thumb_img}}"
 									alt=""></div>
 							<div class="ml-120 min-h-100x">
 								<h5><b>{{title}}</b></h5>
-								<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
-											Palmer,</b></span> {{post_date}}</h6>
+								<h6 class="color-lite-black pt-10">by <span class="color-black"><b>{{userName}} &nbsp;</b></span> {{moment post_date format="YYYY/MM/DD h:mm:s"}} &nbsp; <b>{{catName}}</b> </h6>
 							</div>
 							</a><!-- oflow-hidden -->
 						{{/each}}
+						</div>
+					
 					</div><!-- mtb-50 -->
 
 					<div class="aside-widget">
@@ -516,16 +427,9 @@
 						</div>
 						<div class="category-widget">
 							<ul>
-								<li><a href="/archieve-post" class="cat-1">Thế giới<span>3405</span></a></li>
-								<li><a href="/archieve-post" class="cat-2">Kinh tế vĩ mô<span>3206</span></a></li>
-								<li><a href="/archieve-post" class="cat-3">Công nghệ<span>3007</span></a></li>
-								<li><a href="/archieve-post" class="cat-4">Bóng đá<span>2090</span></a></li>
-								<li><a href="/archieve-post" class="cat-5">Khởi ngiệp<span>2789</span></a></li>
-								<li><a href="/archieve-post" class="cat-6">Chứng khoán<span>2232</span></a></li>
-								<li><a href="/archieve-post" class="cat-7">Sức khỏe<span>1223</span></a></li>
-								<li><a href="/archieve-post" class="cat-8">Thời trang<span>890</span></a></li>
-								<li><a href="/archieve-post" class="cat-9">Xu hướng<span>808</span></a></li>
-								<li><a href="/archieve-post" class="cat-10">Bất động sản<span>766</span></a></li>
+								{{#each this.lstTopCate}}
+									<li><a href="/archieve-post/{{id}}" class="cat-1">{{name}}<span>{{SL}}</span></a></li>
+								{{/each}}
 							</ul>
 						</div>
 					</div>
@@ -533,15 +437,9 @@
 					<div class="aside-widget">
 						<div class="tags-widget">
 							<ul>
-								<li><a href="/archieve-post">Hồ sơ</a></li>
-								<li><a href="/archieve-post">Điểm nóng</a></li>
-								<li><a href="/archieve-post">Đầu tư</a></li>
-								<li><a href="/archieve-post">Chứng khoán</a></li>
-								<li><a href="/archieve-post">Sức khỏe</a></li>
-								<li><a href="/archieve-post">Xu hướng</a></li>
-								<li><a href="/archieve-post">Nhà đất</a></li>
-								<li><a href="/archieve-post">Vợ chồng</a></li>
-								<li><a href="/archieve-post">Tình yêu</a></li>
+								{{#each this.lstTag}}
+									<li><a href="/archieve-post/{{id}}">{{name}}</a></li>
+								{{/each}}
 							</ul>
 						</div>
 					</div>
@@ -599,17 +497,14 @@
 					<div class="col-sm-4">
 						<div class="mb-30">
 							<h5 class="color-primary mb-20"><b>Tin phổ biến</b></h5>
-							<div class="mb-20">
-								<a class="color-white" href="/single-post"><b>Từ vụ Qualcomm, Apple lộ rõ sự thủ đoạn và
-										yếu đuối</b></a>
-								<h6 class="mt-10">Jan 25, 2018</h6>
-							</div>
-							<div class="brdr-ash-1 opacty-2 mr-30"></div>
-							<div class="mt-20">
-								<a class="color-white" href="/single-post"><b>Tổng hợp các vụ mua bán ma túy lớn trong
-										năm 2019</b></a>
-								<h6 class="mt-10">Jan 25, 2018</h6>
-							</div>
+							{{#each this.popularNew}}
+								<div class="mb-20">
+								<a class="color-white" href="/single-post/{{id}}"><b>{{title}}</b></a>
+								<h6 class="mt-10">{{moment post_date format="YYYY/MM/DD h:mm:s"}}</h6>
+								</div>
+								<div class="brdr-ash-1 opacty-2 mr-30"></div>
+							{{/each}}
+							
 						</div><!-- mb-30 -->
 					</div><!-- col-md-4 -->
 

@@ -1,111 +1,32 @@
 <h4 class="p-title"><b>GIDES & ANLYTICS</b></h4>
 
 <div class="post post-thumb">
-	<a class="post-img" href="blog-post.html"><img src="https://firebasestorage.googleapis.com/v0/b/flashfood-ce894.appspot.com/o/news%2Fpost-1.jpg?alt=media&token=69ad5fae-505d-4092-aea8-8539c6423a87" alt=""></a>
+	<a class="post-img" href="/single-post/{{firstPost.id}}"><img src="{{firstPost.thumb_img}}" style="height:500px" alt=""></a>
+	<h4 class="pt-20"><a href="#"><b>{{firstPost.title}}</b></a></h4>
 	<div class="post-body">
 		<div class="post-meta">
-			<a class="post-category cat-2" href="#">JavaScript</a>
-			<span class="post-date">March 27, 2018</span>
+			<a class="post-category cat-2" href="/archieve-post/{{firstPost.catID}}">{{firstPost.catName}}</a>
+			<span class="post-date">{{moment firstPost.post_date format="YYYY/MM/DD h:mm:s"}}</span>
 		</div>
 	</div>
 </div>
 <div class="row">
-	<div class="col-sm-6">
-		<img src="https://firebasestorage.googleapis.com/v0/b/flashfood-ce894.appspot.com/o/news%2Fcrypto-news-1-600x450.jpg?alt=media&token=2e6aab00-6f97-4ce8-aa5e-337c9f83b7aa" alt="">
-		<h4 class="pt-20"><a href="#"><b>2017 Market Performance: <gitbr />Crypto vs.Stock</b></a></h4>
+	{{#each this.lstPostOfCate}}
+		<div class="col-sm-6">
+		<img src="{{avatar}}" alt="">
+		<h4 class="pt-20"><a href="/single-post/{{id}}"><b>{{title}}</b></a></h4>
+		<div class="post-meta">
+			<a class="post-category cat-2" href="/archieve-post/{{catID}}">{{catName}}</a>
+		</div>
 		<ul class="list-li-mr-20 pt-10 mb-30">
-			<li class="color-lite-black">by <a href="#" class="color-black"><b>Olivia
-						Capzallo,</b></a>
-				Jan 25, 2018</li>
-			<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i>30,190</li>
+			<li class="color-lite-black">by <a href="#" class="color-black"><b>{{userName}}</b></a>
+				{{moment post_date format="YYYY/MM/DD h:mm:s"}}</li>
+			<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i>{{views}}</li>
 			<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i>47</li>
 		</ul>
-	</div><!-- col-sm-6 -->
-
-	<div class="col-sm-6">
-		<img src="https://firebasestorage.googleapis.com/v0/b/flashfood-ce894.appspot.com/o/news%2Fcrypto-news-5-600x450.jpg?alt=media&token=635e1dd7-2df8-4214-a2d9-f11605b9aea5" alt="">
-		<h4 class="pt-20"><a href="#"><b>2017 Market Performance: <br/>Crypto vs.Stock</b></a></h4>
-		<ul class="list-li-mr-20 pt-10 mb-30">
-			<li class="color-lite-black">by <a href="#" class="color-black"><b>Olivia
-						Capzallo,</b></a>
-				Jan 25, 2018</li>
-			<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i>30,190</li>
-			<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i>47</li>
-		</ul>
-	</div><!-- col-sm-6 -->
-
-	<div class="col-sm-6">
-		<img src="https://firebasestorage.googleapis.com/v0/b/flashfood-ce894.appspot.com/o/news%2Fcrypto-news-4-600x450.jpg?alt=media&token=5b152fc5-1b42-4447-8159-fcab755161ae" alt="">
-		<h4 class="pt-20"><a href="#"><b>2017 Market Performance: <br />Crypto vs.Stock</b></a></h4>
-		<ul class="list-li-mr-20 pt-10 mb-30">
-			<li class="color-lite-black">by <a href="#" class="color-black"><b>Olivia
-						Capzallo,</b></a>
-				Jan 25, 2018</li>
-			<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i>30,190</li>
-			<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i>47</li>
-		</ul>
-	</div><!-- col-sm-6 -->
-
-	<div class="col-sm-6">
-		<img src="https://firebasestorage.googleapis.com/v0/b/flashfood-ce894.appspot.com/o/news%2Fcrypto-news-3-600x450.jpg?alt=media&token=92681393-93f0-4a36-9bad-7f19e3f3883b" alt="">
-		<h4 class="pt-20"><a href="#"><b>2017 Market Performance: <br />Crypto vs.Stock</b></a></h4>
-		<ul class="list-li-mr-20 pt-10 mb-30">
-			<li class="color-lite-black">by <a href="#" class="color-black"><b>Olivia
-						Capzallo,</b></a>
-				Jan 25, 2018</li>
-			<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i>30,190</li>
-			<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i>47</li>
-		</ul>
-	</div><!-- col-sm-6 -->
-
-	<div class="col-sm-6">
-		<img src="https://firebasestorage.googleapis.com/v0/b/flashfood-ce894.appspot.com/o/news%2Fcrypto-news-2-600x450.jpg?alt=media&token=ec6f64df-441b-4204-b218-93c3e34c3a6e" alt="">
-		<h4 class="pt-20"><a href="#"><b>2017 Market Performance: <br />Crypto vs.Stock</b></a></h4>
-		<ul class="list-li-mr-20 pt-10 mb-30">
-			<li class="color-lite-black">by <a href="#" class="color-black"><b>Olivia
-						Capzallo,</b></a>
-				Jan 25, 2018</li>
-			<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i>30,190</li>
-			<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i>47</li>
-		</ul>
-	</div><!-- col-sm-6 -->
-
-	<div class="col-sm-6">
-		<img src="https://firebasestorage.googleapis.com/v0/b/flashfood-ce894.appspot.com/o/news%2Fcrypto-news-1-600x450.jpg?alt=media&token=2e6aab00-6f97-4ce8-aa5e-337c9f83b7aa" alt="">
-		<h4 class="pt-20"><a href="#"><b>2017 Market Performance: <br />Crypto vs.Stock</b></a></h4>
-		<ul class="list-li-mr-20 pt-10 mb-30">
-			<li class="color-lite-black">by <a href="#" class="color-black"><b>Olivia
-						Capzallo,</b></a>
-				Jan 25, 2018</li>
-			<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i>30,190</li>
-			<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i>47</li>
-		</ul>
-	</div><!-- col-sm-6 -->
-
-	<div class="col-sm-6">
-		<img src="https://firebasestorage.googleapis.com/v0/b/flashfood-ce894.appspot.com/o/news%2Fcrypto-news-5-600x450.jpg?alt=media&token=635e1dd7-2df8-4214-a2d9-f11605b9aea5" alt="">
-		<h4 class="pt-20"><a href="#"><b>2017 Market Performance: <br />Crypto vs.Stock</b></a></h4>
-		<ul class="list-li-mr-20 pt-10 mb-30">
-			<li class="color-lite-black">by <a href="#" class="color-black"><b>Olivia
-						Capzallo,</b></a>
-				Jan 25, 2018</li>
-			<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i>30,190</li>
-			<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i>47</li>
-		</ul>
-	</div><!-- col-sm-6 -->
-
-	<div class="col-sm-6">
-		<img src="https://firebasestorage.googleapis.com/v0/b/flashfood-ce894.appspot.com/o/news%2Fcrypto-news-1-600x450.jpg?alt=media&token=2e6aab00-6f97-4ce8-aa5e-337c9f83b7aa" alt="">
-		<h4 class="pt-20"><a href="#"><b>2017 Market Performance: Crypto vs.Stock</b></a></h4>
-		<ul class="list-li-mr-20 pt-10 mb-30">
-			<li class="color-lite-black">by <a href="#" class="color-black"><b>Olivia
-						Capzallo,</b></a>
-				Jan 25, 2018</li>
-			<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i>30,190</li>
-			<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i>47</li>
-		</ul>
-	</div><!-- col-sm-6 -->
-
+		</div><!-- col-sm-6 -->
+	{{/each}}
+	
 </div><!-- row -->
 
 <a class="dplay-block btn-brdr-primary mt-20 mb-md-50" href="#"><b>LOAD MORE</b></a>

@@ -185,53 +185,50 @@
 					</div>
 					<div class="vertical-host-news col-12 col-md-5 col-lg-4">
 						<h4 class="p-title"><b>Tin cùng chuyên mục</b></h4>
-						<div class="all-news-content">
+						
 							{{#each this.sameCate}}
 							<a class="oflow-hidden pos-relative dplay-block" href="/single-post/{{id}}">
 							<div class="wh-100x abs-tlr"><img src="{{thumb_img}}" alt=""></div>
 							<div class="ml-120 min-h-100x">
 								<h5><b>{{title}}</b></h5>
-								<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
-											Palmer,</b></span> {{post_date}}</h6>
+								<h6 class="color-lite-black pt-10">by <span class="color-black"><b>{{userName}}</b></span> {{moment post_date format="YYYY/MM/DD h:mm:s"}} {{catName}}</h6>
 								{{!-- https://news.zing.vn/goi-y-lap-smarthome-gia-tam-10-trieu-o-viet-nam-post937347.html --}}
 							</div>
 							</a><!-- oflow-hidden -->
 							{{/each}}
-						</div>
+						
 
 						<div class="mt-40">
 							<div>
 								<h4 class="p-title"><b>Tin có nhiều lượt xem nhất</b></h4>
-								
-								{{#each this.topView}}
-								<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post/{{id}}">
-								<div class="wh-100x abs-tlr"><img src="{{thumb_img}}" alt=""></div>
-								<div class="ml-120 min-h-100x">
-									<h5><b>{{title}}</b></h5>
-									
-									<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
-												Palmer,</b></span> {{post_date}}</h6>
+								<div class="all-news-content">
+									{{#each this.topView}}
+									<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post/{{id}}">
+									<div class="wh-100x abs-tlr"><img src="{{thumb_img}}" alt=""></div>
+									<div class="ml-120 min-h-100x">
+										<h5><b>{{title}}</b></h5>
+										
+										<h6 class="color-lite-black pt-10">by <span class="color-black"><b>{{userName}}</b></span> {{moment post_date format="YYYY/MM/DD h:mm:s"}} {{catName}}</h6>
+									</div>
+									</a><!-- oflow-hidden -->
+									{{/each}}
 								</div>
-								</a><!-- oflow-hidden -->
-								{{/each}}
-							
-
 							</div><!-- mtb-50 -->
 						</div>
 						<div class="mtb-50">
 							<h4 class="p-title"><b>Tin hot nhất</b></h4>
-							{{#each this.hotNew}}
+							<div class="all-news-content">
+								{{#each this.hotNew}}
 								<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post/{{id}}">
 								<div class="wh-100x abs-tlr"><img src="{{thumb_img}}" alt=""></div>
 								<div class="ml-120 min-h-100x">
 									<h5><b>{{title}}</b>
 									</h5>
-								
-									<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
-												Palmer,</b></span> {{post_date}}</h6>
+									<h6 class="color-lite-black pt-10">by <span class="color-black"><b>{{userName}}</b></span> {{moment post_date format="YYYY/MM/DD h:mm:s"}} {{catName}}</h6>
 								</div>
 								</a><!-- oflow-hidden -->
-							{{/each}}
+								{{/each}}
+							</div>
 						
 						</div><!-- mtb-50 -->
 					<div class="aside-widget">
@@ -240,16 +237,9 @@
 							</div>
 							<div class="category-widget">
 								<ul>
-									<li><a href="/archieve-post" class="cat-1">Thế giới<span>3405</span></a></li>
-									<li><a href="/archieve-post" class="cat-2">Kinh tế vĩ mô<span>3206</span></a></li>
-									<li><a href="/archieve-post" class="cat-3">Công nghệ<span>3007</span></a></li>
-									<li><a href="/archieve-post" class="cat-4">Bóng đá<span>2090</span></a></li>
-									<li><a href="/archieve-post" class="cat-5">Khởi ngiệp<span>2789</span></a></li>
-									<li><a href="/archieve-post" class="cat-6">Chứng khoán<span>2232</span></a></li>
-									<li><a href="/archieve-post" class="cat-7">Sức khỏe<span>1223</span></a></li>
-									<li><a href="/archieve-post" class="cat-8">Thời trang<span>890</span></a></li>
-									<li><a href="/archieve-post" class="cat-9">Xu hướng<span>808</span></a></li>
-									<li><a href="/archieve-post" class="cat-10">Bất động sản<span>766</span></a></li>
+									{{#each this.topCate}}
+										<li><a href="/archieve-post/{{id}}" class="cat-1">{{name}}<span>{{SL}}</span></a></li>
+									{{/each}}
 								</ul>
 							</div>
 						</div>
@@ -257,15 +247,10 @@
 						<div class="aside-widget">
 							<div class="tags-widget">
 								<ul>
-									<li><a href="/archieve-post">Hồ sơ</a></li>
-									<li><a href="/archieve-post">Điểm nóng</a></li>
-									<li><a href="/archieve-post">Đầu tư</a></li>
-									<li><a href="/archieve-post">Chứng khoán</a></li>
-									<li><a href="/archieve-post">Sức khỏe</a></li>
-									<li><a href="/archieve-post">Xu hướng</a></li>
-									<li><a href="/archieve-post">Nhà đất</a></li>
-									<li><a href="/archieve-post">Vợ chồng</a></li>
-									<li><a href="/archieve-post">Tình yêu</a></li>
+									{{#each this.lstTag}}
+										<li><a href="/archieve-post/{{id}}">{{name}}</a></li>
+									{{/each}}
+									
 								</ul>
 							</div>
 						</div>
@@ -313,15 +298,14 @@
 					<div class="col-sm-4">
 						<div class="mb-30">
 							<h5 class="color-primary mb-20"><b>Tin phổ biến</b></h5>
-							<div class="mb-20">
-								<a class="color-white" href="/single-post"><b>Từ vụ Qualcomm, Apple lộ rõ sự thủ đoạn và yếu đuối</b></a>
-								<h6 class="mt-10">Jan 25, 2018</h6>
-							</div>
-							<div class="brdr-ash-1 opacty-2 mr-30"></div>
-							<div class="mt-20">
-								<a class="color-white" href="/single-post"><b>Tổng hợp các vụ mua bán ma túy lớn trong năm 2019</b></a>
-								<h6 class="mt-10">Jan 25, 2018</h6>
-							</div>
+							{{#each this.popularNew}}
+								<div class="mb-20">
+								<a class="color-white" href="/single-post/{{id}}"><b>{{title}}</b></a>
+								<h6 class="mt-10">{{moment post_date format="YYYY/MM/DD h:mm:s"}}/h6>
+								</div>
+								<div class="brdr-ash-1 opacty-2 mr-30"></div>
+							{{/each}}
+							
 						</div><!-- mb-30 -->
 					</div><!-- col-md-4 -->
 

@@ -11,15 +11,15 @@
 	<link href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded:400,600,700" rel="stylesheet">
 
 	<!-- Stylesheets -->
-	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="/css/bootstrap.css" rel="stylesheet">
 
-	<link href="fonts/ionicons.css" rel="stylesheet">
+	<link href="/fonts/ionicons.css" rel="stylesheet">
 
-	<link href="css/styles.css" rel="stylesheet">
+	<link href="/css/styles.css" rel="stylesheet">
 
-	<link rel="icon" href="imgs/favicon.ico">
+	<link rel="icon" href="/imgs/favicon.ico">
 
-	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="/css/owl.carousel.min.css">
 
 </head>
 
@@ -49,9 +49,9 @@
 								</div>
 								<div id="breakingNewsTicker" class="ticker">
 									<ul>
-										<li><a href="/single-post">10:20PM - 10 Things Amazon Echo Can Do</a></li>
-										<li><a href="/single-post">14:00PM - Welcome to Colorlib Family.</a></li>
-										<li><a href="/single-post">7:00AM - Boys 'doing well' after Thai</a></li>
+										{{#each this.lstTop}}
+											<li><a href="/single-post/{{id}}">{{title}}</a></li>
+										{{/each}}
 									</ul>
 								</div>
 							</div>
@@ -84,7 +84,7 @@
 
 		<div class="header">
 			<div class="container">
-				<a class="logo" href="/"><img src="imgs/logo-black.png" alt="Logo"></a>
+				<a class="logo" href="/"><img src="/imgs/logo-black.png" alt="Logo"></a>
 				<a class="menu-nav-icon" data-menu="#main-menu" href="#"><i class="ion-navicon"></i></a>
 
 				<ul class="main-menu menu" id="main-menu">
@@ -186,14 +186,13 @@
 					<div class="vertical-host-news col-12 col-md-5 col-lg-4">
 						<h4 class="p-title"><b>Tin trong ngày</b></h4>
 						<div class="all-news-content">
-							{{#each this.hotNew}}
+							{{#each this.lstHot}}
 								<a class="oflow-hidden pos-relative dplay-block" href="/single-post/{{id}}">
 									<div class="wh-100x abs-tlr"><img src="{{avatar}}" alt=""></div>
 									<div class="ml-120 min-h-100x">
 										<h5><b>{{title}}</b></h5>
-										<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
-													Palmer,</b></span> {{post_date}}</h6>
-										{{!-- https://news.zing.vn/goi-y-lap-smarthome-gia-tam-10-trieu-o-viet-nam-post937347.html --}}
+										<h6 class="color-lite-black pt-10">by <span class="color-black"><b>{{userName}}</b></span>{{moment post_date format="YYYY/MM/DD h:mm:s"}} {{catName}}</h6>
+									
 									</div>
 								</a><!-- oflow-hidden -->
 							{{/each}}
@@ -202,35 +201,34 @@
 						<div class="mt-40">
 							<div>
 								<h4 class="p-title"><b>Tin có nhiều lượt xem nhất</b></h4>
-								{{#each this.topView}} 
+								<div class="all-news-content">
+									{{#each this.lstTop}} 
 									<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post/{{id}}">
 										<div class="wh-100x abs-tlr"><img src="{{avatar}}" alt=""></div>
 										<div class="ml-120 min-h-100x">
 											<h5><b>{{title}}</b></h5>
-											{{!-- https://news.zing.vn/sri-lanka-noi-danh-bom-la-tra-thu-cho-vu-xa-sung-new-zealand-post938940.html --}}
-											<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
-														Palmer,</b></span> {{post_date}}</h6>
+											<h6 class="color-lite-black pt-10">by <span class="color-black"><b>{{userName}}</b></span> {{moment post_date format="YYYY/MM/DD h:mm:s"}} {{catName}}</h6>
 										</div>
 									</a><!-- oflow-hidden -->
-								{{/each}}
+									{{/each}}
+								</div>
 							</div><!-- mtb-50 -->
 						</div>
 						
 						<div class="mtb-50">
 							<h4 class="p-title"><b>Tin hot nhất</b></h4>
-
-							{{#each this.hotNew}}
+							<div class="all-news-content">
+								{{#each this.lstHot}}
 								<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post/{{id}}">
 								<div class="wh-100x abs-tlr"><img src="{{avatar}}" alt=""></div>
 								<div class="ml-120 min-h-100x">
 									<h5><b>{{title}}</b>
 									</h5>
-									{{!-- https://news.zing.vn/nu-dien-vien-bi-liet-nua-nguoi-ke-sinh-7-thang-moi-duoc-gap-con-2-lan-post938868.html --}}
-									<h6 class="color-lite-black pt-10">by <span class="color-black"><b>Danile
-												Palmer,</b></span> {{post_date}}</h6>
+									<h6 class="color-lite-black pt-10">by <span class="color-black"><b>{{userName}}</b></span> {{moment post_date format="YYYY/MM/DD h:mm:s"}} {{catName}}</h6>
 								</div>
 								</a><!-- oflow-hidden -->
-							{{/each}}
+								{{/each}}
+							</div>
 						</div><!-- mtb-50 -->
 					<div class="aside-widget">
 							<div class="section-title">
@@ -238,16 +236,9 @@
 							</div>
 							<div class="category-widget">
 								<ul>
-									<li><a href="/archieve-post" class="cat-1">Thế giới<span>3405</span></a></li>
-									<li><a href="/archieve-post" class="cat-2">Kinh tế vĩ mô<span>3206</span></a></li>
-									<li><a href="/archieve-post" class="cat-3">Công nghệ<span>3007</span></a></li>
-									<li><a href="/archieve-post" class="cat-4">Bóng đá<span>2090</span></a></li>
-									<li><a href="/archieve-post" class="cat-5">Khởi ngiệp<span>2789</span></a></li>
-									<li><a href="/archieve-post" class="cat-6">Chứng khoán<span>2232</span></a></li>
-									<li><a href="/archieve-post" class="cat-7">Sức khỏe<span>1223</span></a></li>
-									<li><a href="/archieve-post" class="cat-8">Thời trang<span>890</span></a></li>
-									<li><a href="/archieve-post" class="cat-9">Xu hướng<span>808</span></a></li>
-									<li><a href="/archieve-post" class="cat-10">Bất động sản<span>766</span></a></li>
+									{{#each this.lstTopCate}}
+										<li><a href="/archieve-post/{{id}}" class="cat-1">{{name}}<span>{{SL}}</span></a></li>
+									{{/each}}
 								</ul>
 							</div>
 						</div>
@@ -255,15 +246,9 @@
 						<div class="aside-widget">
 							<div class="tags-widget">
 								<ul>
-									<li><a href="/archieve-post">Hồ sơ</a></li>
-									<li><a href="/archieve-post">Điểm nóng</a></li>
-									<li><a href="/archieve-post">Đầu tư</a></li>
-									<li><a href="/archieve-post">Chứng khoán</a></li>
-									<li><a href="/archieve-post">Sức khỏe</a></li>
-									<li><a href="/archieve-post">Xu hướng</a></li>
-									<li><a href="/archieve-post">Nhà đất</a></li>
-									<li><a href="/archieve-post">Vợ chồng</a></li>
-									<li><a href="/archieve-post">Tình yêu</a></li>
+									{{#each this.lstTag}}
+										<li><a href="/archieve-post/{{id}}">{{name}}</a></li>
+									{{/each}}
 								</ul>
 							</div>
 						</div>
@@ -311,10 +296,10 @@
 					<div class="col-sm-4">
 						<div class="mb-30">
 							<h5 class="color-primary mb-20"><b>Tin phổ biến</b></h5>
-							{{#each this.topView}}
+							{{#each this.popularNew}}
 								<div class="mb-20">
 								<a class="color-white" href="/single-post/{{id}}"><b>{{title}}</b></a>
-								<h6 class="mt-10">Jan 25, 2018</h6>
+								<h6 class="mt-10">{{moment post_date format="YYYY/MM/DD h:mm:s"}}</h6>
 								</div>
 							{{/each}}
 						
@@ -348,17 +333,17 @@
 
 	<!-- SCIPTS -->
 
-	<script src="js/jquery-3.4.0.min.js"></script>
+	<script src="/js/jquery-3.4.0.min.js"></script>
 
-	<script src="js/tether.min.js"></script>
+	<script src="/js/tether.min.js"></script>
 
-	<script src="js/bootstrap.js"></script>
+	<script src="/js/bootstrap.js"></script>
 
-	<script src="js/jquery.sticky.js"></script>
+	<script src="/js/jquery.sticky.js"></script>
 
-	<script src="js/plugins.js"></script>
+	<script src="/js/plugins.js"></script>
 
-	<script src="js/scripts.js"></script>
+	<script src="/js/scripts.js"></script>
 </body>
 
 </html>
