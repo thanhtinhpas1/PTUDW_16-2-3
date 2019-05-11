@@ -2,13 +2,31 @@ var db = require("../common/database");
 
 //Find all posts
 function findAll() {
-    return db.findAll("posts");
+    return new Promise((resolve, reject) => {
+        var sql = `SELECT posts.*, categories.name as catName, categories.id as catID , users.pseudonym as userName 
+        FROM posts 
+        JOIN categories ON posts.category_id = categories.id 
+        JOIN users ON posts.created_by = users.id`;
+
+        var conn = db.getConnection();
+        conn.connect();
+
+        conn.query(sql, (err, value) => {
+            if (err ) reject(err);
+            else resolve(value);
+            conn.end();
+        });
+    })
 }
 
 //Get Top 10 of hot new posts
 function displayHotNews(){
     return new Promise((resolve,reject) => {
-        var sql = `SELECT * from posts ORDER BY post_date DESC LIMIT 10 `;
+        var sql = `SELECT posts.*, categories.name as catName, categories.id as catID ,users.pseudonym as userName 
+        FROM posts 
+        JOIN categories ON posts.category_id = categories.id 
+        JOIN users ON posts.created_by = users.id
+        ORDER BY posts.post_date DESC LIMIT 10 `;
         
         var conn = db.getConnection();
         conn.connect();
@@ -28,7 +46,11 @@ function displayHotNews(){
 //Get top 10 posts having high view
 function displayTopView(){
     return new Promise((resolve,reject) => {
-        var sql = `SELECT * from posts ORDER BY views DESC LIMIT 10 `;
+        var sql = `SELECT posts.*, categories.name as catName, categories.id as catID , users.pseudonym as userName
+        FROM posts 
+        JOIN categories ON posts.category_id = categories.id 
+        JOIN users ON posts.created_by = users.id
+        ORDER BY views DESC LIMIT 10 `;
 
         var conn = db.getConnection();
         conn.connect();
@@ -44,7 +66,11 @@ function displayTopView(){
 //Pagination
 function findLimit(begin,end){
     return new Promise((resolve, reject) => {
-        var sql = `SELECT * from posts LIMIT ${end} OFFSET ${begin}`;
+        var sql = `SELECT  posts.*, categories.name as catName, categories.id as catID , users.pseudonym as userName
+         FROM posts
+         JOIN categories ON posts.category_id = categories.id 
+         JOIN users ON posts.created_by = users.id
+         LIMIT ${end} OFFSET ${begin}`;
 
         var conn = db.getConnection();
         conn.connect();
@@ -59,7 +85,7 @@ function findLimit(begin,end){
 
 
 module.exports = {
-    findAll: findAll,
+    getAll: findAll,
     displayHotNews: displayHotNews,
     displayTopView: displayTopView,
     findById: id => {
