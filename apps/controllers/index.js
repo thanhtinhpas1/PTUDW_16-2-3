@@ -1,6 +1,7 @@
 var express = require('express');
 var postdb = require("../models/posts");
-
+var catedb = require("../models/categories");
+var tagdb = require("../models/tags");
 
 var router = express.Router();
 router.use("/single-post", require(__dirname + "/single-post"));
@@ -22,25 +23,60 @@ router.use("/edit-profile", require(__dirname + "/edit-profile"));
 
 router.get("/", function(req, res) {
     
+    //Pagination
     var page = parseInt(req.query.page) || 1;
     var perPage = 6;
     var begin = (page - 1)* perPage;
     var end = page*perPage;
 
-  
+    //Call database
     var hotNewDB = postdb.displayHotNews();
     var topViewDB = postdb.displayTopView();
-    var allPost = postdb.findLimit(begin,end);
+    var allPost = postdb.findLimit(1,end);
+    var catParent = catedb.findParent();
+    var allCate = catedb.getAllCategory();
+    var topCate = catedb.getTopCate();
+    var allTag = tagdb.getAllTag();
 
+    //Get database
     hotNewDB.then(lstHot => {
+
         topViewDB.then(lstTop => {
+            
             allPost.then(lstPost => {
-                
-                res.render("index", {
-                    hotNew: lstHot,
-                    topView: lstTop,
-                    post: lstPost,
-                    page: page
+
+                catParent.then(lstCatParent => {
+
+                    allCate.then(lstCate => {
+                        
+                        topCate.then(lstTopCate => {
+
+                            allTag.then(lstTag => {
+                                
+                                res.render("index", {
+                                    hotNew: lstHot,
+                                    topView: lstTop,
+                                    post: lstPost,
+                                    page: page,
+                                    hottest: lstHot[0],
+                                    lstHottest : lstHot.slice(1,10),
+                                    lstCatParent : lstCatParent,
+                                    lstCate: lstCate,
+                                    lstTopCate: lstTopCate,
+                                    lstTag : lstTag,
+                                    popularNew: lstHot.slice(0,3)
+                                })
+                            }).catch(err => {
+                                console.log(err);
+                            })
+                        }).catch(err => {
+                            console.log(err);
+                        })
+                    }).catch(err => {
+                        console.log(err);
+                    })
+                }).catch(err => {
+                    console.log(err);
                 })
             }).catch(err => {
                 console.log(err);
