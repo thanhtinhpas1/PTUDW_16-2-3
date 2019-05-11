@@ -25,9 +25,8 @@ router.get("/", function(req, res) {
     var page = parseInt(req.query.page) || 1;
     var perPage = 6;
     var begin = (page - 1)* perPage;
-    console.log(begin);
     var end = page*perPage;
-    console.log(end);
+
   
     var hotNewDB = postdb.displayHotNews();
     var topViewDB = postdb.displayTopView();
