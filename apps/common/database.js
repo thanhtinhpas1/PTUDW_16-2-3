@@ -24,6 +24,19 @@ function getConnection() {
 
 module.exports = {
 
+    uppdate: (tableName, entity) => {
+        return new Promise((resolve, reject) => {
+            var sql = `UPDATE ${tableName} set ?`;
+            var conn = createConnection();
+            conn.connect();
+            conn.query(sql, id, (err, value) => {
+                if (err) reject(err);
+                else resolve(value);
+                conn.end();
+            })
+        })
+    },
+
     //delete by id
     deleteById: (tableName ,id) => {
         return new Promise((resolve, reject) => {
