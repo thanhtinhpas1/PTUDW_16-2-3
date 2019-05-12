@@ -5,6 +5,10 @@ var moment = require("moment");
 function GetTimeNow() {
     return moment().format("YYYY/MM/DD h:mm:ss")
 }
+function UpdatePostDate(value) {
+    return moment(value).format("YYYY/MM/DD hh:mm:ss")
+}
+
 
 function hash_password(password) {
     var saltRounds = config.get('salt');
@@ -15,5 +19,6 @@ function hash_password(password) {
 
 module.exports = {
     hash_password: hash_password,
-    GetTimeNow: GetTimeNow
+    GetTimeNow: GetTimeNow,
+    UpdatePostDate: UpdatePostDate
 }

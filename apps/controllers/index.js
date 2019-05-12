@@ -13,6 +13,8 @@ router.use("/writer/manage-draft", require(__dirname + "/writer/manage-draft"));
 //editor
 router.use("/editor/manage-content", require(__dirname + "/editor/manage-draft"));
 router.use("/editor/edit-content", require(__dirname + "/editor/edit-draft"));
+router.use("/editor/confirm-post", require(__dirname + "/editor/confirm-post"));
+
 
 //include for admin
 router.use("/admin", require(__dirname + "/admin/index"));

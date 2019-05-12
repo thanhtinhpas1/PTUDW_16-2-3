@@ -1,5 +1,6 @@
 var db = require("../common/database");
 
+
 //Find all posts
 function findAll() {
     return new Promise((resolve, reject) => {
@@ -14,7 +15,7 @@ function findAll() {
         conn.connect();
 
         conn.query(sql, (err, value) => {
-            if (err ) reject(err);
+            if (err) reject(err);
             else resolve(value);
             conn.end();
         });
@@ -22,8 +23,8 @@ function findAll() {
 }
 
 //Get Top 10 of hot new posts
-function getTopHot(){
-    return new Promise((resolve,reject) => {
+function displayHotNews() {
+    return new Promise((resolve, reject) => {
         var sql = `SELECT posts.*, categories.name as catName, categories.id as catID ,users.pseudonym as userName ,COUNT(comments.id) AS comments
         FROM posts 
         JOIN categories ON posts.category_id = categories.id 
@@ -31,12 +32,12 @@ function getTopHot(){
         LEFT JOIN comments ON comments.post_id = posts.id
         GROUP BY posts.id
         ORDER BY posts.post_date DESC LIMIT 10 `;
-        
+
         var conn = db.getConnection();
         conn.connect();
 
-        conn.query(sql,(err,value) => {
-            if(err){
+        conn.query(sql, (err, value) => {
+            if (err) {
                 reject(err);
             }
             else {
@@ -48,8 +49,8 @@ function getTopHot(){
 }
 
 //Get top 10 posts having high view
-function getTopView(){
-    return new Promise((resolve,reject) => {
+function displayTopView() {
+    return new Promise((resolve, reject) => {
         var sql = `SELECT posts.*, categories.name as catName, categories.id as catID , users.pseudonym as userName,COUNT(comments.id) AS comments
         FROM posts 
         JOIN categories ON posts.category_id = categories.id 
@@ -61,8 +62,8 @@ function getTopView(){
         var conn = db.getConnection();
         conn.connect();
 
-        conn.query(sql,(err,value) => {
-            if(err) reject(err);
+        conn.query(sql, (err, value) => {
+            if (err) reject(err);
             else resolve(value);
             conn.end();
         })
@@ -70,7 +71,7 @@ function getTopView(){
 }
 
 //Pagination
-function findLimit(begin,end){
+function findLimit(begin, end) {
     return new Promise((resolve, reject) => {
         var sql = `SELECT  posts.*, categories.name as catName, categories.id as catID , users.pseudonym as userName, post_tageds.tag_name as tagName,COUNT(comments.id) AS comments
          FROM posts
@@ -85,37 +86,36 @@ function findLimit(begin,end){
         conn.connect();
 
         conn.query(sql, (err, value) => {
-            if (err ) reject(err);
+            if (err) reject(err);
             else resolve(value);
             conn.end();
         });
     })
 }
-
-function getTopPostOfWeek(){
+function getAllPostsEditorManage(status, editorId) {
+    var conn = db.getConnection();
     return new Promise((resolve, reject) => {
-        var sql = `SELECT posts.*, categories.name as catName, categories.id as catID , users.pseudonym as userName, COUNT(comments.id) AS comments
-         FROM posts
-         JOIN categories ON posts.category_id = categories.id 
-         JOIN users ON posts.created_by = users.id
-         LEFT JOIN comments ON comments.post_id = posts.id
-         GROUP BY posts.id
-         ORDER BY views DESC,post_date DESC LIMIT 6`;
-        
-        var conn = db.getConnection();
         conn.connect();
-
-        conn.query(sql, (err, value) => {
-            if (err ) reject(err);
+        var sql = `SELECT categories.name,  users.username, posts.id, posts.avatar, posts.content, posts.summary_content, posts.thumb_img, posts.title, posts.created_at
+        FROM categories, posts, users
+        WHERE categories.id = posts.category_id AND posts.status = ? AND posts.created_by = users.id AND categories.id IN (SELECT manage_categories.category_manage_id FROM manage_categories WHERE manage_categories.editor_id = ?)`;
+        conn.query(sql, [status, editorId], (err, value) => {
+            if (err) reject(err);
             else resolve(value);
             conn.end();
         });
-    })
+    });
+}
+function updatePost(entity, id) {
+    return db.uppdate('posts', entity, id);
 }
 
 
 module.exports = {
-    getAll: findAll,
+    // Lấy tất cả những bài post ở status = 0 do editor quản lí
+    getAllPostsEditorManage: getAllPostsEditorManage,
+    updatePost: updatePost,
+    findAll: findAll,
     getTopHot: getTopHot,
     getTopView: getTopView,
     findById: id => {
