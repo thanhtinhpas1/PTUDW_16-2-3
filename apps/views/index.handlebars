@@ -143,19 +143,15 @@
 		<div class="h-600x h-sm-auto">
 			<div class="h-2-3 h-sm-auto oflow-hidden">
 				<div class="pb-5 pr-5 pr-sm-0 float-left float-sm-none w-2-3 w-sm-100 h-100 h-sm-300x">
-					<a class="pos-relative h-100 dplay-block" href="/single-post">
-						<div class="img-bg bg-1 bg-grad-layer-6"></div>
+					<a class="pos-relative h-100 dplay-block" href="/single-post/{{firstPostOfWeek.id}}">
+						<div class="img-bg bg-1 bg-grad-layer-6" style="background: url({{firstPostOfWeek.thumb_img}}) no-repeat center; background-size: cover;"></div>
 						<div class="abs-blr color-white p-20 bg-sm-color-7">
-							<h3 class="mb-15 mb-sm-5 font-sm-13"><b>Facebook chỉ thuê 11 người chặn tin giả ở bầu
-									cử lớn nhất TG</b></h3>
-							<span class="mr-40">900 triệu người Ấn Độ sẽ đi bầu cử từ nay tới 19/5. Facebook
-								có 300 triệu người dùng tại đây và đang sử dụng một nhóm 11 người để ngăn
-								tin tức giả mạo.…</span>
+							<h3 class="mb-15 mb-sm-5 font-sm-13"><b>{{firstPostOfWeek.title}}</b></h3>
+							<span class="mr-40">{{firstPostOfWeek.summary_content}}</span>
 							<ul class="list-li-mr-20">
-								{{!-- https://news.zing.vn/facebook-chi-thue-11-nguoi-chan-tin-gia-o-bau-cu-lon-nhat-tg-post938752.html --}}
-								<li>by <span class="color-primary"><b>Jame JK</b></span> Jan 25, 2018</li>
-								<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i>30,190</li>
-								<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i>30</li>
+								<li>by <span class="color-primary"><b>{{firstPostOfWeek.userName}}</b></span> {{moment firstPostOfWeek.post_date format="YYYY/MM/DD h:mm:s"}}</li>
+								<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i>{{firstPostOfWeek.views}}</li>
+								<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i>{{firstPostOfWeek.CM}}</li>
 							</ul>
 						</div>
 						<!--abs-blr -->
@@ -164,107 +160,49 @@
 
 				<div class="float-left float-sm-none w-1-3 w-sm-100 h-100 h-sm-600x">
 
-					<div class="pl-5 pb-5 pl-sm-0 ptb-sm-5 pos-relative h-50">
-						<a class="pos-relative h-100 dplay-block" href="/single-post">
+					{{#each this.lstPostOfWeek_1}}
+						<div class="pl-5 pb-5 pl-sm-0 ptb-sm-5 pos-relative h-50">
+						<a class="pos-relative h-100 dplay-block" href="/single-post/{{id}}">
 
-							<div class="img-bg bg-2 bg-grad-layer-6"></div>
+							<div class="img-bg bg-2 bg-grad-layer-6" style="background: url({{thumb_img}}) no-repeat center; background-size: cover;"></div>
 
 							<div class="abs-blr color-white p-20 bg-sm-color-7">
-								<h4 class="mb-10 mb-sm-5"><b>Lộ video Bill Gates 'lên nóc nhà' trong hộp đêm với điệu
-										nhảy con gà</b></h4>
-								{{!-- https://news.zing.vn/lo-video-bill-gates-len-noc-nha-trong-hop-dem-voi-dieu-nhay-con-ga-post938904.html --}}
+								<h4 class="mb-10 mb-sm-5"><b>{{title}}</b></h4>
 								<ul class="list-li-mr-20">
-									<li>Jan 25, 2018</li>
-									<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i>30,190</li>
-									<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i>30</li>
+									<li> {{moment post_date format="YYYY/MM/DD h:mm:s"}}</li>
+									<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i>{{views}}</li>
+									<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i>{{comments}}</li>
 								</ul>
 							</div>
 							<!--abs-blr -->
 						</a><!-- pos-relative -->
-					</div><!-- w-1-3 -->
-
-					<div class="pl-5 ptb-5 pl-sm-0 pos-relative h-50">
-						<a class="pos-relative h-100 dplay-block" href="/single-post">
-
-							<div class="img-bg bg-3 bg-grad-layer-6"></div>
-
-							<div class="abs-blr color-white p-20 bg-sm-color-7">
-								<h4 class="mb-10 mb-sm-5"><b>Tôi dùng P30 Pro nhưng không cần tính năng Huawei tự hào
-										nhất</b></h4>
-								{{!-- https://news.zing.vn/toi-dung-p30-pro-nhung-khong-can-tinh-nang-huawei-tu-hao-nhat-post938005.html --}}
-								<ul class="list-li-mr-20">
-									<li>Jan 25, 2018</li>
-									<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i>30,190</li>
-									<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i>30</li>
-								</ul>
-							</div>
-							<!--abs-blr -->
-						</a><!-- pos-relative -->
-					</div><!-- w-1-3 -->
-
+						</div><!-- w-1-3 -->
+					{{/each}}
+					
 				</div><!-- float-left -->
 
 			</div><!-- h-2-3 -->
 
 			<div class="h-1-3 oflow-hidden">
+				{{#each this.lstPostOfWeeK_2}}
+					<div class="pr-5 pr-sm-0 pt-5 float-left float-sm-none pos-relative w-1-3 w-sm-100 h-100 h-sm-300x">
+					<a class="pos-relative h-100 dplay-block" href="/single-post/{{id}}">
 
-				<div class="pr-5 pr-sm-0 pt-5 float-left float-sm-none pos-relative w-1-3 w-sm-100 h-100 h-sm-300x">
-					<a class="pos-relative h-100 dplay-block" href="/single-post">
-
-						<div class="img-bg bg-4 bg-grad-layer-6"></div>
+						<div class="img-bg bg-4 bg-grad-layer-6" style="background: url({{thumb_img}}) no-repeat center; background-size: cover;"></div>
 
 						<div class="abs-blr color-white p-20 bg-sm-color-7">
-							<h4 class="mb-10 mb-sm-5"><b>Từ vụ Qualcomm, Apple lộ rõ sự thủ đoạn và yếu đuối</b></h4>
-							{{!-- https://news.zing.vn/tu-vu-qualcomm-apple-lo-ro-su-thu-doan-va-yeu-duoi-post938090.html --}}
+							<h4 class="mb-10 mb-sm-5"><b>{{title}}</b></h4>
 							<ul class="list-li-mr-20">
-								<li>Jan 25, 2018</li>
-								<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i>30,190</li>
-								<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i>30</li>
+								<li>{{moment post_date format="YYYY/MM/DD h:mm:s"}}</li>
+								<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i>{{views}}</li>
+								<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i>{{comments}}</li>
 							</ul>
 						</div>
 						<!--abs-blr -->
 					</a><!-- pos-relative -->
-				</div><!-- w-1-3 -->
-
-				<div
-					class="plr-5 plr-sm-0 pt-5 pt-sm-10 float-left float-sm-none pos-relative w-1-3 w-sm-100 h-100 h-sm-300x">
-					<a class="pos-relative h-100 dplay-block" href="/single-post">
-
-						<div class="img-bg bg-5 bg-grad-layer-6"></div>
-
-						<div class="abs-blr color-white p-20 bg-sm-color-7">
-							<h4 class="mb-10 mb-sm-5"><b>Vì sao 'ông trùm ráp iPhone' quyết định về vườn?</b>
-							</h4>
-							{{!-- https://news.zing.vn/vi-sao-ong-trum-rap-iphone-quyet-dinh-ve-vuon-post937574.html --}}
-							<ul class="list-li-mr-20">
-								<li>Jan 25, 2018</li>
-								<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i>30,190</li>
-								<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i>30</li>
-							</ul>
-						</div>
-						<!--abs-blr -->
-					</a><!-- pos-relative -->
-				</div><!-- w-1-3 -->
-
-				<div
-					class="pl-5 pl-sm-0 pt-5 pt-sm-10 float-left float-sm-none pos-relative w-1-3 w-sm-100 h-100 h-sm-300x">
-					<a class="pos-relative h-100 dplay-block" href="/single-post">
-
-						<div class="img-bg bg-6 bg-grad-layer-6"></div>
-
-						<div class="abs-blr color-white p-20 bg-sm-color-7">
-							<h4 class="mb-10 mb-sm-5"><b>Người phụ nữ đứng đầu đế chế hỗn loạn Youtube</b></h4>
-							{{!-- https://news.zing.vn/nguoi-phu-nu-dung-dau-de-che-hon-loan-youtube-post937028.html --}}
-							<ul class="list-li-mr-20">
-								<li>Jan 25, 2018</li>
-								<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i>30,190</li>
-								<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i>30</li>
-							</ul>
-						</div>
-						<!--abs-blr -->
-					</a><!-- pos-relative -->
-				</div><!-- w-1-3 -->
-
+					</div><!-- w-1-3 -->
+				{{/each}}
+				
 			</div><!-- h-2-3 -->
 		</div><!-- h-100vh -->
 	</div><!-- container -->
@@ -284,7 +222,7 @@
 							{{#each this.hotNew}}
 							<div class="col-sm-4">
 								<div class="post">
-									<a class="post-img" href="/single-post/{{id}}"><img src="{{avatar}}" style="height: 110px" alt=""></a>
+									<a class="post-img" href="/single-post/{{id}}"><img src="{{thumb_img}}" style="height: 110px" alt=""></a>
 									<div class="post-body">
 										<div class="post-meta">
 											<a class="post-category cat-1" href="/archieve-post/{{catID}}">{{catName}}</a>
@@ -307,7 +245,7 @@
 					
 						<div class="wh-100x abs-tlr">
 							<img
-								src="{{avatar}}" style="height: 75px"
+								src="{{thumb_img}}" style="height: 75px"
 								alt="">
 							
 						</div>
@@ -338,7 +276,7 @@
 							<li class="color-lite-black">by <a href="/single-post/{{hottest.id}}" class="color-black"><b> &nbsp;{{hottest.userName}} &nbsp;</b></a>
 								{{moment hottest.post_date format="YYYY/MM/DD h:mm:s" }}</li>
 							<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i><b>{{hottest.views}}</b></li>
-							<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i><b>25</b></li>
+							<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i><b>{{hottest.comments}}</b></li>
 						</ul>
 						<p>{{hottest.summary_content}}</p>
 					</div><!-- col-sm-6 -->
@@ -369,12 +307,13 @@
 						<h4 class="pt-20"><a href="/single-post/{{id}}"><b>{{title}}</b></a></h4>
 						<div class="post-meta">
 							<a class="post-category cat-1" href="/archieve-post/{{catID}}">{{catName}}</a>
+							<a class="post-category cat-1" href="/archieve-post/{{catID}}">{{tagName}}</a>
 						</div>
 						<ul class="list-li-mr-20 pt-10 mb-30">
 							<li class="color-lite-black">by <a href="/single-post/{{id}}" class="color-black"><b>&nbsp;{{userName}} &nbsp;</b></a>
 								{{moment post_date format="YYYY/MM/DD h:mm:s"}}</li>
 							<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i>{{views}}</li>
-							<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i>47</li>
+							<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i>{{comments}}</li>
 						</ul>
 						</div><!-- col-sm-6 -->
 					{{/each}}
@@ -392,7 +331,7 @@
 						{{#each this.topView}}
 							<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post">
 							<div class="wh-100x abs-tlr"><img
-									src="{{avatar}}"
+									src="{{thumb_img}}"
 									alt=""></div>
 							<div class="ml-120 min-h-100x">
 								<h5><b>{{title}}</b></h5>
