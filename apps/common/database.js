@@ -29,7 +29,7 @@ module.exports = {
             var sql = `UPDATE ${tableName} set ?`;
             var conn = createConnection();
             conn.connect();
-            conn.query(sql, id, (err, value) => {
+            conn.query(sql, entity, (err, value) => {
                 if (err) reject(err);
                 else resolve(value);
                 conn.end();
