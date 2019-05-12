@@ -24,12 +24,12 @@ function getConnection() {
 }
 
 module.exports = {
-    uppdate: (tableName, entity, id) => {
+    update: (tableName, entity) => {
         return new Promise((resolve, reject) => {
             var sql = `UPDATE ${tableName} set ? WHERE id = ?`;
             var conn = createConnection();
             conn.connect();
-            conn.query(sql, [entity, id], (err, value) => {
+            conn.query(sql, [entity, entity.id], (err, value) => {
                 if (err) reject(err);
                 else resolve(value.id);
                 conn.end();
@@ -67,6 +67,7 @@ module.exports = {
         return new Promise((resolve, reject) => {
             var sql = `SELECT * from ${tableName} WHERE id = ?`;
             var conn = createConnection();
+            entity["updated_at"] = utils.GetTimeNow();
             conn.connect();
             conn.query(sql, id, (err, value) => {
                 if (err) reject(err);
