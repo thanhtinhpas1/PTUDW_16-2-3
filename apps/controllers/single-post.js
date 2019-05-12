@@ -10,14 +10,13 @@ router.get("/:id", function(req, res) {
     var singlePost = postdb.findById(parseInt(req.params.id));
 
     singlePost.then(rowPost => {
-        console.log(rowPost);
         
         var category = catedb.findCategorybyId(parseInt(rowPost.category_id));
         var user = userdb.findById(parseInt(rowPost.created_by));
         var postTag = posttagdb.getAllPostTag();
         var allPost = postdb.getAll();
-        var hotNewDB = postdb.displayHotNews();
-        var topViewDB = postdb.displayTopView();
+        var hotNewDB = postdb.getTopHot();
+        var topViewDB = postdb.getTopView();
         var commentDB = commentdb.getAll();
         var topCate = catedb.getTopCate();
         var allTag = tagdb.getAllTag();
@@ -44,9 +43,6 @@ router.get("/:id", function(req, res) {
 
                         hotNewDB.then(lstHot => {
 
-                            //Get Favorite New 
-                            var favNew = lstHot.slice(0,2);
-                          
                             topViewDB.then(lstTop => {
 
                                 commentDB.then(allCom => {
@@ -59,7 +55,7 @@ router.get("/:id", function(req, res) {
                                     topCate.then(topCate => {
                                         
                                         allTag.then(lstTag => {
-                                            console.log(lstTag);
+                                          
                                             res.render("03_single-post", {
                                                 title: "single-post", 
                                                 layout:'base-view-1',
@@ -71,7 +67,7 @@ router.get("/:id", function(req, res) {
                                                 sameCate: lstSameCate, //List post have same category
                                                 hotNew: lstHot,
                                                 topView: lstTop,
-                                                favNew : favNew,
+                                                favNew : lstHot.slice(0,2),
                                                 lstCom: lstCom,
                                                 amountOfCom: lstCom.length,
                                                 topCate: topCate,
