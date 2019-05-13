@@ -6,14 +6,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8">
-	<script>
-		var temp = {{page}};
-		function showMore(){
-			temp = temp + 1;
-			var pagination = document.getElementById("pagination");
-			pagination.href = "/?page="+ temp;
-		}
-	</script>
+	
+
 	<!-- Font -->
 	<link href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded:400,600,700" rel="stylesheet">
 
@@ -67,10 +61,9 @@
 								</div>
 								<div id="breakingNewsTicker" class="ticker">
 									<ul>
-										{{#each this.hotNew}}
+										{{#each lcTopHot}}
 											<li><a href="/single-post/{{id}}">{{title}}</a></li>
 										{{/each}}
-										
 									</ul>
 								</div>
 							</div>
@@ -106,7 +99,6 @@
 			<div class="container">
 				<a class="logo" href="/"><img src="imgs/logo-black.png" alt="Logo"></a>
 				<a class="menu-nav-icon" data-menu="#main-menu" href="#"><i class="ion-navicon"></i></a>
-
 				<ul class="main-menu menu" id="main-menu">
 					<!-- <li id="menu_world" class="drop-down"><a href="/single-post">Tất cả<i
 								class="ion-arrow-down-b"></i></a>
@@ -167,7 +159,7 @@
 							<div class="img-bg bg-2 bg-grad-layer-6" style="background: url({{thumb_img}}) no-repeat center; background-size: cover;"></div>
 
 							<div class="abs-blr color-white p-20 bg-sm-color-7">
-								<h4 class="mb-10 mb-sm-5"><b>{{title}}</b></h4>
+								<h5 class="mb-10 mb-sm-5"><b>{{title}}</b></h5>
 								<ul class="list-li-mr-20">
 									<li> {{moment post_date format="YYYY/MM/DD h:mm:s"}}</li>
 									<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i>{{views}}</li>
@@ -191,7 +183,7 @@
 						<div class="img-bg bg-4 bg-grad-layer-6" style="background: url({{thumb_img}}) no-repeat center; background-size: cover;"></div>
 
 						<div class="abs-blr color-white p-20 bg-sm-color-7">
-							<h4 class="mb-10 mb-sm-5"><b>{{title}}</b></h4>
+							<h5 class="mb-10 mb-sm-5"><b>{{title}}</b></h5>
 							<ul class="list-li-mr-20">
 								<li>{{moment post_date format="YYYY/MM/DD h:mm:s"}}</li>
 								<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i>{{views}}</li>
@@ -213,55 +205,52 @@
 		<div class="container">
 			<div class="row">
 				<div class="row col-12">
-					<div class="hot-news col-12 col-md-7 col-lg-8">
+					<div class="hot-news col-12 col-md-6 col-lg-8">
 						<div class="section-title">
 							<h4 class="p-title"><b>Tin nổi bật</b></h4>
 						</div>
 						<!-- post -->
-						<div class="all-news-content">
-							{{#each this.hotNew}}
+							{{#each lcTopHot}}
 							<div class="col-sm-4">
 								<div class="post">
-									<a class="post-img" href="/single-post/{{id}}"><img src="{{thumb_img}}" style="height: 110px" alt=""></a>
+									<a class="post-img" href="/single-post/{{id}}"><img src="{{thumb_img}}"  alt=""></a>
 									<div class="post-body">
 										<div class="post-meta">
-											<a class="post-category cat-1" href="/archieve-post/{{catID}}">{{catName}}</a>
-											<span class="post-date">{{moment post_date format="YYYY/MM/DD h:mm:s"}}</span>
+											<a class="post-category cat-1" href="/archieve-post/{{catID}}" style="font-size: 90%;">{{catName}}</a>
+											<span class="post-date" style="font-size: 0.8rem;">{{moment post_date format="YYYY/MM/DD h:mm:s"}}</span>
 										</div>
-										<h3 class="post-title"><a href="/single-post/{{id}}">{{title}}</a></h3>
+										<h6 class="post-title" style="font-size: 100%"><a href="/single-post/{{id}}">{{title}}</a></h6>
 									</div>
 								</div>
 							</div>
 							{{/each}}
-						</div>
-						
 					</div>
 			
-				<div class="vertical-host-news col-12 col-md-5 col-lg-4">
+				<div class=" col-12 col-md-6 col-lg-4">
 					<h4 class="p-title"><b>Tin trong ngày</b></h4>
-					<div class="all-news-content">
-						{{#each this.hotNew}}
-						<a class="oflow-hidden pos-relative dplay-block" href="/single-post/{{id}}">
 					
-						<div class="wh-100x abs-tlr">
-							<img
-								src="{{thumb_img}}" style="height: 75px"
-								alt="">
-							
-						</div>
+						{{#each lcTopHot}}
+							<a class="oflow-hidden pos-relative dplay-block" href="/single-post/{{id}}">
+						
+							<div class="wh-100x abs-tlr">
+								<img
+									src="{{thumb_img}}" 
+									alt="">
+							</div>
+						
+							<div class="ml-120 min-h-100x">
+								<h5 style="font-size: 0.9rem;"><b>{{title}}&nbsp;</b></h5>
+								<h6 style="font-size: 0.7rem;" class="color-lite-black pt-10">by <span class="color-black"><b>{{userName}}</b></span> {{moment post_date format="YYYY/MM/DD h:mm:s"}} &nbsp; <b>{{catName}}</b></h6>
+							</div>
 				
-						<div class="ml-120 min-h-100x">
-							<h5><b>{{title}}&nbsp;</b></h5>
-							<h6 class="color-lite-black pt-10">by <span class="color-black"><b>{{userName}}</b></span> {{moment post_date format="YYYY/MM/DD h:mm:s"}} &nbsp; <b>{{catName}}</b></h6>
-						</div>
-						</a><!-- oflow-hidden -->
+							</a><!-- oflow-hidden -->
 						{{/each}}
 						
-					</div>
+					
 
 				</div><!-- mtb-50 -->
-			</div>
-
+				</div>
+		
 			<div class="col-md-12 col-lg-8">
 				<h4 class="p-title"><b>Tin mới nhất</b></h4>
 				<div class="row">
@@ -300,10 +289,10 @@
 				</div><!-- row -->
 
 				<h4 class="p-title mt-30"><b>Tất cả</b></h4>
-				<div class="row">
+				<div class="row" id="allPost" >
 					{{#each this.post}}
 						<div class="col-sm-6">
-						<img src="{{thumb_img}}" alt="" style="height: 200px;">
+						<img src="{{thumb_img}}" alt="" >
 						<h4 class="pt-20"><a href="/single-post/{{id}}"><b>{{title}}</b></a></h4>
 						<div class="post-meta">
 							<a class="post-category cat-1" href="/archieve-post/{{catID}}">{{catName}}</a>
@@ -318,8 +307,7 @@
 						</div><!-- col-sm-6 -->
 					{{/each}}
 				</div><!-- row -->
-			
-				<a class="dplay-block btn-brdr-primary mt-20 mb-md-50" id="pagination" onclick="showMore()"><b>Xem thêm</b></a>
+				<a class="dplay-block btn-brdr-primary mt-20 mb-md-50" id="pagination">Xem thêm</a>
 			</div><!-- col-md-9 -->
 
 			<div class="d-none d-md-block d-lg-none col-md-3"></div>
@@ -328,8 +316,8 @@
 					<div>
 						<h4 class="p-title"><b>Tin có nhiều lượt xem nhất</b></h4>
 						
-						{{#each this.topView}}
-							<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post">
+						{{#each lcTopView}}
+							<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post/{{id}}">
 							<div class="wh-100x abs-tlr"><img
 									src="{{thumb_img}}"
 									alt=""></div>
@@ -340,12 +328,11 @@
 							</a><!-- oflow-hidden -->
 						{{/each}}
 				
-
 					</div><!-- mtb-50 -->
 					<div class="mtb-50">
 						<h4 class="p-title"><b>Tin hot nhất</b></h4>
 						<div class="all-news-content">
-								{{#each this.hotNew}}
+								{{#each lcTopHot}}
 							<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post/{{id}}">
 							<div class="wh-100x abs-tlr"><img
 									src="{{thumb_img}}"
@@ -366,7 +353,7 @@
 						</div>
 						<div class="category-widget">
 							<ul>
-								{{#each this.lstTopCate}}
+								{{#each lcTopCate}}
 									<li><a href="/archieve-post/{{id}}" class="cat-1">{{name}}<span>{{SL}}</span></a></li>
 								{{/each}}
 							</ul>
@@ -376,7 +363,7 @@
 					<div class="aside-widget">
 						<div class="tags-widget">
 							<ul>
-								{{#each this.lstTag}}
+								{{#each lcAllTag}}
 									<li><a href="/archieve-post/{{id}}">{{name}}</a></li>
 								{{/each}}
 							</ul>
@@ -396,7 +383,7 @@
 				</div><!--  pl-20 -->
 			</div><!-- col-md-3 -->
 
-		</div><!-- row -->
+			</div><!-- row -->
 		</div><!-- container -->
 	</section>
 
@@ -473,7 +460,34 @@
 	</footer>
 
 	<!-- SCIPTS -->
-
+	<script>
+		var temp = {{page}};
+		function showMore(){
+			
+			var pagination = document.getElementById("pagination");
+			pagination.href = "/?page="+ temp;
+		}
+		$(document).on("click","#pagination",function() {
+			temp = temp + 1;
+			$.ajax({
+				async: false,
+				type: "GET",
+				url: "../" + temp,
+				success: function(res){
+					console.log(res);
+					for(var i = 0; i<res.length; i++)
+					{
+						$("#allPost").append("<div class=" + "col-sm-6>" + res[i].title + "</div>"
+						+ "<img src ="+ res[i].thumb_img + "alt=" + "" +">"
+						);
+					}
+				},
+				error: function(xhr,ajaxOption, throwError){
+					alert("Đã xảy ra lỗi");
+				}
+			})
+		});
+	</script>
 	<script src="js/jquery-3.4.0.min.js"></script>
 
 	<script src="js/jquery.sticky.js"></script>

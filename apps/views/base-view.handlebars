@@ -49,7 +49,7 @@
 								</div>
 								<div id="breakingNewsTicker" class="ticker">
 									<ul>
-										{{#each this.lstTop}}
+										{{#each lcTopHot}}
 											<li><a href="/single-post/{{id}}">{{title}}</a></li>
 										{{/each}}
 									</ul>
@@ -186,7 +186,7 @@
 					<div class="vertical-host-news col-12 col-md-5 col-lg-4">
 						<h4 class="p-title"><b>Tin trong ngày</b></h4>
 						<div class="all-news-content">
-							{{#each this.lstHot}}
+							{{#each lcTopHot}}
 								<a class="oflow-hidden pos-relative dplay-block" href="/single-post/{{id}}">
 									<div class="wh-100x abs-tlr"><img src="{{thumb_img}}" alt=""></div>
 									<div class="ml-120 min-h-100x">
@@ -202,7 +202,7 @@
 							<div>
 								<h4 class="p-title"><b>Tin có nhiều lượt xem nhất</b></h4>
 								<div class="all-news-content">
-									{{#each this.lstTop}} 
+									{{#each lcTopView}} 
 									<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post/{{id}}">
 										<div class="wh-100x abs-tlr"><img src="{{thumb_img}}" alt=""></div>
 										<div class="ml-120 min-h-100x">
@@ -218,7 +218,7 @@
 						<div class="mtb-50">
 							<h4 class="p-title"><b>Tin hot nhất</b></h4>
 							<div class="all-news-content">
-								{{#each this.lstHot}}
+								{{#each lcTopHot}}
 								<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post/{{id}}">
 								<div class="wh-100x abs-tlr"><img src="{{thumb_img}}" alt=""></div>
 								<div class="ml-120 min-h-100x">
@@ -236,7 +236,7 @@
 							</div>
 							<div class="category-widget">
 								<ul>
-									{{#each this.lstTopCate}}
+									{{#each lcTopCate}}
 										<li><a href="/archieve-post/{{id}}" class="cat-1">{{name}}<span>{{SL}}</span></a></li>
 									{{/each}}
 								</ul>
@@ -246,7 +246,7 @@
 						<div class="aside-widget">
 							<div class="tags-widget">
 								<ul>
-									{{#each this.lstTag}}
+									{{#each lcAllTag}}
 										<li><a href="/archieve-post/{{id}}">{{name}}</a></li>
 									{{/each}}
 								</ul>
