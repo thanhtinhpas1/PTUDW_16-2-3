@@ -27,63 +27,36 @@ router.get("/", function(req, res) {
     
     //Pagination
     var page = parseInt(req.query.page) || 1;
-    var perPage = 6;
+    var perPage = 12;
     var begin = (page - 1)* perPage;
     var end = page*perPage;
 
     //Call database
-    var hotNewDB = postdb.getTopHot();
-    var topViewDB = postdb.getTopView();
     var allPost = postdb.findLimit(1,end);
     var catParent = catedb.findParent();
     var allCate = catedb.getAllCategory();
-    var topCate = catedb.getTopCate();
-    var allTag = tagdb.getAllTag();
     var topPostOfWeekDB = postdb.getTopPostOfWeek(); 
 
     //Get database
-    hotNewDB.then(lstHot => {
-
-        topViewDB.then(lstTop => {
-            
-            allPost.then(lstPost => {
-                
-                catParent.then(lstCatParent => {
-
-                    allCate.then(lstCate => {
-                        
-                        topCate.then(lstTopCate => {
-
-                            allTag.then(lstTag => {
-                                
-                                topPostOfWeekDB.then(lstPostOfWeek => {
-                                   console.log(lstPostOfWeek);
-                                    res.render("index", {
-                                        hotNew: lstHot,
-                                        topView: lstTop,
-                                        post: lstPost,
-                                        page: page,
-                                        hottest: lstHot[0],
-                                        lstHottest : lstHot.slice(1,10),
-                                        lstCatParent : lstCatParent,
-                                        lstCate: lstCate,
-                                        lstTopCate: lstTopCate,
-                                        lstTag : lstTag,
-                                        popularNew: lstHot.slice(0,3),
-                                        firstPostOfWeek: lstPostOfWeek[0],
-                                        lstPostOfWeek_1 : lstPostOfWeek.slice(1,3),
-                                        lstPostOfWeeK_2 : lstPostOfWeek.slice(3,6)   
-                                    })
-                                }).catch()
-                            }).catch(err => {
-                                console.log(err);
-                            })
-                        }).catch(err => {
-                            console.log(err);
-                        })
-                    }).catch(err => {
-                        console.log(err);
+  
+    allPost.then(lstPost => {
+        catParent.then(lstCatParent => {
+            allCate.then(lstCate => {
+                topPostOfWeekDB.then(lstPostOfWeek => {
+                   
+                    res.render("index", {
+                        post: lstPost,
+                        page: page,
+                        hottest: res.locals.lcTopHot[0],
+                        lstHottest : res.locals.lcTopHot.slice(1,10),
+                        lstCatParent : lstCatParent,
+                        lstCate: lstCate,
+                        popularNew: res.locals.lcTopHot.slice(0,3),
+                        firstPostOfWeek: lstPostOfWeek[0],
+                        lstPostOfWeek_1 : lstPostOfWeek.slice(1,3),
+                        lstPostOfWeeK_2 : lstPostOfWeek.slice(3,6)   
                     })
+                    // res.send(lstPost);
                 }).catch(err => {
                     console.log(err);
                 })
@@ -98,4 +71,20 @@ router.get("/", function(req, res) {
     })
 });
 
+router.get("/:page", function(req,res) {
+
+    var page = parseInt(req.params.page) || 1;
+    console.log(page);
+    var perPage = 12;
+    var begin = (page - 1)* perPage;
+    var end = page*perPage;
+
+    var allPost = postdb.findLimit(begin,end);
+
+    allPost.then(rows => {
+        res.send(rows);
+    }).catch(err => {
+        console.log(err);
+    })
+})
 module.exports = router;
