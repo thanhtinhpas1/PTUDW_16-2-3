@@ -17,6 +17,10 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+//middleware
+app.use(require("./apps/middlewares/local.mdw"));
+
 //static folder
 app.use(express.static(__dirname + "/public"));
 
