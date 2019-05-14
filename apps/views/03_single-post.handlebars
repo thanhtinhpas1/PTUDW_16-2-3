@@ -22,7 +22,7 @@
 <img src="{{post.avatar}}" alt="" style="height: 400px">
 
 <div class="post-meta mt-10">
-	<a class="post-category cat-1" href="/archieve-post">{{cate.name}}</a>
+	<a class="post-category cat-1" href="/archieve-post/{{cate.id}}">{{cate.name}}</a>
 </div>
 
 <h3 class="mt-30"><b>{{post.title}}</b></h3>
@@ -69,7 +69,7 @@
 		<img src="{{thumb_img}}" style="height: 250px" alt="">
 		<h4 class="pt-20"><a href="#"><b>{{title}}</b></a></h4>
 		<div class="post-meta">
-			<a class="post-category cat-1" href="/archieve-post">{{catName}}</a>
+			<a class="post-category cat-1" href="/archieve-post/{{id}}">{{catName}}</a>
 		</div>
 		<ul class="list-li-mr-20 pt-10 mb-30">
 			<li class="color-lite-black">by <a href="#" class="color-black"><b>{{userName}}</b></a>

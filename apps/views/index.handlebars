@@ -37,6 +37,9 @@
 
 <body>
 	<!-- Preloader -->
+	<a href="#top" id="topBtn">
+		<i class="fas fa-arrow-circle-up"></i>
+	</a>
 	<div class="preloader d-flex align-items-center justify-content-center">
 		<div class="lds-ellipsis">
 			<div></div>
@@ -48,7 +51,7 @@
 	<header>
 
 		<!-- ##### Header Area Start ##### -->
-		<header class="header-area">
+		<header class="header-area" id="top">
 			<!-- Top Header Area -->
 			<div class="top-header-area">
 				<div class="container">
@@ -110,15 +113,15 @@
 							<li><a href="#">Tin trong ngày</a></li>
 					</li> -->
 					{{#each this.lstCatParent}}
-						<li id="menu_world" class="drop-down"><a href="/archieve-post">{{name}}<i
+						<li id="menu_world" class="drop-down"><a href="/archieve-post/{{id}}">{{name}}<i
 								class="ion-arrow-down-b"></i></a>
-						<ul class="drop-down-menu drop-down-inner">
-							<li><a href="/archieve-post">Điểm nóng</a></li>
-							<li><a href="/archieve-post">Quân sự</a></li>
-							<li><a href="/archieve-post">Vũ khí hạt nhân</a></li>
-							<li><a href="/archieve-post">Khoa học vũ trụ</a></li>
-							<li><a href="/archieve-post">Tin trong ngày</a></li>
-						</ul>
+							<ul class="drop-down-menu drop-down-inner">
+								<li><a href="/archieve-post">Điểm nóng</a></li>
+								<li><a href="/archieve-post">Quân sự</a></li>
+								<li><a href="/archieve-post">Vũ khí hạt nhân</a></li>
+								<li><a href="/archieve-post">Khoa học vũ trụ</a></li>
+								<li><a href="/archieve-post">Tin trong ngày</a></li>
+							</ul>
 						</li>
 					{{/each}}
 					
@@ -467,6 +470,21 @@
 			var pagination = document.getElementById("pagination");
 			pagination.href = "/?page="+ temp;
 		}
+		$(document).ready(function(){
+
+			$(window).scroll(function(){
+				if($(this).scrollTop() > 40) 
+				{
+					$("#topBtn").fadeIn();
+				}else
+				{
+					$("#topBtn").fadeOut();
+				}
+			});
+			$("#topBtn").click(function(){
+				$("html,body").animate({scrollTop: 0},800);
+			});
+		})
 		$(document).on("click","#pagination",function() {
 			temp = temp + 1;
 			$.ajax({
