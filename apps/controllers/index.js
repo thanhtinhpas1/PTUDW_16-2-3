@@ -7,6 +7,10 @@ var router = express.Router();
 router.use("/single-post", require(__dirname + "/single-post"));
 router.use("/archieve-post", require(__dirname + "/archieve-post"));
 
+
+//middleware
+router.use(require("../middlewares/local.mdw"));
+
 // writer
 router.use("/writer/add-content", require(__dirname + "/writer/add-content"));
 router.use("/writer/manage-draft", require(__dirname + "/writer/manage-draft"));
@@ -41,9 +45,9 @@ router.get("/", function(req, res) {
   
     allPost.then(lstPost => {
         catParent.then(lstCatParent => {
+            console.log(lstCatParent);
             allCate.then(lstCate => {
                 topPostOfWeekDB.then(lstPostOfWeek => {
-                   
                     res.render("index", {
                         post: lstPost,
                         page: page,
