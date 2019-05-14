@@ -49,9 +49,9 @@
 								</div>
 								<div id="breakingNewsTicker" class="ticker">
 									<ul>
-										<li><a href="/single-post">10:20PM - 10 Things Amazon Echo Can Do</a></li>
-										<li><a href="/single-post">14:00PM - Welcome to Colorlib Family.</a></li>
-										<li><a href="/single-post">7:00AM - Boys 'doing well' after Thai</a></li>
+										{{#each lcTopHot}}
+										<li><a href="/single-post/{{id}}">{{title}}</a></li>
+										{{/each}}
 									</ul>
 								</div>
 							</div>
@@ -97,75 +97,20 @@
 							<li><a href="#">Khoa học vũ trụ</a></li>
 							<li><a href="#">Tin trong ngày</a></li>
 					</li> -->
-					<li id="menu_world" class="drop-down"><a href="/archieve-post">Thế giới<i
-								class="ion-arrow-down-b"></i></a>
-						<ul class="drop-down-menu drop-down-inner">
-							<li><a href="/archieve-post">Điểm nóng</a></li>
-							<li><a href="/archieve-post">Quân sự</a></li>
-							<li><a href="/archieve-post">Vũ khí hạt nhân</a></li>
-							<li><a href="/archieve-post">Khoa học vũ trụ</a></li>
-							<li><a href="/archieve-post">Tin trong ngày</a></li>
-						</ul>
-					</li>
-					<li id="menu_economic" class="drop-down"><a href="/archieve-post">Kinh tế vĩ mô<i
-								class="ion-arrow-down-b"></i></a>
-						<ul class="drop-down-menu drop-down-inner">
-							<li><a href="/archieve-post">Tài chính</a></li>
-							<li><a href="/archieve-post">Chính sách</a></li>
-							<li><a href="/archieve-post">Hợp tác</a></li>
-							<li><a href="/archieve-post">Dự án</a></li>
-						</ul>
-					</li>
-					<li id="menu_football" class="drop-down">
-						<a href="/archieve-post">Bóng đá<i class="ion-arrow-down-b"></i></a>
-						<ul class="drop-down-menu drop-down-inner">
-							<li><a href="/archieve-post">Lịch thi đấu</a></li>
-							<li><a href="/archieve-post">Sự kiện - Bình luận</a></li>
-							<li><a href="/archieve-post">Video</a></li>
-							<li><a href="/archieve-post">Livescore</a></li>
-							<li><a href="/archieve-post">Lịch thi đấu hôm nay</a></li>
-							<li><a href="/archieve-post">Kết quả bóng đá</a></li>
-							<li><a href="/archieve-post">Top ghi bàn</a></li>
-							<li><a href="/archieve-post">Bảng xếp hạng</a></li>
-							<li><a href="/archieve-post">Bóng đá trong nước</a></li>
-						</ul>
-					</li>
-					<li id="menu_business" class="drop-down">
-						<a href="/archieve-post">Kinh doanh<i class="ion-arrow-down-b"></i></a>
-						<ul class="drop-down-menu drop-down-inner">
-							<li><a href="/archieve-post">Doanh nhận</a></li>
-							<li><a href="/archieve-post">Tài chính</a></li>
-							<li><a href="/archieve-post">Bất động sản</a></li>
-							<li><a href="/archieve-post">Khởi nghiệp</a></li>
-							<li><a href="/archieve-post">Doanh nghiệp</a></li>
-							<li><a href="/archieve-post">Ngân hàng</a></li>
-							<li><a href="/archieve-post">Bitcoin</a></li>
-							<li><a href="/archieve-post">Tỷ giá</a></li>
-							<li><a href="/archieve-post">Chứng khoán</a></li>
-						</ul>
-					</li>
-					<li id="menu_market" class="drop-down">
-						<a href="/archieve-post">Thị trường<i class="ion-arrow-down-b"></i></a>
-						<ul class="drop-down-menu drop-down-inner">
-							<li><a href="/archieve-post">Sản xuất - tiêu dùng</a></li>
-							<li><a href="/archieve-post">Thị trường hôm nay</a></li>
-							<li><a href="/archieve-post">Xu hướng tiêu dùng</a></li>
-							<li><a href="/archieve-post">Xuất nhập khẩu</a></li>
-						</ul>
-					</li>
-					<li id="menu_health" class="drop-down">
-						<a href="/archieve-post">Công nghệ<i class="ion-arrow-down-b"></i></a>
-						<ul class="drop-down-menu drop-down-inner">
-							<li><a href="/archieve-post">Sắp xuất hiện</a></li>
-							<li><a href="/archieve-post">Tin tức công nghệ</a></li>
-							<li><a href="/archieve-post">Laptop mới</a></li>
-							<li><a href="/archieve-post">Điện thoại</a></li>
-							<li><a href="/archieve-post">Máy ảnh và camera số</a></li>
-							<li><a href="/archieve-post">Thế giới công nghệ</a></li>
-							<li><a href="/archieve-post">Đánh giá sản phẩm</a></li>
-							<li><a href="/archieve-post">Điện tử gia dụng</a></li>
-						</ul>
-					</li>
+					{{#each lcAllCate as |parent|}}
+						{{#ifEquals parent_id 0}}
+							<li id="menu_world" class="drop-down"><a href="/archieve-post/{{parent.id}}">{{name}}<i
+									class="ion-arrow-down-b"></i></a>
+									<ul class="drop-down-menu drop-down-inner">
+										{{#each ../lcAllCate as |child|}}
+											{{#ifEquals child.parent_id parent.id}}
+												<li><a href="/archieve-post/{{child.id}}">{{child.name}}</a></li>
+											{{/ifEquals}}
+										{{/each}}
+									</ul>
+							</li>
+						{{/ifEquals}}
+					{{/each}}
 					<!-- menu more -->
 				</ul>
 			</div><!-- container -->

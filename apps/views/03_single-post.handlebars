@@ -22,14 +22,14 @@
 <img src="{{post.avatar}}" alt="" style="height: 400px">
 
 <div class="post-meta mt-10">
-	<a class="post-category cat-1" href="/archieve-post/{{cate.id}}">{{cate.name}}</a>
+	<a class="post-category cat-1" href="/archieve-post/{{post.catID}}">{{post.catName}}</a>
 </div>
 
 <h3 class="mt-30"><b>{{post.title}}</b></h3>
 <ul class="list-li-mr-20 mtb-15">
-	<li>by <a href="#"><b>{{user.pseudonym}} &nbsp;</b></a>{{moment post.post_date format="YYYY/MM/DD h:mm:s"}}</li>
+	<li>by <a href="#"><b>{{post.userName}} &nbsp;</b></a>{{moment post.post_date format="YYYY/MM/DD h:mm:s"}}</li>
 	<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i>{{post.views}}</li>
-	<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i>30</li>
+	<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i>{{amountOfCom}}</li>
 </ul>
 
 <b>{{post.summary_content}}</b style="">
@@ -45,7 +45,8 @@
 
 	<ul
 		class="mb-30 list-li-mt-10 list-li-mr-5 list-a-plr-15 list-a-ptb-7 list-a-bg-grey list-a-br-2 list-a-hvr-primary ">
-		{{#each this.postTag}}
+	
+		{{#each this.lstPostTag}}
 			<li><a href="#">{{tag_name}}</a></li>
 		{{/each}}
 		
@@ -84,9 +85,9 @@
 
 <h4 class="p-title mt-20"><b>Có {{amountOfCom}} bình luận</b></h4>
 
-{{#each this.lstCom}}
-	<div class="sided-70 mb-40">
-
+{{#each this.lstCom as |parent|}}
+	{{#ifEquals parent.parent_id 0}}
+		<div class="sided-70 mb-40">
 		<div class="s-left rounded">
 			<img src="{{avatar}}" alt="">
 		</div><!-- s-left -->
@@ -97,8 +98,24 @@
 			<a class="btn-brdr-grey btn-b-sm plr-15 mr-10 mt-5" href="#"><b>LIKE</b></a>
 			<a class="btn-brdr-grey btn-b-sm plr-15 mt-5" href="#"><b>REPLY</b></a>
 		</div><!-- s-right -->
+		</div><!-- sided-70 -->
+	{{/ifEquals}}
 
-	</div><!-- sided-70 -->
+	{{#each ../this.lstCom as |child|}}
+		{{#ifEquals child.parent_id parent.id}}
+			<div class="sided-70 ml-100 ml-xs-20 mb-40">
+			<div class="s-left rounded">
+				<img src="{{child.avatar}}" alt="">
+			</div><!-- s-left -->
+			<div class="s-right ml-100 ml-xs-85">
+				<h5><b>{{child.name}}</b> <span class="font-8 color-ash">{{moment child.created_at format="YYYY/MM/DD h:mm:s" }}</span></h5>
+				<p class="mtb-10">{{child.content}}</p>
+				<a class="btn-brdr-grey btn-b-sm plr-15 mr-10 mt-5" href="#"><b>LIKE</b></a>
+				<a class="btn-brdr-grey btn-b-sm plr-15 mt-5" href="#"><b>REPLY</b></a>
+			</div><!-- s-right -->
+			</div><!-- sided-70 -->
+		{{/ifEquals}}
+	{{/each}}
 {{/each}}
 
 
