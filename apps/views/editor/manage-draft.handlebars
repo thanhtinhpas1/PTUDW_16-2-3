@@ -35,18 +35,16 @@
                   <td>{{title}}</td>
                   <td>{{name}}</td>
                   <td>{{moment created_at format="YYYY/MM/DD hh:mm:ss"}}</td>
-                  <td class="text-center">
-                    <button type="button" class="btn btn-outline-info">
+                  <td class="text-center">                  
+                    <a class="btn btn-outline-info" href="/editor/confirm-post?id={{id}}" role="button">
                       <i class="fa fa-eye-slash" aria-hidden="true"></i>
-                    </button>
-
-                    <button type="button" class="btn btn-outline-danger">
+                    </a>
+                    <a class="btn btn-outline-danger" href="/editor/report-post?id={{id}}" role="button">
                       <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                    </button>
-
-                    <button onclick="functionConfirm({{id}})" type="button" class="btn btn-outline-success">
+                    </a>
+                    <a class="btn btn-outline-success" href="/editor/confirm-post?id={{id}}" role="button">
                       <i class="fa fa-check-circle" aria-hidden="true"></i>
-                    </button>
+                    </a>
                   </td>
                 </tr>
                 {{/each}}
@@ -58,8 +56,3 @@
     </div>
   </div>
 </main>
-<script type="text/javascript">
-  function functionConfirm(id){
-    window.location.replace("/editor/confirm-post?id=" + id);
-  };
-</script>

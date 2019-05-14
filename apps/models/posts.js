@@ -116,11 +116,8 @@ module.exports = {
     getAllPostsEditorManage: getAllPostsEditorManage,
     updatePost: updatePost,
     findAll: findAll,
-    getTopHot: getTopHot,
-    getTopView: getTopView,
     findById: id => {
         return db.findById("posts", id);
     },
     findLimit: findLimit,
-    getTopPostOfWeek: getTopPostOfWeek
 }
