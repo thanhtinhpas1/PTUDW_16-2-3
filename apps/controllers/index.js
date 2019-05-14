@@ -1,7 +1,7 @@
 var express = require('express');
 var postdb = require("../models/posts");
 var catedb = require("../models/categories");
-var tagdb = require("../models/tags");
+var postTagdb = require("../models/post_tagdes");
 
 var router = express.Router();
 router.use("/single-post", require(__dirname + "/single-post"));
@@ -35,58 +35,49 @@ router.get("/", function(req, res) {
     var page = parseInt(req.query.page) || 1;
     var perPage = 12;
     var begin = (page - 1)* perPage;
-    var end = page*perPage;
 
     //Call database
-    var allPost = postdb.findLimit(1,end);
-    var catParent = catedb.findParent();
+    var allPost = postdb.findLimit(begin,perPage);
     var allCate = catedb.getAllCategory();
-    var topPostOfWeekDB = postdb.getTopPostOfWeek(); 
-
+    var topPostOfWeekDB = postdb.getTopPostOfWeek();
+    var allPostTag = postTagdb.getAllPostTag();
     //Get database
-  
-    allPost.then(lstPost => {
-        catParent.then(lstCatParent => {
-            console.log(lstCatParent);
-            allCate.then(lstCate => {
-                topPostOfWeekDB.then(lstPostOfWeek => {
-                    res.render("index", {
-                        post: lstPost,
-                        page: page,
-                        hottest: res.locals.lcTopHot[0],
-                        lstHottest : res.locals.lcTopHot.slice(1,10),
-                        lstCatParent : lstCatParent,
-                        lstCate: lstCate,
-                        popularNew: res.locals.lcTopHot.slice(0,3),
-                        firstPostOfWeek: lstPostOfWeek[0],
-                        lstPostOfWeek_1 : lstPostOfWeek.slice(1,3),
-                        lstPostOfWeeK_2 : lstPostOfWeek.slice(3,6)   
-                    })
-                    // res.send(lstPost);
-                }).catch(err => {
-                    console.log(err);
-                })
-            }).catch(err => {
-                console.log(err);
+    
+    Promise.all([allPost,allCate ,topPostOfWeekDB,allPostTag]).then(values => {
+        var lstPost = values[0];
+        var lstCate = values[1];
+        var lstPostOfWeek = values[2];
+        var lstPostTag = values[3];
+
+        if(lstPost != null || lstCate != null || lstPostOfWeek != null ||lstPostTag!= null){
+            
+            res.render("index", {
+                post: lstPost,
+                page: page,
+                hottest: res.locals.lcTopHot[0],
+                lstHottest : res.locals.lcTopHot.slice(1,10),
+                lstCate: lstCate,
+                popularNew: res.locals.lcTopHot.slice(0,3),
+                firstPostOfWeek: lstPostOfWeek[0],
+                lstPostOfWeek_1 : lstPostOfWeek.slice(1,3),
+                lstPostOfWeeK_2 : lstPostOfWeek.slice(3,6),
+                lstPostTag : lstPostTag
             })
-        }).catch(err => {
-            console.log(err);
-        })
+        }  
     }).catch(err => {
         console.log(err);
     })
 });
 
+//Load more
 router.get("/:page", function(req,res) {
 
-    var page = parseInt(req.params.page) || 1;
-    console.log(page);
+    var page = parseInt(req.params.page);
     var perPage = 12;
     var begin = (page - 1)* perPage;
-    var end = page*perPage;
+    var allPost = postdb.findLimit(begin,perPage);
 
-    var allPost = postdb.findLimit(begin,end);
-
+    //Load more posts
     allPost.then(rows => {
         res.send(rows);
     }).catch(err => {

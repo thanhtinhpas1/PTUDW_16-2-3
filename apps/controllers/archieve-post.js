@@ -4,6 +4,9 @@ var postdb = require("../models/posts");
 var catedb = require("../models/categories");
 var tagdb = require("../models/tags");
 
+//middleware
+router.use(require("../middlewares/local.mdw"));
+
 router.get("/:cateID", function(req, res) {
 
     var cateID = parseInt(req.params.cateID);
@@ -11,14 +14,13 @@ router.get("/:cateID", function(req, res) {
     var allPostDB = postdb.findAll();
          
     allPostDB.then(lstPost => {
-        console.log(lstPost);
-
+        console.log(lstPost.length)
         //Get list post have same category
         var lstPostOfCate = lstPost.filter(item => {
             if(item.category_id == cateID)
                 return item;
         })
-
+        console.log(lstPostOfCate);
         res.render("02_archive-page", {
             title:"archieve-post",
             layout: "base-view",
