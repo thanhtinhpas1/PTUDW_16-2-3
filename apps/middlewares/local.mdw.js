@@ -33,4 +33,10 @@ module.exports = (req,res,next) => {
     }).catch(err => {
         console.log(err);
     })
+
+    cateDB.getAllCategory().then(rows => {
+        res.locals.lcAllCate = rows;
+    }).catch(err => {
+        console.log(err);
+    })
 }
