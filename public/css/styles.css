@@ -57,6 +57,18 @@ img {
 	font-weight: 300;
 }
 
+#topBtn{
+	position: fixed;
+	bottom: 5%;
+	right: 3%;
+	font-size: 2rem;
+	cursor: pointer;
+	display: none;
+}
+
+#topBtn:hover{
+	font-size: 3rem;
+}
 .bg-overlay {
 	position: relative;
 	z-index: 2;
