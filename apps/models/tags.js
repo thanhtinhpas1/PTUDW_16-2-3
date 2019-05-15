@@ -13,8 +13,18 @@ function addNewTag(entity) {
     return db.add("tags", entity);
 }
 
+function findTagById(id) {
+    return db.findById('tags', id);
+}
+
+function updateTag(entity) {
+    return db.update('tags', entity);
+}
+
 module.exports = {
     getAllTag: getAllTag,
     deleteTagById: deleteTagById, 
-    addNewTag: addNewTag
+    addNewTag: addNewTag,
+    findTagById: findTagById,
+    updateTag: updateTag,
 }

@@ -1,66 +1,51 @@
 <main class="main-content bgc-grey-100">
   <div id="mainContent">
     <div class="container-fluid">
-      <h1 class="text-black-50 text-center">Manage post</h1>
+      <h1 class="table-header text-center">Manage post</h1>
       <div class="card shadow mb-4">
         <div class="card-header py-3">
           <h6 class="m-0 font-weight-bold text-primary">Post table</h6>
-          <button type="button" class="btn btn-success ml-2" data-toggle="modal" data-target="#exampleModal"
-            data-whatever="@mdo"><i class="fas fa-plus-circle mr-1" style="color:#ffffff;"></i>Add Post</button>
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">New Post</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <form action="/admin/manage-post/add" method="POST">
-                    <label for="recipient-name" class="col-form-label">Name</label>
-                    <input type="text" name="name" class="form-control" id="recipient-name" required>
-                    <div class="modal-footer mt-2">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="submit" class="btn btn-success">Create Post</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
+          <a href="/admin/manage-post/add"><button type="button" class="btn btn-success ml-2"><i class="fas fa-plus-circle mr-1" style="color:#ffffff;"></i>Add Post</button></a>
         </div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Created at</th>
-                  <th>Updated at</th>
-                  <th>Edit</th>
+                  <th width="15%">ID</th>
+                  <th width="15%">Title</th>
+                  <th width="15%">Summary content</th>
+                  <th width="15%">Created by</th>
+                  <th width="15%">Views</th>
+                  <th width="15%">Created at</th>
+                  <th width="10%">Edit</th>
                 </tr>
               </thead>
               <tfoot>
                 <tr>
-                  <th width="10%">ID</th>
-                  <th width="20%">Name</th>
-                  <th width="30%">Created at</th>
-                  <th width="30%">Updated at</th>
-                  <th width="10%">Edit</th>
+                  <th width="15%">ID</th>
+                  <th width="15%">Title</th>
+                  <th width="15%">Summary content</th>
+                  <th width="10%">Created by</th>
+                  <th width="10%">Views</th>
+                  <th width="15%">Created at</th>
+                  <th width="20%">Edit</th>
                 </tr>
               </tfoot>
               <tbody>
-                {{#each posts}}
+                {{#each list}}
                 <tr>
                   <td>{{id}}</td>
-                  <td>{{name}}</td>
+                  <td>{{title}}</td>
+                  <td>{{summary_content}}</td>
+                  <td>{{author_name}}</td>
+                  <td>{{views}}</td>
                   <td>{{moment created_at format="YYYY/MM/DD h:mm:s"}}</td>
-                  <td>{{moment updated_at format="YYYY/MM/DD h:mm:s"}}</td>
                   <td class="text-center">
-                    <button type="button" class="btn btn-cat-control" id="btnCatEdit">
+                    <button onclick="ChangeToDetail({{id}})" type="button" class="btn btn-cat-control" id="btnCatEdit">
+                      <i class="fas fa-info-circle"></i>
+                    </button>
+                    <button onclick="ChangeToEdit({{id}}) " type="button" class="btn btn-cat-control" id="btnCatEdit">
                       <i class="fas fa-pen"></i>
                     </button>
                     <button onclick="functionConfirm({{id}})" type="button" class="btn btn-cat-control"
@@ -85,5 +70,13 @@
       return true;
     }
     return false;
+  }
+
+  function ChangeToEdit(id) {
+    window.location.replace("/admin/manage-post/edit/" + id);
+  }
+
+   function ChangeToDetail(id) {
+    window.location.replace("/admin/manage-post/detail/" + id);
   }
 </script>

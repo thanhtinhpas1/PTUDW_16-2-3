@@ -41,6 +41,7 @@ router.post('/',
     passport.authenticate('local', { failureRedirect: '/login' }),
     function (req, res) {
         if (req.user) {
+            res.locals.currentUser =  req.user;
             switch(req.user.role_id) {
                 case 1:
                     res.redirect('../');
@@ -51,7 +52,7 @@ router.post('/',
                 case 4:
                     res.redirect('../editor/manage-content');
                 break;
-                case 4:
+                case 5:
                     res.redirect('../admin');
                 break;
                 default:

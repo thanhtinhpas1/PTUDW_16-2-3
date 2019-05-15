@@ -16,7 +16,6 @@ function createConnection() {
 function getConnection() {
     var connection = createConnection();
     if (connection != null) {
-        console.log('Success connect to db');
         return connection;
     }
     console.log('Failed connect to db');
@@ -24,11 +23,24 @@ function getConnection() {
 }
 
 module.exports = {
+    excute: (query) => {
+        return new Promise((resolve, reject) => {
+            var conn = createConnection();
+            conn.connect();
+            conn.query(query, (err, value) => {
+                if (err) reject(err);
+                else resolve(value);
+                conn.end();
+            })
+        })
+    }
+    ,
     update: (tableName, entity) => {
         return new Promise((resolve, reject) => {
             var sql = `UPDATE ${tableName} set ? WHERE id = ?`;
             var conn = createConnection();
             conn.connect();
+            entity["updated_at"] = utils.GetTimeNow();
             conn.query(sql, [entity, entity.id], (err, value) => {
                 if (err) reject(err);
                 else resolve(value.id);
@@ -111,10 +123,9 @@ module.exports = {
             entity["created_at"] = utils.GetTimeNow();
             entity["updated_at"] = utils.GetTimeNow();
             conn.query(sql, entity, (error, value) => {
-
                 if (error) reject(error);
                 else {
-                    resolve(value.InsertId);
+                    resolve(value);
                 }
                 conn.end();
 
@@ -153,10 +164,10 @@ module.exports = {
     },
     findListByField: (tableName, field, value) => {
         return new Promise((resolve, reject) => {
-            var sql = `select * from ${tableName} where ${field} = ${value}`;
+            var sql = `select * from ${tableName} where ${field} = ?`;
             var conn = createConnection();
             conn.connect();
-            conn.query(sql, (err, value) => {
+            conn.query(sql, value, (err, value) => {
                 if (err) {
                     reject(err);
                 }

@@ -24,7 +24,6 @@ Cây đường dẫn:
         - /admin/manage-tag
         - /admin/manage-post
         - /admin/manage-user
-        - /admin/manage-account
 
 * Cập nhật thông tin cá nhân
     - /login

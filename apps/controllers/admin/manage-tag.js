@@ -40,4 +40,23 @@ router.post("/add", (req, res) => {
     res.redirect('/admin/manage-tag');
 });
 
+router.get('/edit/:id', (req, res) => {
+    var entity = db.findTagById(req.params.id);
+    entity.then(entity => {
+        console.log(entity);
+        res.json(entity);
+    })
+    .catch(err => console.log(err));
+});
+
+router.post('/edit/:id', (req, res) => {
+    var entity = db.findTagById(req.params.id);
+    entity.then(entity => {
+        entity.name = req.body.name;
+        db.updateTag(entity);
+    })
+    .catch(err => console.log(err));
+    res.redirect('../');
+});
+
 module.exports = router;

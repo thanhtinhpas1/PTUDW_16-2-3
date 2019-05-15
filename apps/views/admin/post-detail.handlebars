@@ -1,0 +1,16 @@
+<main class="main-content ">
+    <div id="mainContent container">
+        <div class="container">
+            <div class="card mb-3 shadow-sm">
+                <img id="img-avatar-detail" src="{{post.avatar}}" style="width: 60%;" class="card-img-top" alt="{{post.tile}}">
+                <div class="card-body">
+                    <h3 class="mt-30"><b>{{post.title}}</b></h3>
+                    <p class="card-text">{{post.summnary-content}}</p>
+                    <p class="card-text"><small
+                            class="text-muted">{{moment post.created_at format="YYYY/MM/DD h:mm:s"}}</small></p>
+                    <p class="card-text">{{post.content}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

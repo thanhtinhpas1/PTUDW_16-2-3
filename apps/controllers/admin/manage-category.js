@@ -25,6 +25,15 @@ router.get("/delete", (req, res) => {
     res.redirect('/admin/manage-category');
 });
 
+router.get('/add', (req, res) => {
+    var categories = db.getAllCategory();
+    categories.then(categories => {
+        res.json(categories);
+    }).catch(err=> {
+        console.log(err);
+    });
+})
+
 router.post("/add", (req, res) => {
     var entity = req.body;
     console.log(entity);
@@ -39,4 +48,34 @@ router.post("/add", (req, res) => {
     res.redirect('/admin/manage-category');
 });
 
+router.get("/edit/:id", (req, res) => {
+    var id = req.params.id;
+    var entity = db.findCategorybyId(id);
+    entity.then(category => {
+        res.json(category);
+    }).catch(err => {
+        console.log(err);
+    });
+  
+})
+
+router.post("/edit/:id",(req, res) => {
+    var id = req.params.id;
+    var entity = db.findCategorybyId(id);
+    entity.then(entity => {
+        entity.name = req.body.name;
+        entity.parent_id = req.body.parent_id;
+        var rs = db.updateCategory(entity);
+        rs.then(value => {
+            console.log('Update category success ' + value);
+        })
+        .catch(err => {
+            console.log('Update failed cause ' + err);
+        });
+    })
+    .catch(err => {
+        console.log('Update failed cause ' + err);
+    });
+    res.redirect('../');
+})
 module.exports = router;

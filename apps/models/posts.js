@@ -1,5 +1,16 @@
 var db = require("../common/database");
 
+function deletePostById(id) {
+    return db.deleteById('posts', id);
+}
+
+function findAll() {
+    return db.findAll('posts');
+}
+
+function findById(id) {
+    return db.findById('posts', id);
+}
 
 //Find all posts
 function findAllPost() {
@@ -8,10 +19,8 @@ function findAllPost() {
         FROM posts ,users, categories 
         WHERE posts.created_by = users.id AND posts.category_id = categories.id
         ORDER BY posts.post_date DESC`;
-
         var conn = db.getConnection();
         conn.connect();
-
         conn.query(sql, (err, value) => {
             if (err) reject(err);
             else resolve(value);
@@ -112,8 +121,9 @@ function getAllPostsEditorManage(status, editorId) {
         });
     });
 }
+
 function updatePost(entity, id) {
-    return db.uppdate('posts', entity, id);
+    return db.update('posts', entity, id);
 }
 
 function getTopPostOfWeek(){
@@ -132,20 +142,19 @@ function getTopPostOfWeek(){
         })
     })
 }
+
+
 module.exports = {
     // Lấy tất cả những bài post ở status = 0 do editor quản lí
     getAllPostsEditorManage: getAllPostsEditorManage,
     updatePost: updatePost,
     findAllPost: findAllPost,
-    findAll:() => {
-        return db.findAll();
-    },
-    findById: (id) => {
-        return db.findById("posts",id);
-    },
     getTopHot: displayHotNews,
     getTopView: displayTopView,
     findLimit: findLimit,
     findByPostId: findByPostId,
-    getTopPostOfWeek: getTopPostOfWeek
+    getTopPostOfWeek: getTopPostOfWeek,
+    deletePostById: deletePostById,
+    findAll: findAll,
+    findById: findById
 }

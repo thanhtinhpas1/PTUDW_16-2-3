@@ -1,6 +1,10 @@
 
 var db = require("../common/database");
 
+function updateCategory(entity) {
+    return db.update('categories', entity);
+}
+
 function getAllCategory() {
     return db.findAll("categories");
 }
@@ -54,8 +58,8 @@ function getTopCate(){
 module.exports = {
     getAllCategory: getAllCategory,
     deleteCatById: deleteCatById, 
-    addNewCategory: addNewCategory,
-    findCategorybyId: findCategoryById,
+    addNewCategory: addNewCategory,    findCategorybyId: findCategoryById,
+    updateCategory: updateCategory,
     findParent: findParent,
     getTopCate : getTopCate
 }
