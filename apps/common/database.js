@@ -67,7 +67,6 @@ module.exports = {
         return new Promise((resolve, reject) => {
             var sql = `SELECT * from ${tableName} WHERE id = ?`;
             var conn = createConnection();
-            entity["updated_at"] = utils.GetTimeNow();
             conn.connect();
             conn.query(sql, id, (err, value) => {
                 if (err) reject(err);

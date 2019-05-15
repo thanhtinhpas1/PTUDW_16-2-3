@@ -85,8 +85,20 @@
 
 <h4 class="p-title mt-20"><b>Có {{amountOfCom}} bình luận</b></h4>
 
-{{#each this.lstCom as |parent|}}
-	{{#ifEquals parent.parent_id 0}}
+{{#each this.lstCom }}
+	<div class="sided-70 mb-40">
+		<div class="s-left rounded">
+			<img src="{{avatar}}" alt="">
+		</div><!-- s-left -->
+
+		<div class="s-right ml-100 ml-xs-85">
+			<h5><b>{{name}}</b> <span class="font-8 color-ash">{{moment created_at format="YYYY/MM/DD h:mm:s" }}</span></h5>
+			<p class="mtb-15">{{content}}</p>
+			<a class="btn-brdr-grey btn-b-sm plr-15 mr-10 mt-5" href="#"><b>LIKE</b></a>
+			<a class="btn-brdr-grey btn-b-sm plr-15 mt-5" href="#"><b>REPLY</b></a>
+		</div><!-- s-right -->
+		</div><!-- sided-70 -->
+	{{!-- {{#ifEquals parent.parent_id 0}}
 		<div class="sided-70 mb-40">
 		<div class="s-left rounded">
 			<img src="{{avatar}}" alt="">
@@ -99,9 +111,9 @@
 			<a class="btn-brdr-grey btn-b-sm plr-15 mt-5" href="#"><b>REPLY</b></a>
 		</div><!-- s-right -->
 		</div><!-- sided-70 -->
-	{{/ifEquals}}
+	{{/ifEquals}} --}}
 
-	{{#each ../this.lstCom as |child|}}
+	{{!-- {{#each ../this.lstCom as |child|}}
 		{{#ifEquals child.parent_id parent.id}}
 			<div class="sided-70 ml-100 ml-xs-20 mb-40">
 			<div class="s-left rounded">
@@ -115,7 +127,7 @@
 			</div><!-- s-right -->
 			</div><!-- sided-70 -->
 		{{/ifEquals}}
-	{{/each}}
+	{{/each}} --}}
 {{/each}}
 
 

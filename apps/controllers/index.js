@@ -70,7 +70,7 @@ router.get("/", function(req, res) {
 });
 
 //Load more
-router.get("/:page", function(req,res) {
+router.get("/page/:page", function(req,res) {
 
     var page = parseInt(req.params.page);
     var perPage = 12;

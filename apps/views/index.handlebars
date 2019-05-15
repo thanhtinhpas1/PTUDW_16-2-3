@@ -112,7 +112,9 @@
 							<li><a href="#">Khoa học vũ trụ</a></li>
 							<li><a href="#">Tin trong ngày</a></li>
 					</li> -->
-					{{#each lcAllCate as |parent|}}
+					{{!-- {{#each lcAllCate as |parent|}}
+					<li id="menu_world" class="drop-down"><a href="/archieve-post/{{parent.id}}">{{name}}<i
+									class="ion-arrow-down-b"></i></a>
 						{{#ifEquals parent_id 0}}
 							<li id="menu_world" class="drop-down"><a href="/archieve-post/{{parent.id}}">{{name}}<i
 									class="ion-arrow-down-b"></i></a>
@@ -125,7 +127,7 @@
 									</ul>
 							</li>
 						{{/ifEquals}}
-					{{/each}}
+					{{/each}} --}}
 				</ul>
 
 				<div class="clearfix"></div>
@@ -220,7 +222,7 @@
 									<a class="post-img" href="/single-post/{{id}}"><img src="{{thumb_img}}"  alt=""></a>
 									<div class="post-body">
 										<div class="post-meta">
-											<a class="post-category cat-1" href="/archieve-post/{{catID}}" style="font-size: 90%;">{{catName}}</a>
+											<a class="post-category cat-1" href="/archieve-post/" style="font-size: 90%;"></a>
 											<span class="post-date" style="font-size: 0.8rem;">{{moment post_date format="YYYY/MM/DD h:mm:s"}}</span>
 										</div>
 										<h6 class="post-title" style="font-size: 100%"><a href="/single-post/{{id}}">{{title}}</a></h6>
@@ -300,11 +302,11 @@
 						<h4 class="pt-20"><a href="/single-post/{{id}}"><b>{{title}}</b></a></h4>
 						<div class="post-meta">
 							<a class="post-category cat-1" href="/archieve-post/{{catID}}">{{catName}}</a>
-							{{#each ../this.lstPostTag as |postTag|}}
+							{{!-- {{#each ../this.lstPostTag as |postTag|}}
 								{{#ifEquals postTag.post_id post.id}}
 									<a class="post-category cat-1" href="/archieve-post/{{tag_id}}">{{tag_name}}</a>
 								{{/ifEquals}}
-							{{/each}}
+							{{/each}} --}}
 						</div>
 						<ul class="list-li-mr-20 pt-10 mb-30">
 							<li class="color-lite-black">by <a href="/single-post/{{id}}" class="color-black"><b>&nbsp;{{userName}} &nbsp;</b></a>
@@ -498,7 +500,7 @@
 			$.ajax({
 				async: true,
 				type: "GET",
-				url: "../" + temp,
+				url: "../page/" + temp,
 				success: function(res){
 					{{!-- <div class="col-sm-6">
 						<img src="{{thumb_img}}" alt="" >

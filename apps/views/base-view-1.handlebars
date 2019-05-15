@@ -98,7 +98,9 @@
 							<li><a href="#">Tin trong ngày</a></li>
 					</li> -->
 					{{#each lcAllCate as |parent|}}
-						{{#ifEquals parent_id 0}}
+					<li id="menu_world" class="drop-down"><a href="/archieve-post/{{parent.id}}">{{name}}<i
+									class="ion-arrow-down-b"></i></a>
+						{{!-- {{#ifEquals parent_id 0}}
 							<li id="menu_world" class="drop-down"><a href="/archieve-post/{{parent.id}}">{{name}}<i
 									class="ion-arrow-down-b"></i></a>
 									<ul class="drop-down-menu drop-down-inner">
@@ -109,7 +111,7 @@
 										{{/each}}
 									</ul>
 							</li>
-						{{/ifEquals}}
+						{{/ifEquals}} --}}
 					{{/each}}
 					<!-- menu more -->
 				</ul>
