@@ -12,9 +12,9 @@ router.use(require("../middlewares/local.mdw"));
 
 router.get("/:id", function(req, res) {
 
-    var singlePost = postdb.findById(parseInt(req.params.id));
+    var singlePost = postdb.findByPostId(parseInt(req.params.id));
     var postTag = posttagdb.getAllPostTag();
-    var allPost = postdb.findAll();
+    var allPost = postdb.findAllPost();
     var allComment = commentdb.getAll();
 
     Promise.all([singlePost,postTag,allPost,allComment]).then(values => {

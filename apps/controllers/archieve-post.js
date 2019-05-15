@@ -11,7 +11,7 @@ router.get("/:cateID", function(req, res) {
 
     var cateID = parseInt(req.params.cateID);
 
-    var allPostDB = postdb.findAll();
+    var allPostDB = postdb.findAllPost();
          
     allPostDB.then(lstPost => {
         console.log(lstPost.length)
