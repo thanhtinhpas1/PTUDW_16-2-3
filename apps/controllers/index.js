@@ -33,21 +33,27 @@ router.get("/", function(req, res) {
     
     //Pagination
     var page = parseInt(req.query.page) || 1;
-    var perPage = 12;
+    var perPage = 6;
     var begin = (page - 1)* perPage;
 
     //Call database
     var allPost = postdb.findLimit(begin,perPage);
-    var allCate = catedb.getAllCategory();
+    var numberOfPost = postdb.getNumberOfPost();
+    var allCate = catedb.findParent();
     var topPostOfWeekDB = postdb.getTopPostOfWeek();
     var allPostTag = postTagdb.getAllPostTag();
-    //Get database
+    var numberOfComments = postdb.getNumberOfComments();
+
     
-    Promise.all([allPost,allCate ,topPostOfWeekDB,allPostTag]).then(values => {
+    //Get database
+    Promise.all([allPost,allCate ,topPostOfWeekDB,allPostTag,numberOfPost,numberOfComments]).then(values => {
         var lstPost = values[0];
-        var lstCate = values[1];
+        var lstCateParent = values[1];
         var lstPostOfWeek = values[2];
         var lstPostTag = values[3];
+        var numberOfPost = values[4];
+        var numberOfComments = values[5];
+   
 
         if(lstPost != null || lstCate != null || lstPostOfWeek != null ||lstPostTag!= null){
             
@@ -56,12 +62,15 @@ router.get("/", function(req, res) {
                 page: page,
                 hottest: res.locals.lcTopHot[0],
                 lstHottest : res.locals.lcTopHot.slice(1,10),
-                lstCate: lstCate,
+                lstCateParent: lstCateParent,
                 popularNew: res.locals.lcTopHot.slice(0,3),
                 firstPostOfWeek: lstPostOfWeek[0],
                 lstPostOfWeek_1 : lstPostOfWeek.slice(1,3),
                 lstPostOfWeeK_2 : lstPostOfWeek.slice(3,6),
-                lstPostTag : lstPostTag
+                lstPostTag : lstPostTag,
+                max: numberOfPost.max,
+                numberOfComments: numberOfComments,
+                lstCategories: Categories
             })
         }  
     }).catch(err => {
@@ -73,7 +82,7 @@ router.get("/", function(req, res) {
 router.get("/page/:page", function(req,res) {
 
     var page = parseInt(req.params.page);
-    var perPage = 12;
+    var perPage = 6;
     var begin = (page - 1)* perPage;
     var allPost = postdb.findLimit(begin,perPage);
 
