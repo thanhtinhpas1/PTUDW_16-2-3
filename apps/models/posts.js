@@ -201,5 +201,7 @@ module.exports = {
     getTopPostOfWeek: getTopPostOfWeek,
     deletePostById: deletePostById,
     findAll: findAll,
-    findById: findById
+    findById: findById,
+    getNumberOfComments: getNumberOfComments,
+    getNumberOfPost: getNumberOfPost
 }
