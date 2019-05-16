@@ -10,7 +10,7 @@
                     </div>
                     <div class="card-body">
                         <div class="mt-30">
-                            <form onsubmit="return AddNewPost();" id="formAddPost">
+                            <form onsubmit="return false;" id="formAddPost">
                                 <div class="form-row">
                                     <div class="form-group col-md-8"><label for="title">
                                             <h4>Title</h4>
@@ -63,7 +63,7 @@
                                 </ul>
                             </div>
                         </div>
-                    </div><button type="submit" class="btn btn-success mr-2 ml-2 mb-3">Create new
+                    </div><button onclick="AddNewPost();" class="btn btn-success mr-2 ml-2 mb-3">Create new
                         post</button>
                     </form>
                 </div>
@@ -96,7 +96,7 @@
             success: (data) => {
                 tagsArray = [];
                 console.log(data);
-            window.location.replace('/admin/manage-post');
+                window.location.replace('/admin/manage-post');
             },
             error: (error) => {
                 tagsArray = [];
@@ -104,6 +104,7 @@
                 window.location.replace('/admin/manage-post');
             }
         });
+        
     }
 
     function ToggleTag(id) {
@@ -124,6 +125,9 @@
         $.map(frmUn, function (n, i) {
             frm[n['name']] = n['value'];
         });
+        var data = CKEDITOR.instances.content.getData();
+        frm['content'] = data;
+        console.log(data);
 
         $.ajax({
             url: '/admin/manage-post/add',
@@ -141,6 +145,5 @@
                 window.location.replace('/admin/manage-post');
             })
         });
-        return false;
     }
 </script>

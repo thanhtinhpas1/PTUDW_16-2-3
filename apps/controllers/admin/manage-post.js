@@ -11,6 +11,18 @@ router.get("/", function (req, res) {
     posts.then(rows => {
         var rs = db.findAll();
         rs.then(tmp => {
+            for (const item of tmp) {
+                switch(item.status) {
+                case 1:
+                    item['statusName']  = "Published";
+                    item['label'] = "label-success";
+                break;
+                default: 
+                    item['statusName']  = "Draft";   
+                    item['label'] = "label-primary";
+                    break;
+                }
+            }
             res.render("admin/manage-post", { title: "manage-post", layout: "admin/baseview", list: tmp });
         }).catch(err => {
             console.log('Failed to get author of post');
@@ -21,6 +33,7 @@ router.get("/", function (req, res) {
     })
 });
 
+//FIXME: can't delete when have foreign key
 router.get("/delete", (req, res) => {
     var id = req.query.id;
     if (id > 0) {
@@ -77,7 +90,7 @@ router.post("/add", (req, res) => {
             res.json(row.insertId);
         }).catch(err => {
             console.log('Add new post failed cause: ' + err);
-            res.redirect('../');
+         //   res.redirect('../');
         });
 
     }
@@ -199,16 +212,58 @@ router.post('/edit/taged/:id', (req, res) => {
 });
 
 router.get('/detail/:id', (req, res) => {
-    var catRS = categoryDb.getAllCategory();
-    var tagRS = tagDb.getAllTag();
     var id = req.params.id;
     var post = db.findById(id);
-    Promise.all([catRS, tagRS, post]).then(values => {
-        res.render("admin/post-detail", {title: "post-detail", layout: "admin/baseview", categories: values[0], tags: values[1], post: values[2]});
+    var tagedRS = tagedDb.findTagByPostId(id);
+    var catRS = categoryDb.getAllCategory();
+    Promise.all([catRS, tagedRS, post]).then(values => {
+        if (values[2] != null) {
+            var category;
+            for (const item of values[0]) {
+                if (values[2].category_id == item.id) {
+                    category = item;
+                    break;
+                }
+            }
+
+            switch(values[2].status) {
+            case 1:
+                values[2]['statusName']  = "Published";
+                values[2]['label'] = "label-success";
+            break;
+            default: 
+                values[2]['statusName']  = "Draft";   
+                values[2]['label'] = "label-primary";
+                break;
+            }
+        }
+        res.render("admin/post-detail", {title: "post-detail", layout: "admin/baseview", category: category, tags: values[1], post: values[2]});
     })
     .catch(err => {
         console.log(err);
     })
 });
+
+//change-status
+router.get('/:id/change-status', (req, res) => {
+    var id = req.params.id;
+    var status = req.query.status;
+    var post = db.findById(id);
+    post.then(post => {
+        post.status = status;
+        var update = db.updatePost(post);
+        update.then(rs => {
+            res.redirect('/admin/manage-post');
+        })
+        .catch(err => {
+            console.log(err);
+            res.redirect('/admin/manage-post');
+        })
+    })
+    .catch(err => {
+        console.log(err);
+    })
+})
+
 
 module.exports = router;

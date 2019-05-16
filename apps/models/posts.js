@@ -1,5 +1,9 @@
 var db = require("../common/database");
 
+function addNewPost(entity) {
+    return db.add('posts', entity);
+}
+
 function deletePostById(id) {
     return db.deleteById('posts', id);
 }
@@ -202,6 +206,7 @@ module.exports = {
     deletePostById: deletePostById,
     findAll: findAll,
     findById: findById,
-    getNumberOfComments: getNumberOfComments,
-    getNumberOfPost: getNumberOfPost
+    addNewPost: addNewPost,
+    getNumberOfPost: getNumberOfPost,
+    getNumberOfComments: getNumberOfComments
 }

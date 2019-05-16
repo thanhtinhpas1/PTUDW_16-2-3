@@ -26,6 +26,10 @@ router.get("/delete", (req, res) => {
     res.redirect('/admin/manage-user');
 });
 
+router.get("/add", (req, res) => {
+    res.render("admin/add_new_user", {title: "add-user", layout: "admin/baseview"});
+});
+
 router.post("/add", (req, res) => {
     var entity = req.body;
     console.log(entity);
