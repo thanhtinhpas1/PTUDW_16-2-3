@@ -35,7 +35,7 @@
 	<script defer src="js/all.js"></script>
 </head>
 
-<body>
+<body onload="">
 	<!-- Preloader -->
 	<a href="#top" id="topBtn">
 		<i class="fas fa-arrow-circle-up"></i>
@@ -103,28 +103,17 @@
 				<a class="logo" href="/"><img src="imgs/logo-black.png" alt="Logo"></a>
 				<a class="menu-nav-icon" data-menu="#main-menu" href="#"><i class="ion-navicon"></i></a>
 				<ul class="main-menu menu" id="main-menu">
-					<!-- <li id="menu_world" class="drop-down"><a href="/single-post">Tất cả<i
-								class="ion-arrow-down-b"></i></a>
-						<ul class="drop-down-menu drop-down-inner">
-							<li><a href="#">Điểm nóng</a></li>
-							<li><a href="#">Quân sự</a></li>
-							<li><a href="#">Vũ khí hạt nhân</a></li>
-							<li><a href="#">Khoa học vũ trụ</a></li>
-							<li><a href="#">Tin trong ngày</a></li>
-					</li> -->
 					{{!-- {{#each lcAllCate as |parent|}}
-					<li id="menu_world" class="drop-down"><a href="/archieve-post/{{parent.id}}">{{name}}<i
-									class="ion-arrow-down-b"></i></a>
 						{{#ifEquals parent_id 0}}
 							<li id="menu_world" class="drop-down"><a href="/archieve-post/{{parent.id}}">{{name}}<i
 									class="ion-arrow-down-b"></i></a>
-									<ul class="drop-down-menu drop-down-inner">
-										{{#each ../lcAllCate as |child|}}
-											{{#ifEquals child.parent_id parent.id}}
-												<li><a href="/archieve-post/{{child.id}}">{{child.name}}</a></li>
-											{{/ifEquals}}
-										{{/each}}
-									</ul>
+								<ul class="drop-down-menu drop-down-inner">
+									{{#each ../lcAllCate as |child|}}
+										{{#ifEquals child.parent_id parent.id}}
+											<li><a href="/archieve-post/{{child.id}}">{{child.name}}</a></li>
+										{{/ifEquals}}
+									{{/each}}
+								</ul>
 							</li>
 						{{/ifEquals}}
 					{{/each}} --}}
@@ -133,7 +122,6 @@
 				<div class="clearfix"></div>
 			</div><!-- container -->
 		</div>
-
 	</header>
 
 	<!-- body content -->
@@ -222,7 +210,7 @@
 									<a class="post-img" href="/single-post/{{id}}"><img src="{{thumb_img}}"  alt=""></a>
 									<div class="post-body">
 										<div class="post-meta">
-											<a class="post-category cat-1" href="/archieve-post/" style="font-size: 90%;"></a>
+											<a class="post-category cat-1" href="/archieve-post/{{catID}}" style="font-size: 90%;">{{catName}}</a>
 											<span class="post-date" style="font-size: 0.8rem;">{{moment post_date format="YYYY/MM/DD h:mm:s"}}</span>
 										</div>
 										<h6 class="post-title" style="font-size: 100%"><a href="/single-post/{{id}}">{{title}}</a></h6>
@@ -252,8 +240,6 @@
 							</a><!-- oflow-hidden -->
 						{{/each}}
 						
-					
-
 				</div><!-- mtb-50 -->
 				</div>
 		
@@ -302,11 +288,11 @@
 						<h4 class="pt-20"><a href="/single-post/{{id}}"><b>{{title}}</b></a></h4>
 						<div class="post-meta">
 							<a class="post-category cat-1" href="/archieve-post/{{catID}}">{{catName}}</a>
-							{{!-- {{#each ../this.lstPostTag as |postTag|}}
+							{{#each ../this.lstPostTag as |postTag|}}
 								{{#ifEquals postTag.post_id post.id}}
 									<a class="post-category cat-1" href="/archieve-post/{{tag_id}}">{{tag_name}}</a>
 								{{/ifEquals}}
-							{{/each}} --}}
+							{{/each}}
 						</div>
 						<ul class="list-li-mr-20 pt-10 mb-30">
 							<li class="color-lite-black">by <a href="/single-post/{{id}}" class="color-black"><b>&nbsp;{{userName}} &nbsp;</b></a>
@@ -392,7 +378,6 @@
 
 				</div><!--  pl-20 -->
 			</div><!-- col-md-3 -->
-
 			</div><!-- row -->
 		</div><!-- container -->
 	</section>
@@ -471,15 +456,15 @@
 
 	<!-- SCRIPTS -->
 	<script>
-
-	
-	
+		
 		var temp = {{page}};
+		var current = 6;
+
 		function showMore(){
-			
 			var pagination = document.getElementById("pagination");
 			pagination.href = "/?page="+ temp;
 		}
+		
 		$(document).ready(function(){
 
 			$(window).scroll(function(){
@@ -496,48 +481,40 @@
 			});
 
 			$(document).on("click","#pagination",function() {
-			temp = temp + 1;
-			$.ajax({
-				async: true,
-				type: "GET",
-				url: "../page/" + temp,
-				success: function(res){
-					{{!-- <div class="col-sm-6">
-						<img src="{{thumb_img}}" alt="" >
-						<h4 class="pt-20"><a href="/single-post/{{id}}"><b>{{title}}</b></a></h4>
-						<div class="post-meta">
-							<a class="post-category cat-1" href="/archieve-post/{{catID}}">{{catName}}</a>
-							<a class="post-category cat-1" href="/archieve-post/{{catID}}">{{tagName}}</a>
-						</div>
-						<ul class="list-li-mr-20 pt-10 mb-30">
-							<li class="color-lite-black">by <a href="/single-post/{{id}}" class="color-black"><b>&nbsp;{{userName}} &nbsp;</b></a>
-								{{moment post_date format="YYYY/MM/DD h:mm:s"}}</li>
-							<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i>{{views}}</li>
-							<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i>{{comments}}</li>
-						</ul>
-					</div><!-- col-sm-6 --> --}}
-					for(var i = 0; i< res.length; i++){
-						$("#allPost").append("<div class=" + "col-sm-6" + ">" + 
-						"<img src=" + '"' + res[i].thumb_img + '"' + "alt=" + ">" + 
-						"<h4 class=" + "pt-20" + "><a href=" + "/single-post/" + res[i].id +"><b>" + res[i].title + "</b></a></h4>"+
-						"<div class=" + "post-meta" + ">" + 
-							"<a class=" + '"' + "post-category cat-1" + '"' + " href=" + "/archieve-post/" + res[i].catID + ">"+ res[i].catName + "</a>" + 
-							"<a class=" + '"' + "post-category cat-1" + '"' + " href=" + "/archieve-post/" + res[i].catID + ">" + res[i].tagName + "</a>"
-					   +"</div>" + 
-					   	"<ul class=" +  '"' + "list-li-mr-20 pt-10 mb-30" + '"' + ">" + 
-							"<li class=" + '"' + "color-lite-black" + '"' + ">by <a href=" + "/single-post/" + res[i].id + "class=" + '"' + "color-black" + '"' + "><b>&nbsp;" + res[i].userName + "&nbsp;</b></a>"+
-								  res[i].post_date + "</li>"+
-							"<li><i class=" + '"' + "color-primary mr-5 font-12 ion-ios-bolt" + '"' + "></i>" + res[i].views + "</li>" + 
-							"<li><i class=" + '"' + "color-primary mr-5 font-12 ion-chatbubbles" + '"' + "></i>" + res[i].comments + "</li>" +
-						"</ul>" 
-						 +"</div>")
+				temp = temp + 1;
+				current += 6;
+				$.ajax({
+					async: true,
+					type: "GET",
+					url: "../page/" + temp,
+					success: function(res){
+						if(current >= {{max}}){
+							$("#pagination").hide();
+						}
+						for(var i = 0; i< res.length; i++){
+							$("#allPost").append("<div class=" + "col-sm-6" + ">" + 
+							"<img src=" + '"' + res[i].thumb_img + '"' + "alt=" + ">" + 
+							"<h4 class=" + "pt-20" + "><a href=" + "/single-post/" + res[i].id +"><b>" + res[i].title + "</b></a></h4>"+
+							"<div class=" + "post-meta" + ">" + 
+								"<a class=" + '"' + "post-category cat-1" + '"' + " href=" + "/archieve-post/" + res[i].catID + ">"+ res[i].catName + "</a>" + 
+								"<a class=" + '"' + "post-category cat-1" + '"' + " href=" + "/archieve-post/" + res[i].tagID + ">" + res[i].tagName + "</a>"
+						+"</div>" + 
+							"<ul class=" +  '"' + "list-li-mr-20 pt-10 mb-30" + '"' + ">" + 
+								"<li class=" + '"' + "color-lite-black" + '"' + ">by <a href=" + "/single-post/" + res[i].id + "class=" + '"' + "color-black" + '"' + "><b>&nbsp;" + res[i].userName + "&nbsp;</b></a>"+
+									res[i].post_date + "</li>"+
+								"<li><i class=" + '"' + "color-primary mr-5 font-12 ion-ios-bolt" + '"' + "></i>" + res[i].views + "</li>" + 
+								"<li><i class=" + '"' + "color-primary mr-5 font-12 ion-chatbubbles" + '"' + "></i>" + res[i].comments + "</li>" +
+							"</ul>" 
+							+"</div>")
+							
+						}
+						
+					},
+					error: function(xhr,ajaxOption, throwError){
+						alert("Đã xảy ra lỗi");
 					}
-				},
-				error: function(xhr,ajaxOption, throwError){
-					alert("Đã xảy ra lỗi");
-				}
-			})
-		});
+					})
+				});
 		})
 		
 	</script>
