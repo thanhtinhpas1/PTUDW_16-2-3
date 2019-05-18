@@ -5,7 +5,6 @@ var tagDb = require('../../models/tags');
 var tagedDb = require('../../models/post_tagdes');
 var categoriesDb = require('../../models/categories');
 
-
 router.get("/post-wait", function (req, res) {
     var status = 3;
     var created_by = 1;

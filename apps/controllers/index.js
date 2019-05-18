@@ -7,7 +7,6 @@ var router = express.Router();
 router.use("/single-post", require(__dirname + "/single-post"));
 router.use("/archieve-post", require(__dirname + "/archieve-post"));
 
-
 //middleware
 router.use(require("../middlewares/local.mdw"));
 

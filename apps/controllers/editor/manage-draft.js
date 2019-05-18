@@ -5,6 +5,7 @@ var db = require('../../models/posts');
 var tagDb = require('../../models/tags');
 var tagedDb = require('../../models/post_tagdes');
 var categoriesDb = require('../../models/categories');
+
 router.get("/manage-draft", function(req, res) {
     var p = db.getAllPostsEditorManage(3, 2);
     p.then(rows =>{

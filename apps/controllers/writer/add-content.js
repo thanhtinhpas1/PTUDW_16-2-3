@@ -6,6 +6,7 @@ var db = require('../../models/posts');
 var tagDb = require('../../models/tags');
 var tagedDb = require('../../models/post_tagdes');
 
+
 router.get("/", function (req, res) {
 
     var c = categoriesModel.getAllCategory();
