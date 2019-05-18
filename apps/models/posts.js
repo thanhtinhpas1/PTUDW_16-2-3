@@ -192,6 +192,17 @@ function getTopPostOfWeek(){
     })
 }
 
+function getAllPostWriter(created_by, status){
+    var conn = db.getConnection();
+    return new Promise((resolve, reject) => {
+        var sql = `SELECT * FROM posts WHERE posts.created_by = ? AND posts.status = ? `;
+        conn.connect();
+        conn.query(sql,[created_by, status], (err, value) => {
+            if (err) reject(err);
+            else resolve(value);
+            conn.end();
+        })
+    })}
 
 module.exports = {
     // Lấy tất cả những bài post ở status = 0 do editor quản lí
@@ -208,5 +219,6 @@ module.exports = {
     findById: findById,
     addNewPost: addNewPost,
     getNumberOfPost: getNumberOfPost,
-    getNumberOfComments: getNumberOfComments
+    getNumberOfComments: getNumberOfComments,
+    getAllPostWriter: getAllPostWriter
 }

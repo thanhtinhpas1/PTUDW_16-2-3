@@ -13,12 +13,10 @@ router.use(require("../middlewares/local.mdw"));
 
 // writer
 router.use("/writer/add-content", require(__dirname + "/writer/add-content"));
-router.use("/writer/manage-draft", require(__dirname + "/writer/manage-draft"));
+router.use("/writer", require(__dirname + "/writer/manage-draft"));
 //editor
-router.use("/editor/manage-content", require(__dirname + "/editor/manage-draft"));
-router.use("/editor/edit-content", require(__dirname + "/editor/edit-draft"));
-router.use("/editor/confirm-post", require(__dirname + "/editor/confirm-post"));
-router.use("/editor/report-post", require(__dirname + "/editor/report-post"));
+router.use("/editor", require(__dirname + "/editor/manage-draft"));
+
 
 
 
@@ -80,7 +78,6 @@ router.get("/", function(req, res) {
 
 //Load more
 router.get("/page/:page", function(req,res) {
-
     var page = parseInt(req.params.page);
     var perPage = 6;
     var begin = (page - 1)* perPage;
@@ -92,5 +89,7 @@ router.get("/page/:page", function(req,res) {
     }).catch(err => {
         console.log(err);
     })
-})
+});
+
+    
 module.exports = router;
