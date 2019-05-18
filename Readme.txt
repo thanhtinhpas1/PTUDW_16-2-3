@@ -10,11 +10,14 @@ Cây đường dẫn:
     - /archieve-post
 
 *Phóng viên:
-    - /writer/manage-draft
-    - /writer/add-content
+    - /writer
+        - /manage-draft/post-wait
+        - /manage-draft/post-refuse
+        - /manage-draft/post-success
+        - /manage-draft/post-approved
 
 * Biên tập viên
-    - /editor/manage-draft    
+    - /editor 
 * Admin
     *Đường dẫn gốc
     - /admin

@@ -90,7 +90,7 @@
         console.log('tag: ');
         console.log(JSON.stringify(tagsArray));
         $.ajax({
-            url: '/writer/edit-post/taged/' + id,
+            url: '/writer/manage-draft/edit-post/taged/' + id,
             method: 'POST',
             dataType: 'json',
             data: JSON.stringify(tagsArray),
@@ -101,12 +101,12 @@
             success: (data) => {
                 tagsArray = [];
                 console.log('Update taged success');
-                window.location.replace('/writer/add-content');
+                window.location.replace('/writer');
             },
             error: (error) => {
                 tagsArray = [];
                 console.log('tag error');
-                window.location.replace('/writer/add-content');
+                window.location.replace('/writer');
             }
         });
     }
@@ -131,7 +131,7 @@
         });
 
         $.ajax({
-            url: '/writer/edit-post/' + id,
+            url: '/writer/manage-draft/edit-post/' + id,
             method: 'POST',
             dataType: 'json',
             contentType: 'application/json',
@@ -144,7 +144,7 @@
             error: (error) => {
                 console.log(error);
                 console.log('Update post failed');
-                window.location.replace('/writer/add-content');
+                window.location.replace('/writer');
             }
         });
         return false;

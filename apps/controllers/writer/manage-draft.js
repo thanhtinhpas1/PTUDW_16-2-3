@@ -109,12 +109,12 @@ router.post('/edit-post/:id', (req, res) => {
             res.json(200);
         }).catch(err => {
             console.log(err);
-            res.redirect('writer/add-content');
+            res.redirect('/writer/');
         });
     })
     .catch(err => {
         console.log(err);
-        res.redirect('writer/add-content');
+        res.redirect('/writer');
     })
 });
 
@@ -152,7 +152,7 @@ router.post('/edit-post/taged/:id', (req, res) => {
     })
     .catch(err => {
         console.log(err);
-        res.redirect('writer/add-content');
+        res.redirect('/writer');
     });
 });
 module.exports = router;

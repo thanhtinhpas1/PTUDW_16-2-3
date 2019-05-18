@@ -46,13 +46,13 @@
             complete: () => console.log('completed submit'),
             success: (rs => {
                 console.log('update fail reason success');
-                window.location.replace('/editor/manage-draft');
+                window.location.replace('/editor/');
 
             }),
             error: (error => {
                 console.log('update fail reason fail');
 
-                window.location.replace('/editor/manage-draft');
+                window.location.replace('/editor/');
             })
 
         });

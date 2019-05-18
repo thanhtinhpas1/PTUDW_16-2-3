@@ -6,7 +6,7 @@ var tagDb = require('../../models/tags');
 var tagedDb = require('../../models/post_tagdes');
 var categoriesDb = require('../../models/categories');
 
-router.get("/manage-draft", function(req, res) {
+router.get("/", function(req, res) {
     var p = db.getAllPostsEditorManage(3, 2);
     p.then(rows =>{
         res.render("editor/manage-draft", {
@@ -99,12 +99,12 @@ router.post('/confirm-post/:id', (req, res) => {
             res.json(200);
         }).catch(err => {
             console.log(err);
-            res.redirect('editor/manage-draft');
+            res.redirect('editor/');
         });
     })
     .catch(err => {
         console.log(err);
-        res.redirect('editor/manage-draft');
+        res.redirect('editor/');
     })
 });
 
@@ -142,7 +142,7 @@ router.post('/taged/:id', (req, res) => {
     })
     .catch(err => {
         console.log(err);
-        res.redirect('editor/manage-draft');
+        res.redirect('editor/');
     });
 });
 module.exports = router;

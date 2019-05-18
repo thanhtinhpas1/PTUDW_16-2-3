@@ -5,7 +5,7 @@
             <div class="masonry-item col-md-12">
                 <div class="card shadow mb-4">
                     <div class="text-center card-header py-3 text-center">
-                        <h3 class="" style="font-weight: bold; color: #029a00"><a href="/writer/add-content"></a>POST FORM
+                        <h3 class="" style="font-weight: bold; color: #029a00"><a href="/writer"></a>POST FORM
                         </h3>
                     </div>
                     <div class="card-body">
@@ -85,7 +85,7 @@
         console.log('tag: ');
         console.log(JSON.stringify(tagsArray));
         $.ajax({
-            url: '/writer/add-content/taged/' + id,
+            url: '/writer/taged/' + id,
             method: 'POST',
             dataType: 'json',
             data: JSON.stringify(tagsArray),
@@ -96,12 +96,12 @@
             success: (data) => {
                 tagsArray = [];
                 console.log(data);
-            window.location.replace('/writer/manage-post');
+            window.location.replace('/writer/');
             },
             error: (error) => {
                 tagsArray = [];
                 console.log('tag error');
-                window.location.replace('/writer/manage-post');
+                window.location.replace('/writer/');
             }
         });
     }
@@ -129,7 +129,7 @@
         console.log(data);
 
         $.ajax({
-            url: '/writer/add-content',
+            url: '/writer',
             method: 'POST',
             dataType: 'json',
             contentType: 'application/json',
@@ -141,7 +141,7 @@
             }),
             error: (error => {
                 console.log(error);
-                window.location.replace('/writer/add-content');
+                window.location.replace('/writer');
             })
         });
         return false;

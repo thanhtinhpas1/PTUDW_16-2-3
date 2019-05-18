@@ -11,8 +11,8 @@ router.use("/archieve-post", require(__dirname + "/archieve-post"));
 router.use(require("../middlewares/local.mdw"));
 
 // writer
-router.use("/writer/add-content", require(__dirname + "/writer/add-content"));
-router.use("/writer", require(__dirname + "/writer/manage-draft"));
+router.use("/writer", require(__dirname + "/writer/add-content"));
+router.use("/writer/manage-draft", require(__dirname + "/writer/manage-draft"));
 
 //editor
 router.use("/editor", require(__dirname + "/editor/manage-draft"));

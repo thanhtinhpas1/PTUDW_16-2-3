@@ -5,7 +5,7 @@
             <div class="masonry-item col-md-12">
                 <div class="card shadow mb-4">
                     <div class="text-center card-header py-3 text-center">
-                        <h3 class="" style="font-weight: bold; color: #029a00"><a href="/writer/add-content"></a>POST
+                        <h3 class="" style="font-weight: bold; color: #029a00"><a href="#"></a>POST
                             FORM
                         </h3>
                     </div>
@@ -95,12 +95,12 @@
             success: (data) => {
                 tagsArray = [];
                 console.log('Update taged success');
-                window.location.replace('/editor/manage-draft');
+                window.location.replace('/editor/');
             },
             error: (error) => {
                 tagsArray = [];
                 console.log('tag error');
-                window.location.replace('/editor/manage-draft');
+                window.location.replace('/editor/');
             }
         });
     }
@@ -138,7 +138,7 @@
             error: (error) => {
                 console.log(error);
                 console.log('Update post failed');
-                window.location.replace('/editor/manage-draft');
+                window.location.replace('/editor/');
             }
         });
         return false;
