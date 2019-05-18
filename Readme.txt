@@ -14,9 +14,7 @@ Cây đường dẫn:
     - /writer/add-content
 
 * Biên tập viên
-    - /editor/manage-content
-    - /editor/edit-content
-    
+    - /editor/manage-draft    
 * Admin
     *Đường dẫn gốc
     - /admin
