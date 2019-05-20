@@ -25,7 +25,7 @@ function getConnection() {
 module.exports = {
     excute: (query) => {
         return new Promise((resolve, reject) => {
-            var conn = createConnection();
+            var conn = getConnection();
             conn.connect();
             conn.query(query, (err, value) => {
                 if (err) reject(err);

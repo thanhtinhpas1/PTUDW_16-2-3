@@ -21,6 +21,9 @@ function updateTag(entity) {
     return db.update('tags', entity);
 }
 
+
+
+
 module.exports = {
     getAllTag: getAllTag,
     deleteTagById: deleteTagById, 

@@ -40,10 +40,38 @@ function deleteTagedPostById(id) {
     return db.deleteById('post_tageds', id);
 }
 
+function getPage(limit, offset, id) {
+    return new Promise((resolve, reject) => {
+        var sql = `SELECT p.*, t.tag_name, t.tag_id FROM post_tageds t JOIN posts p ON p.id = t.post_id WHERE t.tag_id = ? LIMIT ${limit} OFFSET ${offset}`;
+        var conn = db.getConnection();
+        conn.connect();
+        conn.query(sql, id, (err, values) => {
+            if (err) reject(err);
+            else resolve(values);
+            conn.end();
+        })
+    })
+}
+
+function countPage(id) {
+    return new Promise((resolve, reject) => {
+        var sql = `SELECT COUNT(*) as total FROM post_tageds t JOIN posts p ON p.id = t.post_id WHERE t.tag_id = ?`;
+        var conn = db.getConnection();
+        conn.connect();
+        conn.query(sql, id, (err, values) => {
+            if (err) reject(err);
+            else resolve(values);
+            conn.end();
+        })
+    })
+}
+
 module.exports = {
     getAllPostTag: getAllPostTag,
     addPostTag: addPostTag,
     findTagByPostId: findTagByPostId,
     deleteTagedPostById: deleteTagedPostById,
-    findPostsByTag: findPostsByTag
+    findPostsByTag: findPostsByTag,
+    countPage,
+    getPage
 }

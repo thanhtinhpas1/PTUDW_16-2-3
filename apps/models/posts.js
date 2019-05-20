@@ -12,6 +12,16 @@ function findAll() {
     return db.findAll('posts');
 }
 
+function getPage(limit, offset) {
+    var sql = `SELECT p.*, c.name as category_name from posts p LEFT JOIN categories c on p.category_id = c.id LIMIT ${limit} OFFSET ${offset}`;
+    return db.excute(sql);
+}
+
+function countPage() {
+    var sql = `SELECT COUNT(*) as total from posts`;
+    return db.excute(sql);
+}
+
 function findById(id) {
     return db.findById('posts', id);
 }
@@ -220,5 +230,7 @@ module.exports = {
     addNewPost: addNewPost,
     getNumberOfPost: getNumberOfPost,
     getNumberOfComments: getNumberOfComments,
-    getAllPostWriter: getAllPostWriter
+    getAllPostWriter: getAllPostWriter,
+    getPage,
+    countPage
 }
