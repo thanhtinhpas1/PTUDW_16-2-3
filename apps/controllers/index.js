@@ -13,12 +13,8 @@ router.use(require("../middlewares/local.mdw"));
 // writer
 router.use("/writer", require(__dirname + "/writer/add-content"));
 router.use("/writer/manage-draft", require(__dirname + "/writer/manage-draft"));
-
 //editor
 router.use("/editor", require(__dirname + "/editor/manage-draft"));
-
-
-
 
 //include for admin
 router.use("/admin", require(__dirname + "/admin/index"));
@@ -26,6 +22,15 @@ router.use("/admin", require(__dirname + "/admin/index"));
 //user
 router.use("/login", require(__dirname + "/login"));
 router.use("/edit-profile", require(__dirname + "/edit-profile"));
+
+//search
+router.use("/search", require(__dirname + "/search"));
+
+//all-post
+router.use('/posts', require(__dirname + "/all-post"));
+
+//post by tag
+router.use('/posts/tag', require(__dirname + '/all-tag'));
 
 router.get("/", function(req, res) {
     
@@ -37,59 +42,46 @@ router.get("/", function(req, res) {
     //Call database
     var allPost = postdb.findLimit(begin,perPage);
     var numberOfPost = postdb.getNumberOfPost();
-    var allCate = catedb.findParent();
+    var allCate = catedb.getAllCategory();
     var topPostOfWeekDB = postdb.getTopPostOfWeek();
     var allPostTag = postTagdb.getAllPostTag();
     var numberOfComments = postdb.getNumberOfComments();
-
+    var topPostOfCat = catedb.getTopPostOfCat();
     
     //Get database
-    Promise.all([allPost,allCate ,topPostOfWeekDB,allPostTag,numberOfPost,numberOfComments]).then(values => {
+    Promise.all([allPost,allCate ,topPostOfWeekDB,allPostTag,numberOfPost,numberOfComments, topPostOfCat]).then(values => {
         var lstPost = values[0];
-        var lstCateParent = values[1];
         var lstPostOfWeek = values[2];
         var lstPostTag = values[3];
         var numberOfPost = values[4];
         var numberOfComments = values[5];
-   
-
-        if(lstPost != null || lstCate != null || lstPostOfWeek != null ||lstPostTag!= null){
-            
-            res.render("index", {
-                post: lstPost,
-                page: page,
-                hottest: res.locals.lcTopHot[0],
-                lstHottest : res.locals.lcTopHot.slice(1,10),
-                lstCateParent: lstCateParent,
-                popularNew: res.locals.lcTopHot.slice(0,3),
-                firstPostOfWeek: lstPostOfWeek[0],
-                lstPostOfWeek_1 : lstPostOfWeek.slice(1,3),
-                lstPostOfWeeK_2 : lstPostOfWeek.slice(3,6),
-                lstPostTag : lstPostTag,
-                max: numberOfPost.max,
-                numberOfComments: numberOfComments,
-                lstCategories: Categories
-            })
+        //filter menu
+        var parentMenu = [];
+        if(values[1].length > 0){
+            parentMenu = values[1].filter(x => x.parent_id == 0);
+            for (const item of parentMenu) {
+                var childrenMenu = values[1].filter(x => x.parent_id == item.id);
+                item['childs'] = childrenMenu;
+            }
         }  
+        res.render("index", {
+            parentMenu: parentMenu,
+            post: lstPost,
+            page: page,
+            hottest: res.locals.lcTopHot[0],
+            lstHottest : res.locals.lcTopHot,
+            popularNew: res.locals.lcTopHot.slice(0,3),
+            firstPostOfWeek: lstPostOfWeek[0],
+            lstPostOfWeek_1 : lstPostOfWeek.slice(1,3),
+            lstPostOfWeeK_2 : lstPostOfWeek.slice(3,6),
+            lstPostTag : lstPostTag,
+            max: numberOfPost.max,
+            numberOfComments: numberOfComments,
+            topPostOfCat: values[6]
+        })
     }).catch(err => {
         console.log(err);
     })
 });
 
-//Load more
-router.get("/page/:page", function(req,res) {
-    var page = parseInt(req.params.page);
-    var perPage = 6;
-    var begin = (page - 1)* perPage;
-    var allPost = postdb.findLimit(begin,perPage);
-
-    //Load more posts
-    allPost.then(rows => {
-        res.send(rows);
-    }).catch(err => {
-        console.log(err);
-    })
-});
-
-    
 module.exports = router;

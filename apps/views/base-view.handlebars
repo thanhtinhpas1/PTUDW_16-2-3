@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8">
-
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 	<!-- Font -->
 	<link href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded:400,600,700" rel="stylesheet">
 
@@ -34,8 +34,7 @@
 		</div>
 	</div>
 	<header>
-
-		<!-- ##### Header Area Start ##### -->
+				<!-- ##### Header Area Start ##### -->
 		<header class="header-area">
 			<!-- Top Header Area -->
 			<div class="top-header-area">
@@ -45,12 +44,12 @@
 							<!-- Breaking News Widget -->
 							<div class="breaking-news-area d-flex align-items-center">
 								<div class="news-title">
-									<p>Breaking News:</p>
+									<p>Tin nóng:</p>
 								</div>
 								<div id="breakingNewsTicker" class="ticker">
 									<ul>
 										{{#each lcTopHot}}
-											<li><a href="/single-post/{{id}}">{{title}}</a></li>
+										<li><a href="/single-post/{{id}}">{{title}}</a></li>
 										{{/each}}
 									</ul>
 								</div>
@@ -68,13 +67,14 @@
 								</div>
 								<!-- Top Search Area -->
 								<div class="top-search-area">
-									<form action="/" method="post">
-										<input type="search" name="top-search" id="topSearch" placeholder="Search...">
+									<form action="/search" method="POST">
+										<input type="search" name="search" id="topSearch" placeholder="Search..." required>
 										<button type="submit" class="btn"><i class="fas fa-search"></i></button>
 									</form>
 								</div>
 								<!-- Login -->
-								<a href="login.html" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
+								<a href="/login" class="login-btn color-white"><i class="fas fa-user"
+										aria-hidden="true"></i></a>
 							</div>
 						</div>
 					</div>
@@ -86,42 +86,22 @@
 			<div class="container">
 				<a class="logo" href="/"><img src="/imgs/logo-black.png" alt="Logo"></a>
 				<a class="menu-nav-icon" data-menu="#main-menu" href="#"><i class="ion-navicon"></i></a>
-
 				<ul class="main-menu menu" id="main-menu">
-					<!-- <li id="menu_world" class="drop-down"><a href="/single-post">Tất cả<i
+					{{#each lcAllCate}}
+					<li id="menu_world" class="drop-down"><a href="/archieve-post/{{id}}">{{name}}<i
 								class="ion-arrow-down-b"></i></a>
 						<ul class="drop-down-menu drop-down-inner">
-							<li><a href="#">Điểm nóng</a></li>
-							<li><a href="#">Quân sự</a></li>
-							<li><a href="#">Vũ khí hạt nhân</a></li>
-							<li><a href="#">Khoa học vũ trụ</a></li>
-							<li><a href="#">Tin trong ngày</a></li>
-					</li> -->
-
-					{{#each lcAllCate as |parent|}}
-					<li id="menu_world" class="drop-down"><a href="/archieve-post/{{parent.id}}">{{name}}<i
-									class="ion-arrow-down-b"></i></a>
-						{{!-- {{#ifEquals parent_id 0}}
-							<li id="menu_world" class="drop-down"><a href="/archieve-post/{{parent.id}}">{{name}}<i
-									class="ion-arrow-down-b"></i></a>
-									<ul class="drop-down-menu drop-down-inner">
-										{{#each ../lcAllCate as |child|}}
-											{{#ifEquals child.parent_id parent.id}}
-												<li><a href="/archieve-post/{{child.id}}">{{child.name}}</a></li>
-											{{/ifEquals}}
-										{{/each}}
-									</ul>
-							</li>
-						{{/ifEquals}} --}}
+							{{#each childs}}
+							<li><a href="/archieve-post/{{id}}">{{name}}</a></li>
+							{{/each}}
+						</ul>
+					</li>
 					{{/each}}
-					<!-- menu more -->
 				</ul>
+				<div class="clearfix"></div>
 			</div><!-- container -->
-			<div class="clearfix"></div>
 		</div>
-
 	</header>
-
 
 	<section>
 		<div class="container">
@@ -135,14 +115,16 @@
 						<h4 class="p-title"><b>Tin trong ngày</b></h4>
 						<div class="all-news-content">
 							{{#each lcTopHot}}
-								<a class="oflow-hidden pos-relative dplay-block" href="/single-post/{{id}}">
-									<div class="wh-100x abs-tlr"><img src="{{thumb_img}}" alt=""></div>
-									<div class="ml-120 min-h-100x">
-										<h5><b>{{title}}</b></h5>
-										<h6 class="color-lite-black pt-10">by <span class="color-black"><b>{{userName}}</b></span>{{moment post_date format="YYYY/MM/DD h:mm:s"}} {{catName}}</h6>
-									
-									</div>
-								</a><!-- oflow-hidden -->
+							<a class="oflow-hidden pos-relative dplay-block" href="/single-post/{{id}}">
+								<div class="wh-100x abs-tlr"><img src="{{thumb_img}}" alt=""></div>
+								<div class="ml-120 min-h-100x">
+									<h5><b>{{title}}</b></h5>
+									<h6 class="color-lite-black pt-10">by <span
+											class="color-black"><b>{{userName}}</b></span>{{moment post_date format="YYYY/MM/DD h:mm:s"}}
+										{{catName}}</h6>
+
+								</div>
+							</a><!-- oflow-hidden -->
 							{{/each}}
 						</div>
 
@@ -150,42 +132,47 @@
 							<div>
 								<h4 class="p-title"><b>Tin có nhiều lượt xem nhất</b></h4>
 								<div class="all-news-content">
-									{{#each lcTopView}} 
+									{{#each lcTopView}}
 									<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post/{{id}}">
 										<div class="wh-100x abs-tlr"><img src="{{thumb_img}}" alt=""></div>
 										<div class="ml-120 min-h-100x">
 											<h5><b>{{title}}</b></h5>
-											<h6 class="color-lite-black pt-10">by <span class="color-black"><b>{{userName}}</b></span> {{moment post_date format="YYYY/MM/DD h:mm:s"}} {{catName}}</h6>
+											<h6 class="color-lite-black pt-10">by <span
+													class="color-black"><b>{{userName}}</b></span>
+												{{moment post_date format="YYYY/MM/DD h:mm:s"}} {{catName}}</h6>
 										</div>
 									</a><!-- oflow-hidden -->
 									{{/each}}
 								</div>
 							</div><!-- mtb-50 -->
 						</div>
-						
+
 						<div class="mtb-50">
 							<h4 class="p-title"><b>Tin hot nhất</b></h4>
 							<div class="all-news-content">
 								{{#each lcTopHot}}
 								<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post/{{id}}">
-								<div class="wh-100x abs-tlr"><img src="{{thumb_img}}" alt=""></div>
-								<div class="ml-120 min-h-100x">
-									<h5><b>{{title}}</b>
-									</h5>
-									<h6 class="color-lite-black pt-10">by <span class="color-black"><b>{{userName}}</b></span> {{moment post_date format="YYYY/MM/DD h:mm:s"}} {{catName}}</h6>
-								</div>
+									<div class="wh-100x abs-tlr"><img src="{{thumb_img}}" alt=""></div>
+									<div class="ml-120 min-h-100x">
+										<h5><b>{{title}}</b>
+										</h5>
+										<h6 class="color-lite-black pt-10">by <span
+												class="color-black"><b>{{userName}}</b></span>
+											{{moment post_date format="YYYY/MM/DD h:mm:s"}} {{catName}}</h6>
+									</div>
 								</a><!-- oflow-hidden -->
 								{{/each}}
 							</div>
 						</div><!-- mtb-50 -->
-					<div class="aside-widget">
+						<div class="aside-widget">
 							<div class="section-title">
 								<h2>Chuyên mục</h2>
 							</div>
 							<div class="category-widget">
 								<ul>
 									{{#each lcTopCate}}
-										<li><a href="/archieve-post/{{id}}" class="cat-1">{{name}}<span>{{SL}}</span></a></li>
+									<li><a href="/archieve-post/{{id}}" class="cat-1">{{name}}<span>{{SL}}</span></a>
+									</li>
 									{{/each}}
 								</ul>
 							</div>
@@ -195,7 +182,7 @@
 							<div class="tags-widget">
 								<ul>
 									{{#each lcAllTag}}
-										<li><a href="/archieve-post/{{id}}">{{name}}</a></li>
+									<li><a href="/archieve-post/{{id}}">{{name}}</a></li>
 									{{/each}}
 								</ul>
 							</div>
@@ -223,19 +210,28 @@
 		<div class="container">
 			<div class="pt-50 pb-20 pos-relative">
 				<div class="abs-tblr pt-50 z--1 text-center">
-					<div class="h-80 pos-relative"><img class="opacty-1 h-100 w-auto" src="imgs/map.png" alt=""></div>
+					<div class="h-80 pos-relative"><img class="opacty-1 h-100 w-auto" src="imgs/map.png" alt="">
+					</div>
 				</div>
 				<div class="row">
 
 					<div class="col-sm-8">
 						<div class="mb-30">
 							<a href="/"><img src="imgs/logo-white.png"></a>
-							<p class="mtb-20 color-ccc">Trang thông tin tin tức trong nước và ngoài nước, phục vụ nhu cầu cập nhật cho người đọc.</p>
+							<p class="mtb-20 color-ccc">Trang thông tin tin tức trong nước và ngoài nước, phục vụ
+								nhu cầu cập nhật cho người đọc.</p>
 							<p class="color-ash">
 								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 								Copyright &copy;
-								<script>document.write(new Date().getFullYear());</script> Cơ quan chủ quản: Công ty Cổ phần Quảng cáo Trực tuyến 24H Trụ sở: Tầng 12, Tòa nhà Geleximco, 36 Hoàng Cầu, Phường Ô Chợ Dừa, Quận Đống Đa, TP Hà Nội. Tel: (84-24) 73 00 24 24 hoặc (84-24) 3512 1806 - Fax: (84-24) 3512 1804. Chi nhánh: Tầng 7, Tòa nhà Việt Úc, 402 Nguyễn Thị Minh Khai, Phường 5, Quận 3, TP. Hồ Chí Minh. Tel: (84-28) 7300 2424 / Giấy phép số 332/GP – TT ĐT ngày cấp 22/01/2018 SỞ THÔNG TIN VÀ TRUYỀN THÔNG HÀ NỘI. Chịu trách nhiệm xuất bản: Phan Minh Tâm. HOTLINE: 0965 08 24 24<i class="ion-heart" aria-hidden="true"></i> by <a
-									href="https://colorlib.com" target="_blank">Colorlib</a>
+								<script>document.write(new Date().getFullYear());</script> Cơ quan chủ quản: Công ty
+								Cổ phần Quảng cáo Trực tuyến 24H Trụ sở: Tầng 12, Tòa nhà Geleximco, 36 Hoàng Cầu,
+								Phường Ô Chợ Dừa, Quận Đống Đa, TP Hà Nội. Tel: (84-24) 73 00 24 24 hoặc (84-24)
+								3512 1806 - Fax: (84-24) 3512 1804. Chi nhánh: Tầng 7, Tòa nhà Việt Úc, 402 Nguyễn
+								Thị Minh Khai, Phường 5, Quận 3, TP. Hồ Chí Minh. Tel: (84-28) 7300 2424 / Giấy phép
+								số 332/GP – TT ĐT ngày cấp 22/01/2018 SỞ THÔNG TIN VÀ TRUYỀN THÔNG HÀ NỘI. Chịu
+								trách nhiệm xuất bản: Phan Minh Tâm. HOTLINE: 0965 08 24 24<i class="ion-heart"
+									aria-hidden="true"></i> by <a href="https://colorlib.com"
+									target="_blank">Colorlib</a>
 								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 							</p>
 						</div><!-- mb-30 -->
@@ -245,12 +241,12 @@
 						<div class="mb-30">
 							<h5 class="color-primary mb-20"><b>Tin phổ biến</b></h5>
 							{{#each this.popularNew}}
-								<div class="mb-20">
+							<div class="mb-20">
 								<a class="color-white" href="/single-post/{{id}}"><b>{{title}}</b></a>
 								<h6 class="mt-10">{{moment post_date format="YYYY/MM/DD h:mm:s"}}</h6>
-								</div>
+							</div>
 							{{/each}}
-						
+
 						</div><!-- mb-30 -->
 					</div><!-- col-md-4 -->
 

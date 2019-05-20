@@ -21,7 +21,7 @@ function findAllPost() {
     return new Promise((resolve, reject) => {
         var sql = `SELECT posts.*, users.pseudonym as userName, categories.name as catName,categories.id as catID
         FROM posts ,users, categories 
-        WHERE posts.created_by = users.id AND posts.category_id = categories.id AND posts.status = 2
+        WHERE posts.created_by = users.id AND posts.category_id = categories.id 
         ORDER BY posts.post_date DESC`;
         var conn = db.getConnection();
         conn.connect();
@@ -77,7 +77,7 @@ function displayHotNews() {
         FROM posts ,users, categories 
         WHERE posts.created_by = users.id AND posts.category_id = categories.id AND posts.status = 2
         ORDER BY posts.post_date DESC
-        LIMIT 10`;
+        LIMIT 12`;
 
         var conn = db.getConnection();
         conn.connect();

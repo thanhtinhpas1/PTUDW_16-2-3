@@ -1,22 +1,12 @@
-<h4 class="p-title"><b>GIDES & ANLYTICS</b></h4>
+<h4 class="p-title"><b>{{category.name}}</b></h4>
 
-<div class="post post-thumb">
-	<a class="post-img" href="/single-post/{{firstPost.id}}"><img src="{{firstPost.thumb_img}}" style="height:500px" alt=""></a>
-	<h4 class="pt-20"><a href="#"><b>{{firstPost.title}}</b></a></h4>
-	<div class="post-body">
-		<div class="post-meta">
-			<a class="post-category cat-2" href="/archieve-post/{{firstPost.catID}}">{{firstPost.catName}}</a>
-			<span class="post-date">{{moment firstPost.post_date format="YYYY/MM/DD h:mm:s"}}</span>
-		</div>
-	</div>
-</div>
 <div class="row">
-	{{#each this.lstPostOfCate}}
-		<div class="col-sm-6">
-		<img src="{{avatar}}" style="height: 220px" alt="">
+	{{#each posts}}
+		<div class="col-sm-3">
+		<img src="{{avatar}}" style="height: auto" alt="">
 		<h4 class="pt-20"><a href="/single-post/{{id}}"><b>{{title}}</b></a></h4>
 		<div class="post-meta">
-			<a class="post-category cat-2" href="/archieve-post/{{catID}}">{{catName}}</a>
+			<a class="post-category cat-1" href="/archieve-post/{{catID}}">{{catName}}</a>
 		</div>
 		<ul class="list-li-mr-20 pt-10 mb-30">
 			<li class="color-lite-black">by <a href="#" class="color-black"><b>{{userName}}</b></a>
@@ -28,5 +18,24 @@
 	{{/each}}
 	
 </div><!-- row -->
+<div class="pagination">
+	<nav aria-label="pageination">
+  <ul class="pagination">
+    <li class="page-item {{#if pagination.previous}} disabled {{/if}}">
+      <a class="page-link" href="/archieve-post/{{category.id}}?page={{previous}}" tabindex="-1">Previous</a>
+    </li>
+		{{#each pagination}}
+				  <li class="page-item {{#if active}} active {{/if}} "><a class="page-link" href="/archieve-post/{{category.id}}?page={{page}}">{{page}}</a></li>
+		{{/each}}
+    {{!-- <li class="page-item"><a class="page-link" href="/posts?{{previous}}">{{previous}}</a></li>
+    <li class="page-item active">
+      <a class="page-link" href="#" >{{page}}<span class="sr-only">(current)</span></a>
+			    <li class="page-item"><a class="page-link" href="/archieve-post/{{category.id}}?page={{next}}">{{next}}</a></li>
+    </li> --}}
 
-<a class="dplay-block btn-brdr-primary mt-20 mb-md-50" href="#"><b>LOAD MORE</b></a>
+    <li class="page-item {{#if pagination.next}} disabled {{/if}}" >
+      <a class="page-link" href="/archieve-post/{{category.id}}?page={{next}}" tabindex="-1">Next</a>
+    </li>
+  </ul>
+</nav>
+</div>

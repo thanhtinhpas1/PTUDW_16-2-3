@@ -1,19 +1,10 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+	integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 <section class="ptb-0">
 	<div class="container">
 		<a class="mt-30" href="index.html"><i class="mr-5 ion-ios-home"></i>Home<i
 				class="mlr-10 ion-chevron-right"></i></a>
 		<a class="color-ash mt-10" id="page-url" href="#">Bài viết</a>
-
-		<script>
-			function setPremium(){
-				var premium = document.getElementById("premium");
-				if({{post.premium_status}} == 0) 
-				{
-					premium.style.display = "none";
-				}
-			}
-			window.onload = setPremium;
-		</script>
 
 		<a class="premium-tag ml-2" href="#" id="premium">Premium</a>
 	</div><!-- container -->
@@ -41,17 +32,20 @@
 </div><!-- quote-primary -->
 
 
+
 <div class="float-left-right text-center mt-40 mt-sm-20">
 
 	<ul
 		class="mb-30 list-li-mt-10 list-li-mr-5 list-a-plr-15 list-a-ptb-7 list-a-bg-grey list-a-br-2 list-a-hvr-primary ">
-	
+		<li class="download"><a onclick="DownloadPost({{post.id}})">Tải xuống<i
+					class="fas fa-file-download ml-2"></i></a></li>
 		{{#each this.lstPostTag}}
-			<li><a href="#">{{tag_name}}</a></li>
+		<li><a href="#">{{tag_name}}</a></li>
 		{{/each}}
-		
+
 	</ul>
 	<ul class="mb-30 list-a-bg-grey list-a-hw-radial-35 list-a-hvr-primary list-li-ml-5">
+
 		<li class="mr-10 ml-0">Chia sẻ</li>
 		<li><a href="#"><i class="ion-social-facebook"></i></a></li>
 		<li><a href="#"><i class="ion-social-twitter"></i></a></li>
@@ -59,14 +53,59 @@
 		<li><a href="#"><i class="ion-social-instagram"></i></a></li>
 	</ul>
 
-</div><!-- float-left-right -->
+
+</div><!-- floa"t-left-right -->
+
 
 <div class="brdr-ash-1 opacty-5"></div>
+
+<h4 class="p-title mt-20"><b>Có {{amountOfCom}} bình luận</b></h4>
+
+{{#each lstCom }}
+<div class="sided-70 mb-40">
+	<div class="s-left rounded">
+		<img src="/imgs/avatar.png" alt="">
+	</div><!-- s-left -->
+
+	<div class="s-right ml-100 ml-xs-85">
+		<h5><b>{{name}}</b> <span class="font-8 color-ash">{{moment created_at format="YYYY/MM/DD h:mm:s" }}</span></h5>
+		<p class="mtb-15">{{content}}</p>
+		<a class="btn-brdr-grey btn-b-sm plr-15 mr-10 mt-5" href="#"><b>LIKE</b></a>
+		<a class="btn-brdr-grey btn-b-sm plr-15 mt-5" href="#"><b>REPLY</b></a>
+	</div><!-- s-right -->
+</div><!-- sided-70 -->
+
+{{!-- <div class="sided-70 ml-100 ml-xs-20 mb-40">
+	<div class="s-left rounded">
+		<img src="{{avatar}}" alt="">
+	</div><!-- s-left -->
+	<div class="s-right ml-100 ml-xs-85">
+		<h5><b>{{name}}</b> <span
+				class="font-8 color-ash">{{moment created_at format="YYYY/MM/DD h:mm:s" }}</span></h5>
+		<p class="mtb-10">{{content}}</p>
+		<a class="btn-brdr-grey btn-b-sm plr-15 mr-10 mt-5" href="#"><b>LIKE</b></a>
+		<a class="btn-brdr-grey btn-b-sm plr-15 mt-5" href="#"><b>REPLY</b></a>
+	</div><!-- s-right -->
+</div><!-- sided-70 --> --}}
+{{/each}}
+
+
+<h4 class="p-title mt-20"><b>ĐỂ LẠI BÌNH LUẬN</b></h4>
+
+<form action="/single-post/{{post.id}}/new-comment" method="POST"
+	class="form-block form-plr-15 form-h-45 form-mb-20 form-brdr-lite-white mb-md-50">
+	<input name="name" type="text" placeholder="Tên của bạn*:">
+	{{!-- <input type="text" placeholder="Email của bạn*:"> --}}
+	{{!-- <input type="text" placeholder="Số điện thoại của bạn*:"> --}}
+	<textarea name="content" class="ptb-10" placeholder="Bình luận của bạn"></textarea>
+	<button class="btn-fill-primary plr-30" rows="4" cols="50" type="submit"><b>BÌNH LUẬN</b></button>
+</form>
+
 
 <h4 class="p-title mt-50"><b>Có thể bạn sẽ thích</b></h4>
 <div class="row">
 	{{#each this.favNew}}
-		<div class="col-sm-6">
+	<div class="col-sm-6">
 		<img src="{{thumb_img}}" style="height: 250px" alt="">
 		<h4 class="pt-20"><a href="#"><b>{{title}}</b></a></h4>
 		<div class="post-meta">
@@ -78,66 +117,34 @@
 			<li><i class="color-primary mr-5 font-12 ion-ios-bolt"></i>{{views}}</li>
 			<li><i class="color-primary mr-5 font-12 ion-chatbubbles"></i>{{comments}}</li>
 		</ul>
-		</div><!-- col-sm-6 -->
+	</div><!-- col-sm-6 -->
 	{{/each}}
 
 </div><!-- row -->
 
-<h4 class="p-title mt-20"><b>Có {{amountOfCom}} bình luận</b></h4>
-
-{{#each this.lstCom }}
-	<div class="sided-70 mb-40">
-		<div class="s-left rounded">
-			<img src="{{avatar}}" alt="">
-		</div><!-- s-left -->
-
-		<div class="s-right ml-100 ml-xs-85">
-			<h5><b>{{name}}</b> <span class="font-8 color-ash">{{moment created_at format="YYYY/MM/DD h:mm:s" }}</span></h5>
-			<p class="mtb-15">{{content}}</p>
-			<a class="btn-brdr-grey btn-b-sm plr-15 mr-10 mt-5" href="#"><b>LIKE</b></a>
-			<a class="btn-brdr-grey btn-b-sm plr-15 mt-5" href="#"><b>REPLY</b></a>
-		</div><!-- s-right -->
-		</div><!-- sided-70 -->
-	{{!-- {{#ifEquals parent.parent_id 0}}
-		<div class="sided-70 mb-40">
-		<div class="s-left rounded">
-			<img src="{{avatar}}" alt="">
-		</div><!-- s-left -->
-
-		<div class="s-right ml-100 ml-xs-85">
-			<h5><b>{{name}}</b> <span class="font-8 color-ash">{{moment created_at format="YYYY/MM/DD h:mm:s" }}</span></h5>
-			<p class="mtb-15">{{content}}</p>
-			<a class="btn-brdr-grey btn-b-sm plr-15 mr-10 mt-5" href="#"><b>LIKE</b></a>
-			<a class="btn-brdr-grey btn-b-sm plr-15 mt-5" href="#"><b>REPLY</b></a>
-		</div><!-- s-right -->
-		</div><!-- sided-70 -->
-	{{/ifEquals}} --}}
-
-	{{!-- {{#each ../this.lstCom as |child|}}
-		{{#ifEquals child.parent_id parent.id}}
-			<div class="sided-70 ml-100 ml-xs-20 mb-40">
-			<div class="s-left rounded">
-				<img src="{{child.avatar}}" alt="">
-			</div><!-- s-left -->
-			<div class="s-right ml-100 ml-xs-85">
-				<h5><b>{{child.name}}</b> <span class="font-8 color-ash">{{moment child.created_at format="YYYY/MM/DD h:mm:s" }}</span></h5>
-				<p class="mtb-10">{{child.content}}</p>
-				<a class="btn-brdr-grey btn-b-sm plr-15 mr-10 mt-5" href="#"><b>LIKE</b></a>
-				<a class="btn-brdr-grey btn-b-sm plr-15 mt-5" href="#"><b>REPLY</b></a>
-			</div><!-- s-right -->
-			</div><!-- sided-70 -->
-		{{/ifEquals}}
-	{{/each}} --}}
-{{/each}}
-
-
-<h4 class="p-title mt-20"><b>ĐỂ LẠI BÌNH LUẬN</b></h4>
-
-<form class="form-block form-plr-15 form-h-45 form-mb-20 form-brdr-lite-white mb-md-50">
-	<input type="text" placeholder="Tên của bạn*:">
-	<input type="text" placeholder="Email của bạn*:">
-	<input type="text" placeholder="Số điện thoại của bạn*:">
-	<textarea class="ptb-10" placeholder="Bình luận của bạn"></textarea>
-	<button class="btn-fill-primary plr-30" rows="4" cols="50" type="submit"><b>BÌNH LUẬN</b></button>
-</form>
-
+<script>
+	function DownloadPost(idPost) {
+		$.ajax({
+			url: '/single-post/' + idPost + '/download',
+			method: 'GET',
+			complete: () => console.log('Complete send request download'),
+			xhrFields: {
+				responseType: 'blob'
+			},
+			success: function (response, status, xhr) {
+				var fileName = xhr.getResponseHeader('Content-Disposition').split("=")[1];
+				fileName = fileName.slice(1, fileName.length - 1);
+				console.log(fileName);
+				var a = document.createElement('a');
+				var url = window.URL.createObjectURL(response);
+				a.href = url;
+				a.download = fileName;
+				a.click();
+				window.URL.revokeObjectURL(url);
+			},
+			error: err => {
+				console.log('Request download failed');
+			}
+		});
+	}
+</script>

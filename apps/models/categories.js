@@ -55,11 +55,18 @@ function getTopCate(){
     })
 }
 
+function getTopPostOfCat() {
+    var sql = `SELECT p.*, c.name as category_name FROM posts p 
+    LEFT JOIN categories c on p.category_id = c.id GROUP BY category_id ORDER BY views DESC LIMIT 12`;
+    return db.excute(sql);
+}
+
 module.exports = {
     getAllCategory: getAllCategory,
     deleteCatById: deleteCatById, 
     addNewCategory: addNewCategory,    findCategorybyId: findCategoryById,
     updateCategory: updateCategory,
     findParent: findParent,
-    getTopCate : getTopCate
+    getTopCate : getTopCate,
+    getTopPostOfCat: getTopPostOfCat
 }

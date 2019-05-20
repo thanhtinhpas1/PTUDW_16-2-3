@@ -35,8 +35,18 @@ module.exports = (req,res,next) => {
     })
 
     cateDB.getAllCategory().then(rows => {
-        res.locals.lcAllCate = rows;
+        var parentMenu = [];
+        if(rows.length > 0){
+            parentMenu = rows.filter(x => x.parent_id == 0);
+            for (const item of parentMenu) {
+                var childrenMenu = rows.filter(x => x.parent_id == item.id);
+                item['childs'] = childrenMenu;
+            }
+        }  
+        res.locals.lcAllCate = parentMenu;
     }).catch(err => {
         console.log(err);
     })
+
+    
 }

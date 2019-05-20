@@ -172,7 +172,7 @@ module.exports = {
                     reject(err);
                 }
                 else {
-                    resolve(value[0]);
+                    resolve(value);
                 }
                 conn.end();
             });

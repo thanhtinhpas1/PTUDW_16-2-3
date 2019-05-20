@@ -5,54 +5,98 @@ var catedb = require("../models/categories");
 var userdb = require("../models/user");
 var posttagdb = require("../models/post_tagdes");
 var commentdb = require("../models/comments");
-var tagdb = require("../models/tags")
+var tagdb = require("../models/tags");
+
+//import middle ware
+var phantom = require('phantom');
+var path = require('path');
 
 //middleware
 router.use(require("../middlewares/local.mdw"));
 
-router.get("/:id", function(req, res) {
-
+//TODO: check user before go to single post to show premium post
+router.get("/:id", function (req, res) {
+    var id = req.params.id;
     var singlePost = postdb.findByPostId(parseInt(req.params.id));
     var postTag = posttagdb.getAllPostTag();
     var allPost = postdb.findAllPost();
-    var allComment = commentdb.getAll();
+    var allComment = commentdb.findCommentsOfPost(id);
 
-    Promise.all([singlePost,postTag,allPost,allComment]).then(values => {
+    Promise.all([singlePost, postTag, allPost, allComment]).then(values => {
         var post = values[0];
         var postTag = values[1];
         var allPost = values[2];
-        var allComment = values[3];
 
         //Get list post have the same category
         var lstSameCate = allPost.filter(item => {
-            if(item.category_id == post.category_id && item.id != post.id)
+            if (item.category_id == post.category_id && item.id != post.id)
                 return item;
         })
 
         var lstPostTag = postTag.filter(item => {
-            if(item.post_id == post.id) 
+            if (item.post_id == post.id)
                 return item;
         })
 
-        //Get list comment of this post
-        var lstComment = allComment.filter(item => {
-            if(item.post_id == post.id)
-                return item;
-        })
-        
         res.render("03_single-post", {
-            title: "single-post", 
-            layout:'base-view-1',
+            title: "single-post",
+            layout: 'base-view-1',
             post: post,
             premium: post.premium_status,
             sameCate: lstSameCate, //List post have same category
-            favNew : res.locals.lcTopHot.slice(0,2),
-            lstCom: lstComment,
+            favNew: res.locals.lcTopHot.slice(0, 2),
+            lstCom: values[3],
             lstPostTag: lstPostTag,
-            amountOfCom: lstComment.length,
-            popularNew: res.locals.lcTopHot.slice(0,2)
+            amountOfCom: values[3].length,
+            popularNew: res.locals.lcTopHot.slice(0, 2)
         });
     });
+});
+
+//add comment
+router.post('/:id/new-comment', (req, res) => {
+    var idPost = req.params.id;
+    var entity = req.body;
+    entity['post_id'] = idPost;
+    var rs = commentdb.addComment(entity);
+    rs.then(values => {
+        console.log('add comment success');
+        res.redirect('/single-post/' + idPost);
+    })
+        .catch(err => {
+            console.log('Failed to add new comment');
+            res.redirect('/single-post/' + idPost);
+        })
+})
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+//download post
+router.get('/:id/download', (req, res) => {
+    var id = req.params.id;
+    (async function() {
+        const instance = await phantom.create();
+        const page = await instance.createPage();
+      
+        await page.property('viewportSize', { width: 1024, height: 600 });
+        const status = await page.open('http://localhost:5000/single-post/' + id);
+        console.log(`Page opened with status [${status}].`);
+      
+        //wait for load
+        await sleep(2000);
+
+        await page.render('bitnews' + id + '.pdf');
+        console.log(`File created at [./stackoverflow.pdf]`);
+      
+        await instance.exit();
+
+       //done
+       var file = __dirname + '/../../bitnews' + id + '.pdf';
+       console.log(file);
+       res.download(file);
+      })();
 });
 
 module.exports = router;
