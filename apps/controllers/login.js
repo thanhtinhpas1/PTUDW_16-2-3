@@ -47,10 +47,10 @@ router.post('/',
                     res.redirect('../');
                 break;
                 case 3:
-                    res.redirect('../writer/manage-draft');
+                    res.redirect('../writer');
                 break;
                 case 4:
-                    res.redirect('../editor/manage-content');
+                    res.redirect('../editor');
                 break;
                 case 5:
                     res.redirect('../admin');

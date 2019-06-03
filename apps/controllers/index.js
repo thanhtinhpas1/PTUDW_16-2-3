@@ -21,6 +21,11 @@ router.use("/admin", require(__dirname + "/admin/index"));
 
 //user
 router.use("/login", require(__dirname + "/login"));
+router.use("/forgot", require(__dirname + "/forgot-pass"));
+router.use("/reset", require(__dirname + "/reset-pass"));
+router.use("/change-pass", require(__dirname + "/change-pass"));
+
+
 router.use("/edit-profile", require(__dirname + "/edit-profile"));
 
 //search

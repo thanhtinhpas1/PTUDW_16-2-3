@@ -43,7 +43,7 @@ module.exports = {
             entity["updated_at"] = utils.GetTimeNow();
             conn.query(sql, [entity, entity.id], (err, value) => {
                 if (err) reject(err);
-                else resolve(value.id);
+                else resolve(value[0]);
                 conn.end();
             })
         })
@@ -90,15 +90,6 @@ module.exports = {
         });
     },
     findOne: (tableName, field, username) => {
-        //     var sql = `SELECT * from ${tableName} WHERE ${field} = ?`;
-        //     var conn = getConnection();
-        //     conn.query(sql, username, function(err, value) {
-        //         if (err) reject(err);
-        //         else {
-        //             resolve(value);
-        //         }
-        //         connec
-        //     });
         console.log(username);
         return new Promise((resolve, reject) => {
             var sql = `SELECT * from ${tableName} WHERE ${field} = ?`;

@@ -14,7 +14,6 @@ router.get("/", function(req, res) {
             layout: "../views/baseview-editor",
             listPost : rows
         });
-
     }).catch(err =>{
         console.log(err);
     });

@@ -21,7 +21,15 @@ function deleteUserById(id) {
 function addNewUser(entity) {
     return db.add("users", entity);
 }
-
+function findOneByEmail(email){
+    return db.findOne('users', 'email', email);
+}
+function update(entity){
+    return db.update('users', entity)
+}
+function findOneByToken(entity){
+    return db.findOne('users', 'reset_token', entity);
+}
 function updateUser(entity) {
     return db.update('users', entity);
 }
@@ -36,6 +44,9 @@ module.exports = {
     getAllUser: getAllUser,
     deleteUser: deleteUser,
     addNewUser: addNewUser,
+    findOneByEmail: findOneByEmail,
+    update : update,
+    findOneByToken : findOneByToken,
     getAllUserWithRole: getAllUserWithRole,
     updateUser: updateUser,
     deleteUserById: deleteUserById

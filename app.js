@@ -5,6 +5,7 @@ var session = require('express-session');
 var passport = require('passport');
 var morgan = require('morgan');
 var app = express();
+var flash = require("connect-flash");
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
@@ -14,14 +15,16 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
+
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use((req, res, next) =>{
     res.locals.currentUser = req.user;
+    res.locals.success = req.flash('success');
+    res.locals.error = req.flash('error');
     next();
 });
-
-
 
 
 //static folder
