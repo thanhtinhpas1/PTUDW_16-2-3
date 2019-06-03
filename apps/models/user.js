@@ -35,7 +35,7 @@ function updateUser(entity) {
 }
 
 module.exports = {
-    findOne: username => {
+    singleByUserName: username => {
         return db.findOne('users', 'username', username);
     },
     findById: id =>{

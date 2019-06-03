@@ -2,10 +2,10 @@ var express = require("express");
 var config = require('config');
 var bodyParser = require("body-parser");
 var session = require('express-session');
-var passport = require('passport');
 var morgan = require('morgan');
 var app = express();
 var flash = require("connect-flash");
+var passport = require('passport');
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
@@ -33,11 +33,16 @@ app.use(express.static(__dirname + "/public"));
 //set up engine 
 app.set("views", __dirname + "/apps/views")
 app.set("view engine", "handlebars");
+
 var handlebars = require("express-handlebars").create({
     defaultLayout: 'index',
     layoutsDir: __dirname + "/apps/views"
 });
+
 app.engine('handlebars', handlebars.engine);
+
+require('./apps/middlewares/session')(app);
+require('./apps/middlewares/passport-local')(app);
 
 //set moment helper for handlebars
 var Handlebars = require("handlebars");
@@ -47,13 +52,40 @@ MomentHandler.registerHelpers(Handlebars);
 var controllers = require(__dirname + "/apps/controllers");
 app.use(controllers);
 
+app.use((req, res, next) => {
+    next(createError(404));
+})
+
+app.use((err, req, res, next) => {
+    var status = err.status || 500; 
+    var errorView = '500';
+    if (status == 400)
+        errorView = 400;
+    else if (status == 404)
+        errorView = '404';
+    else if (status == 401) 
+        errorView = '401';
+    else if (status == 403) 
+        errorView = '403';
+    else if (status == 404)
+        errorView = '404';
+    else if (status == 503)
+        errorView == 503;
+
+    var msg = err.message;
+    var error = err;
+    res.status(status).render(errorView, {
+        layout: false, 
+        msg, 
+        error
+    })
+})
+
 var port = config.get("server.port");
+
 app.listen(process.env.PORT || port, function(){
     console.log("Server is running on port: ", port);
 });
 
-// //set page for status
-// app.use((req, res, next) => {
-//     res.status(404).render('404');
-//     res.status(500).render('500');
-// });
+
+  
