@@ -6,6 +6,9 @@ var morgan = require('morgan');
 var app = express();
 var flash = require("connect-flash");
 var passport = require('passport');
+var createError = require('http-errors');
+var hbs_sections = require('express-handlebars-sections');
+
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
@@ -36,10 +39,15 @@ app.set("view engine", "handlebars");
 
 var handlebars = require("express-handlebars").create({
     defaultLayout: 'index',
-    layoutsDir: __dirname + "/apps/views"
+    layoutsDir: __dirname + "/apps/views",
+    helpers: {
+        section: hbs_sections()
+    }
 });
 
 app.engine('handlebars', handlebars.engine);
+
+app.use(require('./apps/middlewares/auth-locals.mdw'));
 
 require('./apps/middlewares/session')(app);
 require('./apps/middlewares/passport-local')(app);
@@ -59,17 +67,17 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
     var status = err.status || 500; 
     var errorView = '500';
-    if (status == 400)
+    if (status === 400)
         errorView = 400;
-    else if (status == 404)
+    else if (status === 404)
         errorView = '404';
-    else if (status == 401) 
+    else if (status === 401) 
         errorView = '401';
-    else if (status == 403) 
+    else if (status === 403) 
         errorView = '403';
-    else if (status == 404)
+    else if (status === 404)
         errorView = '404';
-    else if (status == 503)
+    else if (status === 503)
         errorView == 503;
 
     var msg = err.message;

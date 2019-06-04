@@ -2,6 +2,10 @@ var express = require('express');
 var postdb = require("../models/posts");
 var catedb = require("../models/categories");
 var postTagdb = require("../models/post_tagdes");
+var authAdmin = require('../middlewares/auth-admin');
+var auth = require('../middlewares/auth');
+var authEditor = require('../middlewares/auth-editor');
+
 
 var router = express.Router();
 router.use("/single-post", require(__dirname + "/single-post"));
@@ -14,13 +18,13 @@ router.use(require("../middlewares/local.mdw"));
 router.use("/writer", require(__dirname + "/writer/add-content"));
 router.use("/writer/manage-draft", require(__dirname + "/writer/manage-draft"));
 //editor
-router.use("/editor", require(__dirname + "/editor/manage-draft"));
+router.use("/editor", authEditor, require(__dirname + "/editor/manage-draft"));
 
 //include for admin
-router.use("/admin", require(__dirname + "/admin/index"));
+router.use("/admin", authAdmin, require(__dirname + "/admin/index"));
 
 //user
-router.use("/login", require(__dirname + "/login"));
+router.use("/login", auth, require(__dirname + "/login"));
 router.use("/forgot", require(__dirname + "/forgot-pass"));
 router.use("/reset", require(__dirname + "/reset-pass"));
 router.use("/change-pass", require(__dirname + "/change-pass"));
@@ -88,5 +92,10 @@ router.get("/", function(req, res) {
         console.log(err);
     })
 });
+
+router.post('/log-out', (req, res) => {
+    req.logOut();
+    res.redirect('/');
+})
 
 module.exports = router;

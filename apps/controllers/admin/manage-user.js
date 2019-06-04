@@ -4,6 +4,7 @@ var db = require('../../models/user');
 var moment = require('moment');
 var bcrypt = require('bcrypt');
 var config = require('config');
+var utils = require('../../helpers/helper');
 //require db
 var catDB = require('../../models/categories');
 var roleDB = require('../../models/roles');
@@ -60,6 +61,13 @@ router.post("/add", (req, res) => {
     console.log(entity);
     entity.password = hash;
     if (entity) {
+        if (entity.role_id == 2) {
+            var now = utils.GetTimeNow();
+            var expire = moment(now, "YYYY-MM-DD").add(7, 'days');
+            entity.expiry_date = expire.format("YYYY-MM-DD hh:mm:ss");
+        }
+        console.log(entity);
+
         var rs = db.addNewUser(entity);
         rs.then(row => {
             console.log("Add new user success");

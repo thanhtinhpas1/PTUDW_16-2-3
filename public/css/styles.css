@@ -1,5 +1,20 @@
 /* Custom */
 
+#drop-user {
+	background-color: #222627;
+	color: #fff;
+}
+
+#header-login {
+	background-color: #222627;
+	color: #fff;
+	font-size: 12px;
+}
+#drop-user .dropdown-menu{
+	width: auto;
+	font-size: 12px;
+}
+
 #page-url {
 	color: #F9B500;
 	font-weight: bold;

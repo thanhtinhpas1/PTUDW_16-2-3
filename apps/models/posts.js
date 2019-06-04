@@ -214,6 +214,11 @@ function getAllPostWriter(created_by, status){
         })
     })}
 
+function searchPosts(search) {
+    var sql = `SELECT * FROM posts WHERE MATCH(title, content, summary_content) AGAINST('${search}')`;
+    return db.excute(sql);
+}
+
 module.exports = {
     // Lấy tất cả những bài post ở status = 0 do editor quản lí
     getAllPostsEditorManage: getAllPostsEditorManage,
@@ -232,5 +237,6 @@ module.exports = {
     getNumberOfComments: getNumberOfComments,
     getAllPostWriter: getAllPostWriter,
     getPage,
-    countPage
+    countPage,
+    searchPosts
 }

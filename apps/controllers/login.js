@@ -7,7 +7,6 @@ router.get("/", function (req, res) {
     res.render("login", {layout: false});
 });
 
-
 router.post('/', (req, res, next) => {
     passport.authenticate('local', (err, user, info) => {
         if (err) 
@@ -21,12 +20,11 @@ router.post('/', (req, res, next) => {
 
         req.logIn(user, err => {
             if (err) return next(err);
-    
-            return res.redirect('/');
+            var redirectTo = req.session.redirectTo || '/';
+            delete req.session.redirectTo;
+            return res.redirect(redirectTo);
         });
     })(req, res, next);
 })
-
-
 
 module.exports = router;
