@@ -5,6 +5,7 @@ var postTagdb = require("../models/post_tagdes");
 var authAdmin = require('../middlewares/auth-admin');
 var auth = require('../middlewares/auth');
 var authEditor = require('../middlewares/auth-editor');
+var authWriter = require('../middlewares/auth-writer');
 
 
 var router = express.Router();
@@ -15,7 +16,7 @@ router.use("/archieve-post", require(__dirname + "/archieve-post"));
 router.use(require("../middlewares/local.mdw"));
 
 // writer
-router.use("/writer", require(__dirname + "/writer/add-content"));
+router.use("/writer", authWriter, require(__dirname + "/writer/add-content"));
 router.use("/writer/manage-draft", require(__dirname + "/writer/manage-draft"));
 //editor
 router.use("/editor", authEditor, require(__dirname + "/editor/manage-draft"));
