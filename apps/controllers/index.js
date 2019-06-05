@@ -29,7 +29,7 @@ router.use("/forgot-pass", require(__dirname + "/forgot-pass"));
 router.use("/reset-pass", require(__dirname + "/reset-pass"));
 router.use("/change-pass", require(__dirname + "/change-pass"));
 router.use("/register", require(__dirname + "/register"));
-
+router.use("/extend", require(__dirname + "/extend"));
 
 router.use("/edit-profile", require(__dirname + "/edit-profile"));
 

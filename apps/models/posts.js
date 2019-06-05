@@ -48,7 +48,7 @@ function getNumberOfPost(){
     return new Promise((resolve, reject) => {
         var sql = `SELECT COUNT(*) as max
         FROM posts 
-        WHERE posts.status = 2`;
+        WHERE posts.status = 1`;
 
         var conn = db.getConnection();
         conn.connect();
@@ -85,7 +85,7 @@ function displayHotNews() {
     return new Promise((resolve, reject) => {
         var sql = `SELECT posts.*, users.pseudonym as userName, categories.name as catName,categories.id as catID
         FROM posts ,users, categories 
-        WHERE posts.created_by = users.id AND posts.category_id = categories.id AND posts.status = 2
+        WHERE posts.created_by = users.id AND posts.category_id = categories.id AND posts.status = 1
         ORDER BY posts.post_date DESC
         LIMIT 12`;
 
@@ -110,7 +110,7 @@ function displayTopView() {
 
         var sql = `SELECT posts.*, users.pseudonym as userName, categories.name as catName,categories.id as catID
         FROM posts ,users, categories 
-        WHERE posts.created_by = users.id AND posts.category_id = categories.id AND posts.status = 2
+        WHERE posts.created_by = users.id AND posts.category_id = categories.id AND posts.status = 1
         ORDER BY posts.views DESC
         LIMIT 10`;
 
@@ -151,7 +151,7 @@ function findLimit(begin, perpage) {
     return new Promise((resolve, reject) => {
         var sql = `SELECT posts.*, users.pseudonym as userName, categories.name as catName,categories.id as catID, post_tageds.tag_name as tagName, post_tageds.tag_id as tagID
         FROM posts ,users, categories , post_tageds 
-        WHERE posts.created_by = users.id AND posts.category_id = categories.id AND posts.status = 2 AND post_tageds.post_id = posts.id
+        WHERE posts.created_by = users.id AND posts.category_id = categories.id AND posts.status = 1 AND post_tageds.post_id = posts.id
         LIMIT ${perpage} OFFSET ${begin}`;
 
         var conn = db.getConnection();
@@ -188,7 +188,7 @@ function getTopPostOfWeek(){
     return new Promise((resolve, reject) => {
         var sql = `SELECT posts.*, users.pseudonym as userName, categories.name as catName,categories.id as catID
         FROM posts ,users, categories 
-        WHERE posts.created_by = users.id AND posts.category_id = categories.id AND posts.status = 2
+        WHERE posts.created_by = users.id AND posts.category_id = categories.id AND posts.status = 1
         ORDER BY posts.views DESC, posts.post_date DESC `;
 
         var conn = db.getConnection();

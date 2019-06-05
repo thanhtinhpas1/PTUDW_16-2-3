@@ -6,12 +6,17 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 	<!-- Font -->
 	<link href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded:400,600,700" rel="stylesheet">
 
 	<!-- Stylesheets -->
-	<link href="/css/bootstrap.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 	<link href="/fonts/ionicons.css" rel="stylesheet">
 
@@ -20,6 +25,11 @@
 	<link rel="icon" href="/imgs/favicon.ico">
 
 	<link rel="stylesheet" href="/css/owl.carousel.min.css">
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+		integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/popper.min.js"></script>
 
 </head>
 
@@ -34,7 +44,7 @@
 		</div>
 	</div>
 	<header>
-				<!-- ##### Header Area Start ##### -->
+		<!-- ##### Header Area Start ##### -->
 		<header class="header-area">
 			<!-- Top Header Area -->
 			<div class="top-header-area">
@@ -62,19 +72,52 @@
 									<a href="#"><i class="ion ion-social-facebook"></i></a>
 									<a href="#"><i class="ion ion-social-instagram"></i></a>
 									<a href="#"><i class="ion ion-social-twitter"></i></a>
-									<a href="#"><i class="ion ion-social-google"></i></a>
-									<a href="#"><i class="ion ion-social-bitcoin"></i></a>
 								</div>
 								<!-- Top Search Area -->
 								<div class="top-search-area">
 									<form action="/search" method="POST">
-										<input type="search" name="search" id="topSearch" placeholder="Search..." required>
+										<input type="search" name="search" id="topSearch" placeholder="Search..."
+											required>
 										<button type="submit" class="btn"><i class="fas fa-search"></i></button>
 									</form>
 								</div>
+								<form style="display: none;" id="frmLogOut" action="/log-out" method="POST"></form>
 								<!-- Login -->
-								<a href="/login" class="login-btn color-white"><i class="fas fa-user"
-										aria-hidden="true"></i></a>
+								<nav style="margin: 0 !important; padding: 0px !important;"
+									class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow">
+									<div class="collapse navbar-collapse" <ul class="navbar-nav">
+										<ul class="navbar-nav mr-auto"></ul>
+										{{#if isAuthenticated}}
+										<li id="drop-user" class="nav-item dropdown">
+											<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+												role="button" data-toggle="dropdown" aria-haspopup="true"
+												aria-expanded="false">
+												<i class="fa fa-user mr-1"></i>{{authUser.name}}
+											</a>
+											<div class="dropdown-menu dropdown-menu-right"
+												aria-labelledby="navbarDropdown">
+												<a class="dropdown-item" href="/account/profile">
+													<i class="fa fa-user" aria-hidden="true"></i>
+													Thông tin cá nhân
+												</a>
+												<div class="dropdown-divider"></div>
+												<a class="dropdown-item" href="javascript: $('#frmLogOut').submit();">
+													<i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+													Đăng xuất
+												</a>
+											</div>
+										</li>
+										{{else}}
+										<li class="nav-item">
+
+											<a href="/login" class="login-btn color-white" id="header-login"><i
+													class="fas fa-user" aria-hidden="true"></i><span class="ml-1">Đăng
+													nhập</span></a>
+
+										</li>
+										{{/if}}
+									</div>
+								</nav>
 							</div>
 						</div>
 					</div>
@@ -146,14 +189,14 @@
 								</div>
 							</div><!-- mtb-50 -->
 
-			
-					</div><!-- mtb-50 -->
 
-					
-				</div>
+						</div><!-- mtb-50 -->
 
-			</div><!-- row -->
-		</div><!-- container -->
+
+					</div>
+
+				</div><!-- row -->
+			</div><!-- container -->
 	</section>
 
 	<footer class="bg-191 color-ccc">

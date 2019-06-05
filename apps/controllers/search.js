@@ -7,7 +7,10 @@ router.post('/', (req, res) => {
   var txtSearch = req.body.search;
   var allPost = postdb.searchPosts(txtSearch);
   allPost.then(list => {
-    res.render('search-result', { title: 'search-result', layout: 'base-view', list: list });
+    res.render('search-result', { title: 'search-result', layout: 'base-view', list: list.sort(function (a, b) {
+      return b.premium_status - a.premium_status;
+    })
+   });
   })
     .catch(err => {
       console.log(err);

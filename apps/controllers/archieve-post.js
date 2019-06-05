@@ -6,6 +6,8 @@ var tagdb = require("../models/tags");
 
 //middleware
 router.use(require("../middlewares/local.mdw"));
+var auth = require('../middlewares/auth-locals.mdw');
+
 
 router.get("/:cateID", function(req, res) {
 
@@ -53,7 +55,9 @@ router.get("/:cateID", function(req, res) {
             "next": next,
             "page": page,
             "pageCount": pageCount,
-            "posts": lstPostOfCate.slice(page * 12 - 12, page * 12),
+            "posts": lstPostOfCate.slice(page * 12 - 12, page * 12).sort(function (a, b) {
+                return b.premium_status - a.premium_status;
+              }),
             category: values[1]
         });
     })

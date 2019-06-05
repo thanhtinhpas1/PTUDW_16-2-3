@@ -37,8 +37,10 @@ router.get("/:id", function (req, res) {
             var datenow = util.ConvertToMilliSecond(util.UpdatePostDate(Date.now()));
             var date_expries = util.ConvertToMilliSecond(util.UpdatePostDate(req.user.expiry_date));
             var subs = date_expries - datenow;
+            console.log(subs);
+            console.log(req.user);
             if (subs < 0) {
-                return res.redirect('/register');
+                return res.redirect('/extend');
             }            
         } else {
             if(post.premium_status == 1){
