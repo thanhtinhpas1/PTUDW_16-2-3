@@ -14,14 +14,14 @@ router.get('/:token', function (req, res) {
     user.then(rows => {
         if (!rows) {
             req.flash('error', 'Password reset token is invalid or has expired.');
-            return res.redirect('/forgot');
+            return res.redirect('/forgot-pass');
         }
         var datenow = util.ConvertToMilliSecond(util.UpdatePostDate(Date.now()));
         var date_expries = util.ConvertToMilliSecond(util.UpdatePostDate(rows.expries_token));
         var subs = date_expries - datenow;
         if (subs < 0) {
             req.flash('error', 'Password reset token is invalid or has expired.');
-            return res.redirect('/forgot');
+            return res.redirect('/forgot-pass');
         }
         res.render("reset-pass", {
             title: "reset-pass",
@@ -30,7 +30,7 @@ router.get('/:token', function (req, res) {
         });
     }).catch(err =>{
         req.flash('error', 'Password reset token is invalid or has expired.');
-        return res.redirect('/forgot');
+        return res.redirect('/forgot-pass');
     });
 });
 router.post('/:token', function (req, res) {
@@ -48,7 +48,7 @@ router.post('/:token', function (req, res) {
                 var subs = date_expries - datenow;
                 if (subs < 0) {
                     req.flash('error', 'Password reset token is invalid or has expired.');
-                    return res.redirect('/forgot');
+                    return res.redirect('/forgot-pass');
                 }
                 if (req.body.password === req.body.confirm) {
                     user.password =  util.hash_password(req.body.password);
@@ -58,7 +58,7 @@ router.post('/:token', function (req, res) {
                         done(err, user);
                     }).catch(err => {
                         console.log(err);
-                        return res.redirect('/forgot');
+                        return res.redirect('/forgot-pass');
                     })
                 } else {
                     console.log(err);
@@ -67,7 +67,7 @@ router.post('/:token', function (req, res) {
                 }
             }).catch(err => {
                 console.log(err);
-                return res.redirect('/forgot');
+                return res.redirect('/forgot-pass');
             });
         },
         function (user, done) {

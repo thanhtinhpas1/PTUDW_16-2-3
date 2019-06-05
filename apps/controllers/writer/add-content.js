@@ -26,7 +26,8 @@ router.get("/", function (req, res) {
 router.post("/", (req, res) => {
     var entity = req.body;
     entity.status = 3;
-    entity.author_name = 'Triệu Quang';
+    entity.author_name = req.user.pseudonym;
+    entity.created_by = req.user.id;
     if (entity) {
         var rs = db.addNewPost(entity);
         //TODO: add field created by and author name

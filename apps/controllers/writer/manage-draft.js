@@ -7,7 +7,7 @@ var categoriesDb = require('../../models/categories');
 
 router.get("/post-wait", function (req, res) {
     var status = 3;
-    var created_by = 1;
+    var created_by = req.user.id;
     var p = db.getAllPostWriter(created_by, status);
     p.then(rows => {
         res.render("writer/post-wait", {
@@ -21,7 +21,7 @@ router.get("/post-wait", function (req, res) {
 });
 router.get("/post-refuse", function (req, res) {
     var status = 2;
-    var created_by = 1;
+    var created_by = req.user.id;
     var p = db.getAllPostWriter(created_by, status);
     p.then(rows => {
         res.render("writer/post-err", {
@@ -35,7 +35,7 @@ router.get("/post-refuse", function (req, res) {
 });
 router.get("/post-success", function (req, res) {
     var status = 1;
-    var created_by = 1;
+    var created_by = req.user.id;
     var p = db.getAllPostWriter(created_by, status);
     p.then(rows => {
         res.render("writer/post-succ", {
@@ -49,7 +49,7 @@ router.get("/post-success", function (req, res) {
 });
 router.get("/post-approved", function (req, res) {
     var status = 0;
-    var created_by = 1;
+    var created_by = req.user.id;
     var p = db.getAllPostWriter(created_by, status);
     p.then(rows => {
         res.render("writer/post-approved", {

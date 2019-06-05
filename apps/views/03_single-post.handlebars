@@ -25,7 +25,7 @@
 
 <b>{{post.summary_content}}</b style="">
 
-<p class="mtb-15" style="line-height: 30px">{{post.content}}</p>
+<p class="mtb-15" style="line-height: 30px">{{{post.content}}}</p>
 
 <div class="quote-primary mtb-20">
 	<img src="{{post.thumb_img}}" alt="">
@@ -37,8 +37,10 @@
 
 	<ul
 		class="mb-30 list-li-mt-10 list-li-mr-5 list-a-plr-15 list-a-ptb-7 list-a-bg-grey list-a-br-2 list-a-hvr-primary ">
-		<li class="download"><a onclick="DownloadPost({{post.id}})">Tải xuống<i
+		{{#if isCheck}}
+				<li class="download"><a onclick="DownloadPost({{post.id}})">Tải xuống<i
 					class="fas fa-file-download ml-2"></i></a></li>
+		{{/if}}
 		{{#each this.lstPostTag}}
 		<li><a href="#">{{tag_name}}</a></li>
 		{{/each}}

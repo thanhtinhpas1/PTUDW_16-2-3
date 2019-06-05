@@ -7,8 +7,10 @@ var tagedDb = require('../../models/post_tagdes');
 var categoriesDb = require('../../models/categories');
 
 router.get("/", function(req, res) {
-    var p = db.getAllPostsEditorManage(3, 2);
+    console.log(req.user.id);
+    var p = db.getAllPostsEditorManage(3, req.user.id);
     p.then(rows =>{
+        console.log(rows);
         res.render("editor/manage-draft", {
             title:"manage-draft",
             layout: "../views/baseview-editor",

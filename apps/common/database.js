@@ -23,6 +23,20 @@ function getConnection() {
 }
 
 module.exports = {
+    load: sql => {
+        return new Promise((resolve, reject) => {
+          var connection = createConnection();
+          connection.connect();
+          connection.query(sql, (error, results, fields) => {
+            if (error) {
+              reject(error);
+            } else {
+              resolve(results);
+            }
+            connection.end();
+          });
+        });
+      },    
     excute: (query) => {
         return new Promise((resolve, reject) => {
             var conn = getConnection();
@@ -33,8 +47,7 @@ module.exports = {
                 conn.end();
             })
         })
-    }
-    ,
+    },
     update: (tableName, entity) => {
         return new Promise((resolve, reject) => {
             var sql = `UPDATE ${tableName} set ? WHERE id = ?`;

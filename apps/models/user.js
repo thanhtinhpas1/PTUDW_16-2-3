@@ -11,7 +11,7 @@ function getAllUserWithRole() {
 }
 
 function deleteUser(id) {
-    return db.deleteById( "users" ,id);
+    return db.deleteById("users", id);
 }
 
 function deleteUserById(id) {
@@ -21,13 +21,13 @@ function deleteUserById(id) {
 function addNewUser(entity) {
     return db.add("users", entity);
 }
-function findOneByEmail(email){
+function findOneByEmail(email) {
     return db.findOne('users', 'email', email);
 }
-function update(entity){
+function update(entity) {
     return db.update('users', entity)
 }
-function findOneByToken(entity){
+function findOneByToken(entity) {
     return db.findOne('users', 'reset_token', entity);
 }
 function updateUser(entity) {
@@ -35,18 +35,24 @@ function updateUser(entity) {
 }
 
 module.exports = {
-    singleByUserName: username => {
-        return db.findOne('users', 'username', username);
+    singleByUserName: userName => {
+        return db.load(`select * from users where username = '${userName}'`);
     },
-    findById: id =>{
-        return db.findById('users',id);
+    singleByEmail: email => {
+        return db.load(`select * from users where email = '${email}'`);
+    },
+    findById: id => {
+        return db.findById('users', id);
+    },
+    findByUsername: userName => {
+        return db.findOne('users', 'username', userName);
     },
     getAllUser: getAllUser,
     deleteUser: deleteUser,
     addNewUser: addNewUser,
     findOneByEmail: findOneByEmail,
-    update : update,
-    findOneByToken : findOneByToken,
+    update: update,
+    findOneByToken: findOneByToken,
     getAllUserWithRole: getAllUserWithRole,
     updateUser: updateUser,
     deleteUserById: deleteUserById

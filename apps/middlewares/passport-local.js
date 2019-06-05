@@ -12,7 +12,7 @@ module.exports = function (app) {
         passwordField: 'password'
     },
         (username, password, done) => {
-            userModel.singleByUserName(username).then(rows => {
+            userModel.findByUsername(username).then(rows => {
                 if (rows == null) {
                     return done(null, false, { message: 'Invalid username' });
                 }
