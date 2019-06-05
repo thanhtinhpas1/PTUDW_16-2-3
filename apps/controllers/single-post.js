@@ -24,6 +24,7 @@ router.get("/:id", function (req, res) {
     var allPost = postdb.findAllPost();
     var allComment = commentdb.findCommentsOfPost(id);
     var isCheck = false;
+    var isPremium = false;
 
     Promise.all([singlePost, postTag, allPost, allComment]).then(values => {
         var post = values[0];
@@ -57,12 +58,16 @@ router.get("/:id", function (req, res) {
             if (item.post_id == post.id)
                 return item;
         })
-
+        if(values[0]!=null){
+            if(post.premium_status == 1){
+                isPremium = true;
+            }
+        }
         res.render("03_single-post", {
             title: "single-post",
             layout: 'base-view-1',
             post: post,
-            premium: post.premium_status,
+            isPremium: isPremium,
             sameCate: lstSameCate, //List post have same category
             favNew: res.locals.lcTopHot.slice(0, 2),
             lstCom: values[3],

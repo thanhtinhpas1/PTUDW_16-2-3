@@ -5,8 +5,9 @@
 		<a class="mt-30" href="index.html"><i class="mr-5 ion-ios-home"></i>Home<i
 				class="mlr-10 ion-chevron-right"></i></a>
 		<a class="color-ash mt-10" id="page-url" href="#">Bài viết</a>
-
+		{{#if isPremium}}
 		<a class="premium-tag ml-2" href="#" id="premium">Premium</a>
+		{{/if}}
 	</div><!-- container -->
 	<div class="mb-30 brdr-ash-1 opacty-5"></div>
 </section>
@@ -38,7 +39,7 @@
 	<ul
 		class="mb-30 list-li-mt-10 list-li-mr-5 list-a-plr-15 list-a-ptb-7 list-a-bg-grey list-a-br-2 list-a-hvr-primary ">
 		{{#if isCheck}}
-				<li class="download"><a onclick="DownloadPost({{post.id}})">Tải xuống<i
+		<li class="download"><a onclick="DownloadPost({{post.id}})">Tải xuống<i
 					class="fas fa-file-download ml-2"></i></a></li>
 		{{/if}}
 		{{#each this.lstPostTag}}
