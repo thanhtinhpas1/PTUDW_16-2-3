@@ -18,7 +18,7 @@ router.get("/:cateID", function(req, res) {
          
     Promise.all([posts, catRS]).then( values => {
         var lstPostOfCate = values[0].filter(item => {
-            if(item.category_id == cateID)
+            if(item.category_id == cateID && item.status == 1)
                 return item;
         })
 
@@ -47,6 +47,21 @@ router.get("/:cateID", function(req, res) {
         
         if (page == pageCount) pagination['next'] = true;
 
+        for (const item of lstPostOfCate) {
+            if(item.premium_status == 1){
+                item['isActive'] = true;
+            }
+        }
+        for (const c of res.locals.lcTopHot) {
+            if(c.premium_status == 1){
+                c.isActive = true;
+            }
+        }
+        for (const c of res.locals.lcTopView) {
+            if(c.premium_status == 1){
+                c.isActive = true;
+            }
+        }
         res.render("02_archive-page", {
             title:"archieve-post",
             layout: "base-view-posts",

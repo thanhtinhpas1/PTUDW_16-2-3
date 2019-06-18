@@ -67,11 +67,43 @@ router.get("/", function (req, res) {
         var numberOfComments = values[5];
         //filter menu
         var parentMenu = [];
+        if (values[0].length > 0) {
+            for (const item of lstPost) {
+                if(item.premium_status == 1){
+                    item.isActive = true;
+                }
+            }
+        }
         if (values[1].length > 0) {
             parentMenu = values[1].filter(x => x.parent_id == 0);
             for (const item of parentMenu) {
                 var childrenMenu = values[1].filter(x => x.parent_id == item.id);
                 item['childs'] = childrenMenu;
+            }
+        }
+        if(values[2].length > 0){
+            for (const item of lstPostOfWeek) {
+                if(item.premium_status == 1){
+                    item.isActive = true;
+                }
+            }
+            console.log(lstPostOfWeek);
+        }
+        if(values[6].length > 0){
+            for (const item of values[6]) {
+                if(item.premium_status == 1){
+                    item['isActive'] = true;
+                }
+            }
+        }
+        for (const c of res.locals.lcTopHot) {
+            if(c.premium_status == 1){
+                c.isActive = true;
+            }
+        }
+        for (const c of res.locals.lcTopView) {
+            if(c.premium_status == 1){
+                c.isActive = true;
             }
         }
         res.render("index", {

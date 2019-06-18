@@ -11,7 +11,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded:400,600,700" rel="stylesheet">
 
 	<!-- Stylesheets -->
-	
+
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 	<!-- jQuery library -->
@@ -22,6 +22,8 @@
 	<link href="/fonts/ionicons.css" rel="stylesheet">
 
 	<link href="/css/styles.css" rel="stylesheet">
+
+	<link href="/css/main_styles.css" rel="stylesheet">
 
 	<link rel="icon" href="/imgs/favicon.ico">
 
@@ -159,7 +161,14 @@
 
 						{{#each this.sameCate}}
 						<a class="oflow-hidden pos-relative dplay-block" href="/single-post/{{id}}">
-							<div class="wh-100x abs-tlr"><img src="{{thumb_img}}" alt=""></div>
+							<div class="wh-100x abs-tlr"><img src="{{thumb_img}}" alt="">
+								{{#if isActive}}
+								<div style="width: 50px; height: 15px; top: 4px"
+									class="abs-br product_bubble  product_bubble_red d-flex flex-column align-items-center justify-content-center mr-1">
+									<span style="font-size: 8px">premium</span>
+								</div>
+								{{/if}}
+							</div>
 							<div class="ml-120 min-h-100x">
 								<h5><b>{{title}}</b></h5>
 								<h6 class="color-lite-black pt-10">by <span
@@ -177,7 +186,14 @@
 								<div class="all-news-content">
 									{{#each lcTopView}}
 									<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post/{{id}}">
-										<div class="wh-100x abs-tlr"><img src="{{thumb_img}}" alt=""></div>
+										<div class="wh-100x abs-tlr"><img src="{{thumb_img}}" alt="">
+											{{#if isActive}}
+											<div style="width: 50px; height: 15px; top: 4px"
+												class="abs-br product_bubble  product_bubble_red d-flex flex-column align-items-center justify-content-center mr-1">
+												<span style="font-size: 8px">premium</span>
+											</div>
+											{{/if}}
+										</div>
 										<div class="ml-120 min-h-100x">
 											<h5><b>{{title}}</b></h5>
 
@@ -195,7 +211,14 @@
 							<div class="all-news-content">
 								{{#each lcTopHot}}
 								<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post/{{id}}">
-									<div class="wh-100x abs-tlr"><img src="{{thumb_img}}" alt=""></div>
+									<div class="wh-100x abs-tlr"><img src="{{thumb_img}}" alt="">
+										{{#if isActive}}
+										<div style="width: 50px; height: 15px; top: 4px"
+											class="abs-br product_bubble  product_bubble_red d-flex flex-column align-items-center justify-content-center mr-1">
+											<span style="font-size: 8px">premium</span>
+										</div>
+										{{/if}}
+									</div>
 									<div class="ml-120 min-h-100x">
 										<h5><b>{{title}}</b>
 										</h5>

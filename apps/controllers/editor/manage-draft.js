@@ -146,4 +146,38 @@ router.post('/taged/:id', (req, res) => {
         res.redirect('editor/');
     });
 });
+
+router.get('/detail/:id', (req, res) => {
+    var id = req.params.id;
+    var post = db.findById(id);
+    var tagedRS = tagedDb.findTagByPostId(id);
+    var catRS = categoriesDb.getAllCategory();
+    Promise.all([catRS, tagedRS, post]).then(values => {
+        if (values[2] != null) {
+            var category;
+            for (const item of values[0]) {
+                if (values[2].category_id == item.id) {
+                    category = item;
+                    break;
+                }
+            }
+
+            switch(values[2].status) {
+            case 1:
+                values[2]['statusName']  = "Published";
+                values[2]['label'] = "label-success";
+            break;
+            default: 
+                values[2]['statusName']  = "Draft";   
+                values[2]['label'] = "label-primary";
+                break;
+            }
+        }
+        res.render("editor/post-detail", {title: "post-detail", layout: "../views/baseview-editor", category: category, tags: values[1], post: values[2]});
+    })
+    .catch(err => {
+        console.log(err);
+    })
+});
+
 module.exports = router;

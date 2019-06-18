@@ -1,4 +1,5 @@
-<script src="//cdn.ckeditor.com/4.11.4/full/ckeditor.js"></script>
+<script
+    src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=ezd73nxbzc7bu6e86g2l82jbbffke0mwevwrnyvc5q8h89j6"></script>
 <main class="main-content">
     <div id="mainContent">
         <div class="container mt-60">
@@ -25,18 +26,13 @@
                                             id="summary_content"
                                             placeholder="Summary content">{{post.summary_content}}</textarea>
                                     </div>
-                                    <div class="form-group col-md-6"><label for="summary_content">
+                                    <div class="form-group col-md-8"><label for="summary_content">
                                             <h4>Image big size</h4>
                                         </label>
                                         <input value="{{post.avatar}}" type="text" class='form-control' name="avatar"
                                             required />
                                     </div>
-                                    <div class="form-group col-md-6"><label for="summary_content">
-                                            <h4>Image thumbnail</h4>
-                                        </label>
-                                        <input value="{{post.thumb_img}}" type="text" class='form-control'
-                                            name="thumb_img" required />
-                                    </div>
+                                   
                                 </div>
                         </div>
                         <div class="form-group"><label for="content">
@@ -45,8 +41,19 @@
                             <textarea rows="100" type="text" class="form-control" name="content" id="content"
                                 placeholder="Main content">{{post.content}}</textarea></div>
                         <script>
-                            CKEDITOR.replace('content');
-                            CKEDITOR.config.height = 460;
+                            $(function () {
+                                tinymce.init({
+                                    selector: '#content',
+                                    height: 700,
+                                    menubar: false,
+                                    plugins: 'paste image link autolink lists table media',
+                                    toolbar: [
+                                        'undo redo | bold italic underline strikethrough | numlist bullist | alignleft aligncenter alignright',
+                                        'forecolor backcolor',
+                                        'table link image media',
+                                    ],
+                                });
+                            })
                         </script>
                         <label for="category">
                             <h4>Category</h4>
@@ -124,6 +131,7 @@
 
     //add new post
     function UpdatePost(id) {
+        tinymce.triggerSave();
         var frmUn = $('form').serializeArray();
         var frm = {};
         $.map(frmUn, function (n, i) {

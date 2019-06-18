@@ -6,7 +6,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+		integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 	<!-- Font -->
 	<link href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded:400,600,700" rel="stylesheet">
 
@@ -16,6 +17,9 @@
 	<link href="/fonts/ionicons.css" rel="stylesheet">
 
 	<link href="/css/styles.css" rel="stylesheet">
+
+	<link href="/css/main_styles.css" rel="stylesheet">
+
 
 	<link rel="icon" href="/imgs/favicon.ico">
 
@@ -34,7 +38,7 @@
 		</div>
 	</div>
 	<header>
-				<!-- ##### Header Area Start ##### -->
+		<!-- ##### Header Area Start ##### -->
 		<header class="header-area">
 			<!-- Top Header Area -->
 			<div class="top-header-area">
@@ -68,7 +72,8 @@
 								<!-- Top Search Area -->
 								<div class="top-search-area">
 									<form action="/search" method="POST">
-										<input type="search" name="search" id="topSearch" placeholder="Search..." required>
+										<input type="search" name="search" id="topSearch" placeholder="Search..."
+											required>
 										<button type="submit" class="btn"><i class="fas fa-search"></i></button>
 									</form>
 								</div>
@@ -116,7 +121,14 @@
 						<div class="all-news-content">
 							{{#each lcTopHot}}
 							<a class="oflow-hidden pos-relative dplay-block" href="/single-post/{{id}}">
-								<div class="wh-100x abs-tlr"><img src="{{thumb_img}}" alt=""></div>
+								<div class="wh-100x abs-tlr"><img src="{{thumb_img}}" alt="">
+									{{#if isActive}}
+									<div style="width: 50px; height: 15px; top: 4px"
+										class="abs-br product_bubble  product_bubble_red d-flex flex-column align-items-center justify-content-center mr-1">
+										<span style="font-size: 8px">premium</span>
+									</div>
+									{{/if}}
+								</div>
 								<div class="ml-120 min-h-100x">
 									<h5><b>{{title}}</b></h5>
 									<h6 class="color-lite-black pt-10">by <span
@@ -134,7 +146,14 @@
 								<div class="all-news-content">
 									{{#each lcTopView}}
 									<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post/{{id}}">
-										<div class="wh-100x abs-tlr"><img src="{{thumb_img}}" alt=""></div>
+										<div class="wh-100x abs-tlr"><img src="{{thumb_img}}" alt="">
+											{{#if isActive}}
+											<div style="width: 50px; height: 15px; top: 4px"
+												class="abs-br product_bubble  product_bubble_red d-flex flex-column align-items-center justify-content-center mr-1">
+												<span style="font-size: 8px">premium</span>
+											</div>
+											{{/if}}
+										</div>
 										<div class="ml-120 min-h-100x">
 											<h5><b>{{title}}</b></h5>
 											<h6 class="color-lite-black pt-10">by <span
@@ -147,23 +166,7 @@
 							</div><!-- mtb-50 -->
 						</div>
 
-						<div class="mtb-50">
-							<h4 class="p-title"><b>Tin hot nhất</b></h4>
-							<div class="all-news-content">
-								{{#each lcTopHot}}
-								<a class="oflow-hidden pos-relative mb-20 dplay-block" href="/single-post/{{id}}">
-									<div class="wh-100x abs-tlr"><img src="{{thumb_img}}" alt=""></div>
-									<div class="ml-120 min-h-100x">
-										<h5><b>{{title}}</b>
-										</h5>
-										<h6 class="color-lite-black pt-10">by <span
-												class="color-black"><b>{{userName}}</b></span>
-											{{moment post_date format="YYYY/MM/DD h:mm:s"}} {{catName}}</h6>
-									</div>
-								</a><!-- oflow-hidden -->
-								{{/each}}
-							</div>
-						</div><!-- mtb-50 -->
+
 						<div class="aside-widget">
 							<div class="section-title">
 								<h2>Chuyên mục</h2>

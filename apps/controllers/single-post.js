@@ -45,7 +45,7 @@ router.get("/:id", function (req, res) {
             }            
         } else {
             if(post.premium_status == 1){
-                return res.redirect('/register');
+                return res.redirect('/login');
             }
         }
         //Get list post have the same category
@@ -61,6 +61,21 @@ router.get("/:id", function (req, res) {
         if(values[0]!=null){
             if(post.premium_status == 1){
                 isPremium = true;
+            }
+        }
+        for (const item of lstSameCate) {
+            if(item.premium_status == 1){
+                item['isActive'] = true;
+            }
+        }
+        for (const c of res.locals.lcTopView) {
+            if(c.premium_status == 1){
+                c.isActive = true;
+            }
+        }
+        for (const c of res.locals.lcTopHot) {
+            if(c.premium_status == 1){
+                c.isActive = true;
             }
         }
         res.render("03_single-post", {

@@ -40,6 +40,7 @@ function getTopCate(){
     return new Promise((resolve, reject) => {
         var sql = `SELECT categories.id , categories.name ,COUNT(*) as SL 
         FROM categories JOIN posts ON posts.category_id = categories.id 
+        WHERE posts.status = 1
         GROUP BY categories.id,categories.name
         ORDER BY COUNT(*) DESC
         LIMIT 10 OFFSET 0`;
@@ -57,7 +58,8 @@ function getTopCate(){
 
 function getTopPostOfCat() {
     var sql = `SELECT p.*, c.name as category_name FROM posts p 
-    LEFT JOIN categories c on p.category_id = c.id GROUP BY category_id ORDER BY views DESC LIMIT 12`;
+    LEFT JOIN categories c on p.category_id = c.id WHERE p.status = 1
+    GROUP BY category_id ORDER BY views DESC LIMIT 12`;
     return db.excute(sql);
 }
 

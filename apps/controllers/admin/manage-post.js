@@ -81,6 +81,11 @@ router.get("/add", (req, res) => {
 
 router.post("/add", (req, res) => {
     var entity = req.body;
+    entity.status = 3;
+    entity.thumb_img = '';
+    entity.created_by = req.user.id;
+    entity.author_name = req.user.pseudonym;
+
     if (entity) {
         var rs = db.addNewPost(entity);
         //TODO: add field created by and author name
@@ -155,7 +160,7 @@ router.post('/edit/:id', (req, res) => {
         entity.title = req.body.title;
         entity.avatar = req.body.avatar;
         entity.content = req.body.content;
-        entity.thumb_img = req.body.thumb_img;
+        entity.thumb_img = '';
         entity.summary_content = req.body.summary_content;
         entity.category_id = req.body.category_id;
         var rs = db.updatePost(entity);
