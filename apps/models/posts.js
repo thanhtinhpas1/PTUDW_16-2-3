@@ -179,7 +179,20 @@ function getAllPostsEditorManage(status, editorId) {
         });
     });
 }
-
+function getAllPostsApprovedEditorManage(editorId) {
+    var conn = db.getConnection();
+    return new Promise((resolve, reject) => {
+        conn.connect();
+        var sql = `SELECT categories.name,  users.username, posts.id, posts.avatar, posts.content, posts.summary_content, posts.thumb_img, posts.title, posts.created_at
+        FROM categories, posts, users
+        WHERE categories.id = posts.category_id AND (posts.status = 1 OR posts.status = 0) AND posts.created_by = users.id AND categories.id IN (SELECT manage_categories.category_manage_id FROM manage_categories WHERE manage_categories.editor_id = ?)`;
+        conn.query(sql, [editorId], (err, value) => {
+            if (err) reject(err);
+            else resolve(value);
+            conn.end();
+        });
+    });
+}
 function updatePost(entity, id) {
     return db.update('posts', entity, id);
 }
@@ -238,5 +251,6 @@ module.exports = {
     getAllPostWriter: getAllPostWriter,
     getPage,
     countPage,
-    searchPosts
+    searchPosts,
+    getAllPostsApprovedEditorManage: getAllPostsApprovedEditorManage
 }

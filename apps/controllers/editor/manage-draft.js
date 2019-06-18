@@ -179,5 +179,32 @@ router.get('/detail/:id', (req, res) => {
         console.log(err);
     })
 });
-
+router.get("/post-approved", function(req, res) {
+    console.log(req.user.id);
+    var p = db.getAllPostsApprovedEditorManage(req.user.id);
+    p.then(rows =>{
+        console.log(rows);
+        res.render("editor/manage-post-approved", {
+            title:"manage-draft",
+            layout: "../views/baseview-editor",
+            listPost : rows
+        });
+    }).catch(err =>{
+        console.log(err);
+    });
+});
+router.get("/post-denied", function(req, res) {
+    console.log(req.user.id);
+    var p = db.getAllPostsEditorManage(2, req.user.id);
+    p.then(rows =>{
+        console.log(rows);
+        res.render("editor/manage-post-denied", {
+            title:"manage-draft",
+            layout: "../views/baseview-editor",
+            listPost : rows
+        });
+    }).catch(err =>{
+        console.log(err);
+    });
+});
 module.exports = router;
