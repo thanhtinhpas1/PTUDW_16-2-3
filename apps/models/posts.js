@@ -228,7 +228,7 @@ function getAllPostWriter(created_by, status){
     })}
 
 function searchPosts(search) {
-    var sql = `SELECT * FROM posts WHERE MATCH(title, content, summary_content) AGAINST('${search}')`;
+    var sql = `SELECT * FROM posts WHERE MATCH(title, content, summary_content) AGAINST('${search}') ORDER BY premium_status DESC`;
     return db.excute(sql);
 }
 

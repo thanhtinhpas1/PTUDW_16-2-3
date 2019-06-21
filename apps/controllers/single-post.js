@@ -45,7 +45,7 @@ router.get("/:id", function (req, res) {
             }            
         } else {
             if(post.premium_status == 1){
-                return res.redirect('/login');
+                return res.redirect('/login?premium=1');
             }
         }
         //Get list post have the same category
@@ -140,14 +140,13 @@ router.get('/:id/download', (req, res) => {
         const page = await instance.createPage();
 
         await page.property('viewportSize', { width: 1024, height: 600 });
-        const status = await page.open('http://localhost:5000/single-post/print-post/' + id);
+        const status = await page.open('http://localhost:3000/single-post/print-post/' + id);
         console.log(`Page opened with status [${status}].`);
 
         //wait for load
         await sleep(2000);
 
         await page.render('bitnews' + id + '.pdf');
-        console.log(`File created at [./stackoverflow.pdf]`);
 
         await instance.exit();
 
