@@ -83,7 +83,7 @@ router.post("/add", (req, res) => {
     var entity = req.body;
     entity.status = 3;
     entity.thumb_img = '';
-    entity.created_by = req.user.id;
+    entity.created_by = req.session.passport.user.id;
     entity.author_name = req.user.pseudonym;
 
     if (entity) {

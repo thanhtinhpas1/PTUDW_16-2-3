@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 
-router.use("/email",require( __dirname + "/email" ));
+router.use("/email",require( __dirname + "/email" ))
 router.use("/manage-category", require( __dirname + "/manage-category" ))
 router.use("/manage-tag", require( __dirname + "/manage-tag" ))
 router.use("/manage-post", require( __dirname + "/manage-post" ))

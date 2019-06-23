@@ -42,6 +42,11 @@ router.use('/posts', require(__dirname + "/all-post"));
 //post by tag
 router.use('/posts/tag', require(__dirname + '/all-tag'));
 
+router.post('/log-out', (req, res) => {
+    req.logOut();
+    res.redirect('/');
+})
+
 router.get("/", function (req, res) {
 
     //Pagination
@@ -126,9 +131,6 @@ router.get("/", function (req, res) {
     })
 });
 
-router.post('/log-out', (req, res) => {
-    req.logOut();
-    res.redirect('/');
-})
+
 
 module.exports = router;

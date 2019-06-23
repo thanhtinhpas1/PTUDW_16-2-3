@@ -26,7 +26,7 @@ router.post("/:id", function (req, res) {
         if (!user) {
             return res.redirect('back');
         }
-        user.fullname = req.body.fullname;
+        user.name = req.body.name;
         user.pseudonym = req.body.pseudonym;
         user.email = req.body.email;
         user.birthday = req.body.birthday;
